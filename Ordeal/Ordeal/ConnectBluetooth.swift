@@ -24,7 +24,7 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
             if !peripherals.contains(peripheral) {
                 self.peripherals.append(peripheral)
                 if let name = peripheral.name {
-                    if name.hasPrefix("Caio") {
+                    if name.hasPrefix("RC") {
                         self.centralManager?.stopScan() // Stop scanning when "RC" prefix is found.
                     }
                     self.peripheralNames.append(name)
