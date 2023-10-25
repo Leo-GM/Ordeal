@@ -9,7 +9,9 @@ class BluetoothViewModel : NSObject, ObservableObject {
     self.centralManager = CBCentralManager(delegate: self, queue: .main)
   }
   func conectando(name: CBPeripheral) {
-    centralManager?.connect(name)
+     
+      
+      centralManager?.connect(name)
   }
 }
 extension BluetoothViewModel: CBCentralManagerDelegate {
@@ -18,18 +20,26 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
       self.centralManager?.scanForPeripherals(withServices: nil)
     }
   }
-  func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-    if !peripherals.contains(peripheral) {
-      self.peripherals.append(peripheral)
-      self.peripheralNames.append(peripheral.name ?? "unnamed device")
-    }
-  }
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+            if !peripherals.contains(peripheral) {
+                self.peripherals.append(peripheral)
+                if let name = peripheral.name {
+                    if name.hasPrefix("Caio") {
+                        self.centralManager?.stopScan() // Stop scanning when "RC" prefix is found.
+                    }
+                    self.peripheralNames.append(name)
+                } else {
+                    self.peripheralNames.append("unnamed device")
+                }
+            }
+        }
 }
 struct ConnectBluetoothView: View {
   @ObservedObject private var bluetoothViewModel = BluetoothViewModel()
   var body: some View {
     NavigationView {
       List(bluetoothViewModel.peripheralNames, id: \.self) {peripheral in Text(peripheral)
+          
           .onTapGesture {
             //bluetoothViewModel.conectando()
           }
