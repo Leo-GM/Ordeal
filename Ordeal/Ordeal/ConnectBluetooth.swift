@@ -2,18 +2,19 @@ import SwiftUI
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController, CBPeripheralDelegate {
+class ViewController: NSObject, ObservableObject, CBPeripheralDelegate {
     private var centralManager: CBCentralManager!
     var discoveredPeripherals = [CBPeripheral]()
     var connectedPeripheral: CBPeripheral?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @Published var StringRecebida: String?
+    
+  
+    override init() {
+         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
         centralManagerDidUpdateState(centralManager)
-        
-    }
+       }
 
 }
 
@@ -117,6 +118,7 @@ extension ViewController: CBCentralManagerDelegate {
                         // Transformando dado recebido para string
                         if let stringValue = String(data: value, encoding: .utf8) {
                             print("Valor recebido: \(stringValue)")
+                            StringRecebida = stringValue
                         }
                     }
     }
@@ -125,18 +127,10 @@ extension ViewController: CBCentralManagerDelegate {
 
 
 struct ConnectBluetoothView: View {
-    @ObservedObject private var bluetoothViewModel = BluetoothViewModel()
+    @ObservedObject private var bluetoothViewModel = ViewController()
     
     var body: some View {
-        NavigationView {
-            List(bluetoothViewModel.peripheralNames, id: \.self) {peripheral in Text(peripheral)
-                    .onTapGesture {
-                        if let peripheral = bluetoothViewModel.peripherals.first(where: { $0.name == peripheral }) {
-                            bluetoothViewModel.connect(name: peripheral)
-                        }
-                    }
-            }.navigationTitle("Peripherals")
-        }
+        Text("Dado recebido pelo sensor arduino: \(bluetoothViewModel.StringRecebida ?? "NADA RECEBIDO")")
     }
 }
 
