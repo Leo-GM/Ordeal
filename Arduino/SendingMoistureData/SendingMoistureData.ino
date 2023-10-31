@@ -2,7 +2,12 @@
 
 SoftwareSerial bluetooth(10, 11); //10 = RX ; 11 = TX
 
-int moisture;
+int moisture = 0;
+int vezesMedida = 0;
+int dadosUmidade[15];
+int interactions;
+
+
 
 void setup() {
 
@@ -12,10 +17,22 @@ void setup() {
 }
 
 void loop() {
+  moisture = 0;
 
- moisture = analogRead(A0);
- 
+for (vezesMedida=0; vezesMedida<15; vezesMedida++){
+  int medida = analogRead(A0);
+  dadosUmidade[vezesMedida] = medida;
+  delay(1000);
+}
+
+for (interactions = 0; interactions<15; interactions++){
+  moisture = moisture + dadosUmidade[interactions];
+}
+
+  moisture = moisture/15;
+
  bluetooth.print(moisture);
 
-  delay(2000);
+ delay(3000);
+
 }
