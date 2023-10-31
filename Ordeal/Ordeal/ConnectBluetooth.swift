@@ -5,8 +5,7 @@ import CoreBluetooth
 class ViewController: NSObject, ObservableObject, CBPeripheralDelegate {
     private var centralManager: CBCentralManager!
     var discoveredPeripherals = [CBPeripheral]()
-    var connectedPeripheral: CBPeripheral?
-    
+    @Published var connectedPeripheral: CBPeripheral?
     @Published var StringRecebida: String?
     
   
@@ -25,6 +24,7 @@ extension ViewController: CBCentralManagerDelegate {
             case .poweredOn:
             print("---Bluetooth ligado---")
             centralManager.scanForPeripherals(withServices: nil, options: nil)
+            print("conectado em \(connectedPeripheral?.name)")
             print("Procurando dispositivos...")
             case .poweredOff:
                 print("Bluetooth ta desligado")
@@ -131,6 +131,18 @@ struct ConnectBluetoothView: View {
     
     var body: some View {
         Text("Dado recebido pelo sensor arduino: \(bluetoothViewModel.StringRecebida ?? "NADA RECEBIDO")")
+       
+        if bluetoothViewModel.connectedPeripheral?.name == "HC-08"{
+            Circle() // Cria um círculo
+                    .fill(Color.green)
+                    .frame(width: 100, height: 100)
+                    .padding()
+        }else{
+            Circle() // Cria um círculo
+                    .fill(Color.red)
+                    .frame(width: 100, height: 100)
+                    .padding()
+        }
     }
 }
 
