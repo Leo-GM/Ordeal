@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Ordeal
 //
-//  Created by Leonardo Guimaraes on 25/10/23.
+//  Created by Leonardo Guimaraes on 25/10/23
 //
 
 import SwiftUI
