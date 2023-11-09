@@ -283,7 +283,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = FH5247AW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to coneect to sensors";
@@ -314,7 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = FH5247AW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to coneect to sensors";
