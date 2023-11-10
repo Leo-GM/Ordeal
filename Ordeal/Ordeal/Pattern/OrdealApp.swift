@@ -15,7 +15,16 @@ struct OrdealApp: App {
         WindowGroup {
             //ContentView()
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
-            ConnectBluetoothView()
+            
+            TabView{
+                HomeView()
+                    .tabItem {Label("Jardim", systemImage: "leaf.circle") }
+                ProdutoView()
+                    .tabItem {Label("Produto", systemImage: "sensor") }
+                PerfilView()
+                    .tabItem {Label("Perfil", systemImage: "person.circle") }
+                
+            }
         }
     }
 }

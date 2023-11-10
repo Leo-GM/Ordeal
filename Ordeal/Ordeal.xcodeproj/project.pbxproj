@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */; };
+		EA51DE3B2AFD20CD0031FFD3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA51DE3A2AFD20CD0031FFD3 /* HomeView.swift */; };
 		EA66A3A52AE93BA80014AF6D /* OrdealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66A3A42AE93BA80014AF6D /* OrdealApp.swift */; };
 		EA66A3A72AE93BA80014AF6D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66A3A62AE93BA80014AF6D /* ContentView.swift */; };
 		EA66A3A92AE93BA80014AF6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA66A3A82AE93BA80014AF6D /* Assets.xcassets */; };
 		EA66A3AC2AE93BA80014AF6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA66A3AB2AE93BA80014AF6D /* Preview Assets.xcassets */; };
 		EA66A3AE2AE93BA80014AF6D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66A3AD2AE93BA80014AF6D /* Persistence.swift */; };
 		EA66A3B12AE93BA80014AF6D /* Ordeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA66A3AF2AE93BA80014AF6D /* Ordeal.xcdatamodeld */; };
+		EA9AA5342AFE512700C5AEDC /* ProdutoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */; };
+		EA9AA5362AFE513600C5AEDC /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AA5352AFE513600C5AEDC /* PerfilView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetooth.swift; sourceTree = "<group>"; };
+		EA51DE3A2AFD20CD0031FFD3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EA66A3A12AE93BA80014AF6D /* Ordeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ordeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66A3A42AE93BA80014AF6D /* OrdealApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdealApp.swift; sourceTree = "<group>"; };
 		EA66A3A62AE93BA80014AF6D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		EA66A3AD2AE93BA80014AF6D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		EA66A3B02AE93BA80014AF6D /* Ordeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ordeal.xcdatamodel; sourceTree = "<group>"; };
 		EA66A3B22AE93BA80014AF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdutoView.swift; sourceTree = "<group>"; };
+		EA9AA5352AFE513600C5AEDC /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +64,11 @@
 		EA66A3A32AE93BA80014AF6D /* Ordeal */ = {
 			isa = PBXGroup;
 			children = (
-				74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */,
-				EA66A3A42AE93BA80014AF6D /* OrdealApp.swift */,
-				EA66A3A62AE93BA80014AF6D /* ContentView.swift */,
+				EA9AA53E2AFE712600C5AEDC /* Bluetooth */,
+				EA9AA53D2AFE711900C5AEDC /* Pattern */,
+				EA9AA53B2AFE708800C5AEDC /* Components */,
+				EA9AA53A2AFE707500C5AEDC /* Views */,
 				EA66A3A82AE93BA80014AF6D /* Assets.xcassets */,
-				EA66A3AD2AE93BA80014AF6D /* Persistence.swift */,
 				EA66A3B22AE93BA80014AF6D /* Info.plist */,
 				EA66A3AF2AE93BA80014AF6D /* Ordeal.xcdatamodeld */,
 				EA66A3AA2AE93BA80014AF6D /* Preview Content */,
@@ -76,6 +82,41 @@
 				EA66A3AB2AE93BA80014AF6D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EA9AA53A2AFE707500C5AEDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA51DE3A2AFD20CD0031FFD3 /* HomeView.swift */,
+				EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */,
+				EA9AA5352AFE513600C5AEDC /* PerfilView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EA9AA53B2AFE708800C5AEDC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EA9AA53D2AFE711900C5AEDC /* Pattern */ = {
+			isa = PBXGroup;
+			children = (
+				EA66A3AD2AE93BA80014AF6D /* Persistence.swift */,
+				EA66A3A42AE93BA80014AF6D /* OrdealApp.swift */,
+				EA66A3A62AE93BA80014AF6D /* ContentView.swift */,
+			);
+			path = Pattern;
+			sourceTree = "<group>";
+		};
+		EA9AA53E2AFE712600C5AEDC /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */,
+			);
+			path = Bluetooth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +192,11 @@
 				74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */,
 				EA66A3AE2AE93BA80014AF6D /* Persistence.swift in Sources */,
 				EA66A3A72AE93BA80014AF6D /* ContentView.swift in Sources */,
+				EA51DE3B2AFD20CD0031FFD3 /* HomeView.swift in Sources */,
+				EA9AA5342AFE512700C5AEDC /* ProdutoView.swift in Sources */,
 				EA66A3B12AE93BA80014AF6D /* Ordeal.xcdatamodeld in Sources */,
 				EA66A3A52AE93BA80014AF6D /* OrdealApp.swift in Sources */,
+				EA9AA5362AFE513600C5AEDC /* PerfilView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
