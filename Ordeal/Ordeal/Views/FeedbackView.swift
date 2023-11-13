@@ -65,12 +65,21 @@ struct FeedbackView: View {
                         }
                         Spacer()
                         VStack{
-                            
-                            Image("plantaViva")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 134, height: 120)
-                                .shadow(radius: 2)
+                            ZStack{
+                                Image("feedbackFundoCard")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 135, height: 120)
+                                    .shadow(radius: 2)
+                                
+                                Image("feedbackPlantaFelizCard")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 59, height: 105)
+                                    .shadow(radius: 2)
+                                
+                            }
+                
                         }
                     }
                 }
