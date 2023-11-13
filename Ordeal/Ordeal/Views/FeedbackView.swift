@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FeedbackView: View {
+    @ObservedObject private var bluetoothViewModel = ViewController()
+    var umidadeIdealEspecie = 50
+    
     var body: some View {
         NavigationView{
             List {
@@ -38,9 +41,11 @@ struct FeedbackView: View {
                                     .padding(.trailing, 30)
                                 
                                 Spacer()
-                                Image(systemName: "checkmark.circle")
+                                
+                                Image(systemName: checkPlantStateHumidity(umidadeEspecie: umidadeIdealEspecie, umidadeRecebida: 61))
                                     .padding(.trailing, 15)
-                                    .foregroundColor(Color("principalColor"))
+                                    .foregroundColor(Color(checkPlantStateHumidityColor(umidadeEspecie: umidadeIdealEspecie, umidadeRecebida: 61)))
+                                
                             }
                             
                             
@@ -56,7 +61,7 @@ struct FeedbackView: View {
                                     .padding(.trailing, 30)
                                 
                                 Spacer()
-                                Image(systemName: "checkmark.circle")
+                                Image(systemName: checkPlantStateNPK(nitrogenioRecebido: <#T##Int#>, fosforoRecebido: <#T##Int#>, potassioRecebido: <#T##Int#>))
                                     .padding(.trailing, 15)
                                     .foregroundColor(Color("principalColor"))
                             }
