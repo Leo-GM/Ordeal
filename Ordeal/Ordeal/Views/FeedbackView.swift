@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  FeedbackView.swift
 //  Ordeal
 //
 //  Created by Leonardo Guimaraes on 09/11/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct FeedbackView: View {
     var body: some View {
         NavigationView{
             List {
@@ -18,28 +18,29 @@ struct HomeView: View {
                                
                         ){
                             Text("Nome da Planta")
-                                .font(.system(size: 15))
+                                .font(.system(size: 17))
                                 .fontWeight(.bold)
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color("principalColor"))
                                 .padding(.top, 8)
-                            
+                                .fontDesign(.rounded)
                             
                             Text("Espécie da Planta")
-                                .font(.system(size: 10))
+                                .font(.system(size: 12))
                                 .foregroundColor(Color.black)
                             
                             
                             Spacer()
                             HStack{
                                 Text("Umidade")
-                                    .font(.system(size: 11))
-                                
+                                    .font(.system(size: 17))
+                                    .fontDesign(.rounded)
                                     .foregroundColor(Color.black)
                                     .padding(.trailing, 30)
                                 
                                 Spacer()
-                                Image(systemName: "checkmark.seal")
+                                Image(systemName: "checkmark.circle")
                                     .padding(.trailing, 15)
+                                    .foregroundColor(Color("principalColor"))
                             }
                             
                             
@@ -49,14 +50,15 @@ struct HomeView: View {
                             
                             HStack{
                                 Text("Nutrientes")
-                                    .font(.system(size: 11))
-                                
+                                    .font(.system(size: 17))
+                                    .fontDesign(.rounded)
                                     .foregroundColor(Color.black)
                                     .padding(.trailing, 30)
                                 
                                 Spacer()
-                                Image(systemName: "checkmark.seal")
+                                Image(systemName: "checkmark.circle")
                                     .padding(.trailing, 15)
+                                    .foregroundColor(Color("principalColor"))
                             }
                             
                             Spacer()
@@ -78,6 +80,9 @@ struct HomeView: View {
                 ToolbarItem(placement: .principal) {
                     Text("Resultado")
                         .fontWeight(.bold)
+                        .font(.system(size: 17))
+                        .fontDesign(.rounded)
+                        .foregroundStyle(Color("principalColor"))
                 }
             }
 
@@ -86,5 +91,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    FeedbackView()
 }

@@ -17,7 +17,7 @@ struct OrdealApp: App {
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
             
             TabView{
-                HomeView()
+                FeedbackView()
                     .tabItem {Label("Jardim", systemImage: "leaf.circle") }
                 ProdutoView()
                     .tabItem {Label("Produto", systemImage: "sensor") }
