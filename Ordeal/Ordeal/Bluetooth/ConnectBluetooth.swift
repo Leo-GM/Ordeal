@@ -7,93 +7,161 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
     var discoveredPeripherals = [CBPeripheral]()
     @Published var connectedPeripheral: CBPeripheral?
     @Published var ValueReceived: String?
+
+    enum GeneralPlantState {
+        case ok
+        case notOk
+        
+        func image() -> String {
+            switch self {
+            case .ok:
+                return "feedbackPlantaFelizCard"
+            case .notOk:
+                return "feedbackPlantaTristeCard"
+            }
+        }
+    }
+
     
-  
+    enum HumidityPlantState {
+        case lack
+        case ideal
+        case excess
+        
+        func image() -> String {
+            switch self {
+            case .lack:
+                return "exclamationmark.triangle"
+            case .ideal:
+                return "checkmark.circle"
+            case .excess:
+                return "exclamationmark.triangle"
+            }
+        }
+        
+        func color() -> String {
+            switch self {
+            case .lack:
+                return "secondaryColor"
+            case .ideal:
+                return "principalColor"
+            case .excess:
+                return "secondaryColor"
+            }
+        }
+    }
+    
+    enum NPKPlantState {
+        case lack
+        case ideal
+        case excess
+        
+        func image() -> String {
+            switch self {
+            case .lack:
+                return "exclamationmark.triangle"
+            case .ideal:
+                return "checkmark.circle"
+            case .excess:
+                return "exclamationmark.triangle"
+            }
+        }
+        
+        func color() -> String {
+            switch self {
+            case .lack:
+                return "secondaryColor"
+            case .ideal:
+                return "principalColor"
+            case .excess:
+                return "secondaryColor"
+            }
+        }
+    }
+    
     override init() {
-         super.init()
+        super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
         centralManagerDidUpdateState(centralManager)
-    
-       }
-
-    func checkPlantStateHumidity (specieHumidity: Int, humidityReceived: Int) -> String{
         
-        if (humidityReceived >= specieHumidity-10 && humidityReceived <= specieHumidity+10) {
-            return "checkmark.circle"
-        }else{
-            return "exclamationmark.triangle"
-        }
     }
     
+    func checkHumidityPlantState (specieHumidity: Int, humidityReceived:Int) -> HumidityPlantState {
+        if (humidityReceived <= specieHumidity-10) {
+            return .lack
+        }else if (humidityReceived >= specieHumidity-10 && humidityReceived <= specieHumidity+10){
+            return .ideal
+        }else{
+            return .excess
+        }
+    }
     
-    func checkPlantStateHumidityColor (specieHumidity: Int, humidityReceived: Int) -> String{
+    func checkNPKPlantState(nitrogenReceived: Int, phosphorReceived: Int, potassiumReceived: Int) -> NPKPlantState {
+        let nitrogenInRange = (10...50).contains(nitrogenReceived)
+        let phosphorInRange = (1...10).contains(phosphorReceived)
+        let potassiumInRange = (10...35).contains(potassiumReceived)
         
-        if (humidityReceived >= specieHumidity-10 && humidityReceived <= specieHumidity+10) {
-            return "principalColor"
-        }else{
-            return "secondaryColor"
-        }
-    }
-
-
-    func checkPlantStateNPK (nitrogenReceived: Int, phosphorReceived: Int, potassiumReceived: Int) -> String{
+        if nitrogenInRange && phosphorInRange && potassiumInRange {
+                return .ideal
+            } else if nitrogenInRange && phosphorInRange {
+                return .ideal
+            } else if nitrogenInRange && potassiumInRange {
+                return .ideal
+            } else if phosphorInRange && potassiumInRange {
+                return .ideal
+            } else if (nitrogenReceived > 50) && (phosphorReceived > 10) && (potassiumReceived > 35) {
+                return .excess
+            } else if (nitrogenReceived > 50) && (phosphorReceived > 10) {
+                return .excess
+            } else if (phosphorReceived > 10) && (potassiumReceived > 35) {
+                return .excess
+            } else if (nitrogenReceived > 50) && (potassiumReceived > 35) {
+                return .excess
+            } else {
+                return .lack
+            }
         
-        if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
-            return "checkmark.circle"
-        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10) {
-            return "checkmark.circle"
-        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && potassiumReceived >= 10 && potassiumReceived <= 35) {
-            return "checkmark.circle"
-        }else if (phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
-            return "checkmark.circle"
-        }else{
-            return "exclamationmark.triangle"
-        }
     }
-
-    func checkPlantStateNPKColor (nitrogenReceived: Int, phosphorReceived: Int, potassiumReceived: Int) -> String{
+    
+    
+    func checkOveralStatus(humidyStatus: HumidityPlantState,
+                           nutrientsStatus: NPKPlantState) -> GeneralPlantState {
         
-        if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
-            return "principalColor"
-        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10) {
-            return "principalColor"
-        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && potassiumReceived >= 10 && potassiumReceived <= 35) {
-            return "principalColor"
-        }else if (phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
-            return "principalColor"
-        }else{
-            return "secondaryColor"
+        if humidyStatus == .ideal && nutrientsStatus == .ideal {
+            return .ok
+        } else {
+            return .notOk
         }
+        
     }
-
     
     
 }
 
 extension BluetoothModel: CBCentralManagerDelegate {
- 
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
-            case .poweredOn:
+        case .poweredOn:
             print("---Bluetooth ligado---")
             centralManager.scanForPeripherals(withServices: nil, options: nil)
             print("Conectado em \(connectedPeripheral?.name)")
             
             print("Procurando dispositivos...")
-            case .poweredOff:
-                print("Bluetooth ta desligado")
-            case .resetting:
-                // Wait for next state update and consider logging interruption of Bluetooth service
-                print("Bluetooth ta resseting")
-            case .unauthorized:
-                // Alert user to enable Bluetooth permission in app Settings
-                print("Bluetooth ta desautorizado")
-            case .unsupported:
-                // Alert user their device does not support Bluetooth and app will not work as expected
-                print("Celular não suporta bluetooth")
-            case .unknown:
-               // Wait for next state update
-                print("Estado desconhecido, aguarde...\n")
+        case .poweredOff:
+            print("Bluetooth ta desligado")
+        case .resetting:
+            // Wait for next state update and consider logging interruption of Bluetooth service
+            print("Bluetooth ta resseting")
+        case .unauthorized:
+            // Alert user to enable Bluetooth permission in app Settings
+            print("Bluetooth ta desautorizado")
+        case .unsupported:
+            // Alert user their device does not support Bluetooth and app will not work as expected
+            print("Celular não suporta bluetooth")
+        case .unknown:
+            // Wait for next state update
+            print("Estado desconhecido, aguarde...\n")
         @unknown default:
             print("Vai saber o que aconteceu aqui")
         }
@@ -109,7 +177,7 @@ extension BluetoothModel: CBCentralManagerDelegate {
     
     func connect(peripheral: CBPeripheral) {
         centralManager.connect(peripheral, options: nil)
-     }
+    }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         // Successfully connected. Store reference to peripheral if not already done.
@@ -134,7 +202,7 @@ extension BluetoothModel: CBCentralManagerDelegate {
         
         print("Procurando caracteristicas do serviço...")
         discoverCharacteristics(peripheral: peripheral)
-
+        
     }
     
     func discoverCharacteristics(peripheral: CBPeripheral) {
@@ -164,19 +232,19 @@ extension BluetoothModel: CBCentralManagerDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-       
+        
         guard let value = characteristic.value else {
             return
         }
         print("Valor recebido: \(value)")
         
         if let value = characteristic.value {
-                        // Making the data received be a string
-                        if let stringValue = String(data: value, encoding: .utf8) {
-                            print("Valor recebido: \(stringValue)")
-                            ValueReceived = stringValue
-                        }
-                    }
+            // Making the data received be a string
+            if let stringValue = String(data: value, encoding: .utf8) {
+                print("Valor recebido: \(stringValue)")
+                ValueReceived = stringValue
+            }
+        }
     }
     
 }
@@ -184,27 +252,27 @@ extension BluetoothModel: CBCentralManagerDelegate {
 
 // -----VIEW USADA PARA TESTES----- //
 /* struct ConnectBluetoothView: View {
-    @ObservedObject private var bluetoothViewModel = ViewController()
-    
-    var body: some View {
-        Text("Dado recebido pelo sensor arduino: \(bluetoothViewModel.StringRecebida ?? "NADA RECEBIDO")")
-       
-        if bluetoothViewModel.connectedPeripheral?.name == "HC-08"{
-            Circle() // Cria um círculo
-                    .fill(Color.green)
-                    .frame(width: 100, height: 100)
-                    .padding()
-        }else{
-            Circle() // Cria um círculo
-                    .fill(Color.red)
-                    .frame(width: 100, height: 100)
-                    .padding()
-        }
-    }
-}
-
-struct ConnectBluetoothView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConnectBluetoothView()
-    }
-} */
+ @ObservedObject private var bluetoothViewModel = ViewController()
+ 
+ var body: some View {
+ Text("Dado recebido pelo sensor arduino: \(bluetoothViewModel.StringRecebida ?? "NADA RECEBIDO")")
+ 
+ if bluetoothViewModel.connectedPeripheral?.name == "HC-08"{
+ Circle() // Cria um círculo
+ .fill(Color.green)
+ .frame(width: 100, height: 100)
+ .padding()
+ }else{
+ Circle() // Cria um círculo
+ .fill(Color.red)
+ .frame(width: 100, height: 100)
+ .padding()
+ }
+ }
+ }
+ 
+ struct ConnectBluetoothView_Previews: PreviewProvider {
+ static var previews: some View {
+ ConnectBluetoothView()
+ }
+ } */
