@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FeedbackView: View {
     @ObservedObject private var bluetoothViewModel = BluetoothModel()
-    var umidadeIdealEspecie = 50 //vamos receber esse valor da view responsável por selecionar a espécie para medição
+    var umidadeIdealEspecie = 50 //we are going to receive this value from the view before this one
     
     var body: some View {
         NavigationView{
@@ -23,14 +23,14 @@ struct FeedbackView: View {
                         VStack(alignment: .leading
                                
                         ){
-                            Text("Nome da Planta") //Nome da planta será recebido da view anterior que me fornecerá esse valor
+                            Text("Nome da Planta") //we are going to receive this value from the view before this one
                                 .font(.system(size: 17))
                                 .fontWeight(.bold)
                                 .foregroundColor(Color("principalColor"))
                                 .padding(.top, 8)
                                 .fontDesign(.rounded)
                             
-                            Text("Espécie da Planta") //Especie será recebido da view anterior que me fornecerá esse valor
+                            Text("Espécie da Planta") //we are going to receive this value from the view before this one
                                 .font(.system(size: 12))
                                 .foregroundColor(Color.black)
                             
@@ -47,7 +47,7 @@ struct FeedbackView: View {
                                 
                                 Image(systemName: humidityStatus.image())
                                     .padding(.trailing, 15)
-                                    .foregroundColor(Color(humidityStatus.color()) )//Esses valores serão recebidos do arduino
+                                    .foregroundColor(Color(humidityStatus.color()) )
     
                             }
                             
@@ -65,7 +65,7 @@ struct FeedbackView: View {
                                 
                                 Image(systemName: nutrientsStatus.image())
                                     .padding(.trailing, 15)
-                                    .foregroundColor(Color(nutrientsStatus.color()) )//Esses valores serão recebidos do arduino
+                                    .foregroundColor(Color(nutrientsStatus.color()) )
                                 
                             }
                             Spacer()
