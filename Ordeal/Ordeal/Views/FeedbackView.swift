@@ -20,9 +20,7 @@ struct FeedbackView: View {
                 
                 Section{
                     HStack{
-                        VStack(alignment: .leading
-                               
-                        ){
+                        VStack(alignment: .leading){
                             Text("Nome da Planta") //we are going to receive this value from the view before this one
                                 .font(.system(size: 17))
                                 .fontWeight(.bold)
@@ -48,7 +46,7 @@ struct FeedbackView: View {
                                 Image(systemName: humidityStatus.image())
                                     .padding(.trailing, 15)
                                     .foregroundColor(Color(humidityStatus.color()) )
-    
+                                
                             }
                             
                             Spacer()
@@ -73,7 +71,7 @@ struct FeedbackView: View {
                         Spacer()
                         
                         VStack{
-
+                            
                             
                             let overallStatus = bluetoothViewModel.checkOveralStatus(humidyStatus: humidityStatus, nutrientsStatus: nutrientsStatus)
                             
@@ -93,22 +91,45 @@ struct FeedbackView: View {
                         }
                     }
                 }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                ToolbarItem(placement: .principal) {
-                    Text("Resultado")
-                        .fontWeight(.bold)
-                        .font(.system(size: 17))
-                        .fontDesign(.rounded)
-                        .foregroundStyle(Color("principalColor"))
+                
+                Section(header:
+                    Text("Instrução")
+                    .font(.title2) // Defina o tamanho do título aqui
+                    .foregroundColor(Color("principalColor")) // Defina a cor do texto aqui
+                ){
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text("Instrução")
+                                .font(.system(size: 17))
+                                .fontWeight(.medium)
+                                .foregroundColor(Color("principalColor"))
+                                .padding(.top, 8)
+                                .padding(.bottom, 8)
+                                .fontDesign(.rounded)
+                            
+                            Text("Sua planta está seca e com baixa concentração de nutriente, considere regar sua planta mais frequentemente e adicionar fertilizantes baseados em Nitrogênio, Potássio e Fósforo (NPK).")
+                                .font(.system(size: 17))
+                                .fontWeight(.regular)
+                                .foregroundColor(.black)
+                                .fontDesign(.rounded)
+                            
+                        }
+                        
+                    }
+                    
                 }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar{
+                    ToolbarItem(placement: .principal) {
+                        Text("Resultado")
+                            .fontWeight(.bold)
+                            .font(.system(size: 17))
+                            .fontDesign(.rounded)
+                            .foregroundStyle(Color("principalColor"))
+                    }
+                }
+                
             }
-            
         }
     }
-}
-
-#Preview {
-    FeedbackView()
 }
