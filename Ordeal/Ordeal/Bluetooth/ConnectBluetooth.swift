@@ -2,29 +2,83 @@ import SwiftUI
 import UIKit
 import CoreBluetooth
 
-class ViewController: NSObject, ObservableObject, CBPeripheralDelegate {
+class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
     private var centralManager: CBCentralManager!
     var discoveredPeripherals = [CBPeripheral]()
     @Published var connectedPeripheral: CBPeripheral?
-    @Published var StringRecebida: String?
+    @Published var ValueReceived: String?
     
   
     override init() {
          super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
         centralManagerDidUpdateState(centralManager)
+    
        }
 
+    func checkPlantStateHumidity (specieHumidity: Int, humidityReceived: Int) -> String{
+        
+        if (humidityReceived >= specieHumidity-10 && humidityReceived <= specieHumidity+10) {
+            return "checkmark.circle"
+        }else{
+            return "exclamationmark.triangle"
+        }
+    }
+    
+    
+    func checkPlantStateHumidityColor (specieHumidity: Int, humidityReceived: Int) -> String{
+        
+        if (humidityReceived >= specieHumidity-10 && humidityReceived <= specieHumidity+10) {
+            return "principalColor"
+        }else{
+            return "secondaryColor"
+        }
+    }
+
+
+    func checkPlantStateNPK (nitrogenReceived: Int, phosphorReceived: Int, potassiumReceived: Int) -> String{
+        
+        if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
+            return "checkmark.circle"
+        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10) {
+            return "checkmark.circle"
+        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && potassiumReceived >= 10 && potassiumReceived <= 35) {
+            return "checkmark.circle"
+        }else if (phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
+            return "checkmark.circle"
+        }else{
+            return "exclamationmark.triangle"
+        }
+    }
+
+    func checkPlantStateNPKColor (nitrogenReceived: Int, phosphorReceived: Int, potassiumReceived: Int) -> String{
+        
+        if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
+            return "principalColor"
+        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && phosphorReceived >= 1 && phosphorReceived <= 10) {
+            return "principalColor"
+        }else if (nitrogenReceived >= 10 && nitrogenReceived <= 50 && potassiumReceived >= 10 && potassiumReceived <= 35) {
+            return "principalColor"
+        }else if (phosphorReceived >= 1 && phosphorReceived <= 10 && potassiumReceived >= 10 && potassiumReceived <= 35) {
+            return "principalColor"
+        }else{
+            return "secondaryColor"
+        }
+    }
+
+    
+    
 }
 
-extension ViewController: CBCentralManagerDelegate {
+extension BluetoothModel: CBCentralManagerDelegate {
  
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
             case .poweredOn:
             print("---Bluetooth ligado---")
             centralManager.scanForPeripherals(withServices: nil, options: nil)
-            print("conectado em \(connectedPeripheral?.name)")
+            print("Conectado em \(connectedPeripheral?.name)")
+            
             print("Procurando dispositivos...")
             case .poweredOff:
                 print("Bluetooth ta desligado")
@@ -48,7 +102,7 @@ extension ViewController: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         self.discoveredPeripherals.append(peripheral)
         
-        if peripheral.name == "HC-08"{
+        if peripheral.name == "HC-08"{ //Connecting to the peripherral without asking
             connect(peripheral: peripheral)
         }
     }
@@ -77,6 +131,7 @@ extension ViewController: CBCentralManagerDelegate {
             return
         }
         print("Servicos encontrados: \(services)\n\n")
+        
         print("Procurando caracteristicas do serviço...")
         discoverCharacteristics(peripheral: peripheral)
 
@@ -100,7 +155,7 @@ extension ViewController: CBCentralManagerDelegate {
         
         if characteristics[0].properties.contains(.notify) {
             peripheral.setNotifyValue(true, for: characteristics[0])
-        } // caso o dado se altere ele me avisa
+        } // in case the data modify, it notifys me
         
         print("Caracteristicas encontradas: \(characteristics)\n\n")
         
@@ -114,11 +169,12 @@ extension ViewController: CBCentralManagerDelegate {
             return
         }
         print("Valor recebido: \(value)")
+        
         if let value = characteristic.value {
-                        // Transformando dado recebido para string
+                        // Making the data received be a string
                         if let stringValue = String(data: value, encoding: .utf8) {
                             print("Valor recebido: \(stringValue)")
-                            StringRecebida = stringValue
+                            ValueReceived = stringValue
                         }
                     }
     }
@@ -126,7 +182,8 @@ extension ViewController: CBCentralManagerDelegate {
 }
 
 
-struct ConnectBluetoothView: View {
+// -----VIEW USADA PARA TESTES----- //
+/* struct ConnectBluetoothView: View {
     @ObservedObject private var bluetoothViewModel = ViewController()
     
     var body: some View {
@@ -150,4 +207,4 @@ struct ConnectBluetoothView_Previews: PreviewProvider {
     static var previews: some View {
         ConnectBluetoothView()
     }
-}
+} */
