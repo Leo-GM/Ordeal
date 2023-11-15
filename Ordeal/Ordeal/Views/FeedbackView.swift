@@ -18,22 +18,23 @@ struct FeedbackView: View {
                 let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: 50, humidityReceived: 50)
                 let nutrientsStatus = bluetoothViewModel.checkNPKPlantState(nitrogenReceived: 0, phosphorReceived: 1, potassiumReceived: 30)
                 
-                Section{
+                Section (){
                     HStack{
                         VStack(alignment: .leading){
                             Text("Nome da Planta") //we are going to receive this value from the view before this one
-                                .font(.system(size: 17))
+                                .font(.headline)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color("principalColor"))
                                 .padding(.top, 8)
                                 .fontDesign(.rounded)
                             
                             Text("Espécie da Planta") //we are going to receive this value from the view before this one
-                                .font(.system(size: 12))
+                                .font(.caption)
                                 .foregroundColor(Color.black)
+                                .padding(.bottom, 24)
                             
+                            //Spacer()
                             
-                            Spacer()
                             HStack{
                                 Text("Umidade")
                                     .font(.system(size: 17))
@@ -47,13 +48,13 @@ struct FeedbackView: View {
                                     .padding(.trailing, 15)
                                     .foregroundColor(Color(humidityStatus.color()) )
                                 
-                            }
+                            }.padding(.bottom, 2)
                             
                             Spacer()
                             
                             HStack{
                                 Text("Nutrientes")
-                                    .font(.system(size: 17))
+                                    .font(.body)
                                     .fontDesign(.rounded)
                                     .foregroundColor(Color.black)
                                     .padding(.trailing, 30)
@@ -92,26 +93,110 @@ struct FeedbackView: View {
                     }
                 }
                 
-                Section(header:
-                    Text("Instrução")
-                    .font(.title2) // Defina o tamanho do título aqui
-                    .foregroundColor(Color("principalColor")) // Defina a cor do texto aqui
-                ){
+                Section(){
                     HStack{
+                        
                         VStack(alignment: .leading){
                             Text("Instrução")
-                                .font(.system(size: 17))
-                                .fontWeight(.medium)
+                                .font(.headline)
                                 .foregroundColor(Color("principalColor"))
-                                .padding(.top, 8)
                                 .padding(.bottom, 8)
-                                .fontDesign(.rounded)
+
                             
                             Text("Sua planta está seca e com baixa concentração de nutriente, considere regar sua planta mais frequentemente e adicionar fertilizantes baseados em Nitrogênio, Potássio e Fósforo (NPK).")
-                                .font(.system(size: 17))
+                                .font(.body)
                                 .fontWeight(.regular)
                                 .foregroundColor(.black)
                                 .fontDesign(.rounded)
+                            
+                            Divider()
+                            
+                            Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 24){
+                                GridRow {
+                                    Text("")
+                                    
+                                    Text("")
+                                    Spacer()
+                                    
+                                    Text("Ideal")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                    
+                                    Spacer()
+                                    
+                                    Text("Atual")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                    
+                                }
+
+                                GridRow {
+                                    Image(systemName: nutrientsStatus.image())
+                                        .foregroundColor(Color(nutrientsStatus.color()) )
+                                        .font(.body)
+                                       
+                                    
+                                    Text("Umidade (%)")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                    
+                                    Spacer()
+                                    
+                                    Text("40")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                    
+                                    Spacer()
+                                    
+                                    Text("43")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                    
+                                }
+
+                                GridRow {
+                                    
+                                    Image(systemName: nutrientsStatus.image())
+                                        .foregroundColor(Color(nutrientsStatus.color()) )
+                                        .font(.body)
+                                    
+                                    
+                                    Text("NPK (mmg/kg)")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                        .padding(.leading, 14)
+
+                                    
+                                    Spacer()
+                                    
+                                    Text("230")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                    
+                                    Spacer()
+                                    
+                                    Text("231")
+                                        .font(.body)
+                                        .fontWeight(.regular)
+                                        .foregroundColor(.black)
+                                        .fontDesign(.rounded)
+                                }
+                            }.padding(.top, 16)
+                            
                             
                         }
                         
