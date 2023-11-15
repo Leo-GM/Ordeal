@@ -9,14 +9,19 @@ import SwiftUI
 
 struct FeedbackView: View {
     @ObservedObject private var bluetoothViewModel = BluetoothModel()
-    var umidadeIdealEspecie = 50 //we are going to receive this value from the view before this one
+    var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
+    var humidityReceived = 0 //we are going to receive this value from the view before this one
+    var nitrogenReceived = 0 //we are going to receive this value from the view before this one
+    var phosphoroReceived = 1 //we are going to receive this value from the view before this one
+    var potassiumReceived = 30 //we are going to receive this value from the view before this one
     
     var body: some View {
         NavigationView{
             List {
                 
-                let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: 50, humidityReceived: 50)
-                let nutrientsStatus = bluetoothViewModel.checkNPKPlantState(nitrogenReceived: 0, phosphorReceived: 1, potassiumReceived: 30)
+                let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived)
+                let nutrientsStatus = bluetoothViewModel.checkNPKPlantState(nitrogenReceived: nitrogenReceived, phosphorReceived: phosphoroReceived, potassiumReceived: potassiumReceived)
+                let overallStatus = bluetoothViewModel.checkOveralStatus(humidyStatus: humidityStatus, nutrientsStatus: nutrientsStatus)
                 
                 Section (){
                     HStack{
@@ -74,7 +79,7 @@ struct FeedbackView: View {
                         VStack{
                             
                             
-                            let overallStatus = bluetoothViewModel.checkOveralStatus(humidyStatus: humidityStatus, nutrientsStatus: nutrientsStatus)
+                            
                             
                             ZStack{
                                 Image("feedbackFundoCard")
@@ -102,8 +107,8 @@ struct FeedbackView: View {
                                 .foregroundColor(Color("principalColor"))
                                 .padding(.bottom, 8)
 
-                            
-                            Text("Sua planta está seca e com baixa concentração de nutriente, considere regar sua planta mais frequentemente e adicionar fertilizantes baseados em Nitrogênio, Potássio e Fósforo (NPK).")
+                            // MARK: - Como fazer o texto mudar para ser exibido
+                            Text(overallStatus.instruction())
                                 .font(.body)
                                 .fontWeight(.regular)
                                 .foregroundColor(.black)
@@ -135,8 +140,8 @@ struct FeedbackView: View {
                                 }
 
                                 GridRow {
-                                    Image(systemName: nutrientsStatus.image())
-                                        .foregroundColor(Color(nutrientsStatus.color()) )
+                                    Image(systemName: humidityStatus.downimage())
+                                        .foregroundColor(Color(humidityStatus.color()) )
                                         .font(.body)
                                        
                                     
@@ -148,7 +153,7 @@ struct FeedbackView: View {
                                     
                                     Spacer()
                                     
-                                    Text("40")
+                                    Text("\(idealHumiditySpecie)")
                                         .font(.body)
                                         .fontWeight(.regular)
                                         .foregroundColor(.black)
@@ -156,7 +161,7 @@ struct FeedbackView: View {
                                     
                                     Spacer()
                                     
-                                    Text("43")
+                                    Text("\(humidityReceived)")
                                         .font(.body)
                                         .fontWeight(.regular)
                                         .foregroundColor(.black)
@@ -166,7 +171,7 @@ struct FeedbackView: View {
 
                                 GridRow {
                                     
-                                    Image(systemName: nutrientsStatus.image())
+                                    Image(systemName: nutrientsStatus.downimage())
                                         .foregroundColor(Color(nutrientsStatus.color()) )
                                         .font(.body)
                                     
@@ -181,7 +186,7 @@ struct FeedbackView: View {
                                     
                                     Spacer()
                                     
-                                    Text("230")
+                                    Text("230") // Will it be a fix value for NPK or will it have N / P / K
                                         .font(.body)
                                         .fontWeight(.regular)
                                         .foregroundColor(.black)
@@ -189,7 +194,7 @@ struct FeedbackView: View {
                                     
                                     Spacer()
                                     
-                                    Text("231")
+                                    Text("\(nitrogenReceived)") // I need to display de NPK value not only Nitrogen
                                         .font(.body)
                                         .fontWeight(.regular)
                                         .foregroundColor(.black)

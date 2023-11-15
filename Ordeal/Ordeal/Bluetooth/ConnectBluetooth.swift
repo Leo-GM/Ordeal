@@ -9,15 +9,60 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
     @Published var ValueReceived: String?
 
     enum GeneralPlantState {
-        case ok
-        case notOk
+        case idealParameters
+        case lackHumidityLackNPK
+        case lackHumidityIdealNPK
+        case lackHumidityExcessNPK
+        case idealHumidityLackNPK
+        case idealHumidityExcessNPK
+        case excessHumidityLackNPK
+        case excessHumidityIdealNPK
+        case excessHumidityExcessNPK
+        
         
         func image() -> String {
             switch self {
-            case .ok:
+            case .idealParameters:
                 return "feedbackPlantaFelizCard"
-            case .notOk:
+            case .lackHumidityLackNPK:
                 return "feedbackPlantaTristeCard"
+            case .lackHumidityIdealNPK:
+                return "feedbackPlantaTristeCard"
+            case .lackHumidityExcessNPK:
+                return "feedbackPlantaTristeCard"
+            case .idealHumidityLackNPK:
+                return "feedbackPlantaTristeCard"
+            case .idealHumidityExcessNPK:
+                return "feedbackPlantaTristeCard"
+            case .excessHumidityLackNPK:
+                return "feedbackPlantaTristeCard"
+            case .excessHumidityIdealNPK:
+                return "feedbackPlantaTristeCard"
+            case .excessHumidityExcessNPK:
+                return "feedbackPlantaTristeCard"
+            }
+        }
+        
+        func instruction() -> String{
+            switch self {
+            case .idealParameters:
+                return "Tanto a umidade quanto as concentrações de NPK estão ideais. Continue com a manutenção adequada para garantir o crescimento saudável das plantas."
+            case .lackHumidityLackNPK:
+                return "Sua planta está seca e com baixa concentração de nutriente, considere regar sua planta mais frequentemente e adicionar fertilizantes baseados em Nitrogênio, Potássio e Fósforo (NPK)"
+            case .lackHumidityIdealNPK:
+                return "Seu solo está seco, mas as concentrações de Nitrogênio, Potássio e Fósforo (NPK) estão na faixa ideal. Recomendo regar para manter a umidade adequada."
+            case .lackHumidityExcessNPK:
+                return "O solo está seco, e as concentrações de NPK são altas. Recomendo ajustar a irrigação para corrigir a secura e reduzir a aplicação de fertilizantes para evitar excessos."
+            case .idealHumidityLackNPK:
+                return "A umidade do solo está adequada, mas as concentrações de NPK estão baixas. Recomendo aplicar fertilizantes ricos em Nitrogênio, Potássio e Fósforo para melhorar a nutrição das plantas."
+            case .idealHumidityExcessNPK:
+                return "A umidade está adequada, mas as concentrações de NPK estão elevadas. Recomendo monitorar de perto e ajustar a fertilização para evitar excessos."
+            case .excessHumidityLackNPK:
+                return "Água em excesso, e concentrações de NPK baixas. Recomendo reduzir a irrigação e aplicar fertilizantes para melhorar a nutrição das plantas."
+            case .excessHumidityIdealNPK:
+                return "O solo está muito úmido, mas as concentrações de NPK estão ideais. Recomendo ajustar a irrigação para evitar problemas de drenagem."
+            case .excessHumidityExcessNPK:
+                return "O solo está excessivamente úmido, e as concentrações de NPK são altas. Recomendo reduzir a irrigação e a aplicação de fertilizantes para evitar danos às plantas."
             }
         }
     }
@@ -49,6 +94,17 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
                 return "secondaryColor"
             }
         }
+        
+        func downimage() -> String{
+            switch self {
+            case .lack:
+                return "arrow.down"
+            case .ideal:
+                return "checkmark"
+            case .excess:
+                return "arrow.up"
+            }
+        }
     }
     
     enum NPKPlantState {
@@ -75,6 +131,17 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
                 return "principalColor"
             case .excess:
                 return "secondaryColor"
+            }
+        }
+        
+        func downimage() -> String{
+            switch self {
+            case .lack:
+                return "arrow.down"
+            case .ideal:
+                return "checkmark"
+            case .excess:
+                return "arrow.up"
             }
         }
     }
@@ -128,9 +195,30 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
                            nutrientsStatus: NPKPlantState) -> GeneralPlantState {
         
         if humidyStatus == .ideal && nutrientsStatus == .ideal {
-            return .ok
-        } else {
-            return .notOk
+            return .idealParameters
+        } else if humidyStatus == .lack && nutrientsStatus == .lack{
+            return .lackHumidityLackNPK
+            
+        }else if humidyStatus == .lack && nutrientsStatus == .ideal{
+            return .lackHumidityIdealNPK
+            
+        }else if humidyStatus == .lack && nutrientsStatus == .excess{
+            return .lackHumidityExcessNPK
+            
+        }else if humidyStatus == .ideal && nutrientsStatus == .lack{
+            return .idealHumidityLackNPK
+            
+        }else if humidyStatus == .ideal && nutrientsStatus == .excess{
+            return .idealHumidityExcessNPK
+            
+        }else if humidyStatus == .excess && nutrientsStatus == .lack{
+            return .excessHumidityLackNPK
+            
+        }else if humidyStatus == .excess && nutrientsStatus == .ideal{
+            return .excessHumidityIdealNPK
+            
+        }else{
+            return .excessHumidityExcessNPK
         }
         
     }
