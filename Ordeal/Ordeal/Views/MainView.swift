@@ -11,20 +11,39 @@ struct MainView: View {
 
     var body: some View {
         NavigationView{
-                VStack(alignment: .leading, spacing: 10){
+                VStack(alignment: .leading, spacing: 16){
+                    
+                    NavigationLink(destination: FeedbackView(), label: {
+                        BigCard(title: "Todas as plantas", background: "", illustration: "")
+                            .shadow(radius: 2.5)
+                    })
+                    
+                    NavigationLink(destination: FeedbackView(), label: {
+                        BigCard(title: "Ultima medição", background: "", illustration: "")
+                            .shadow(radius: 2.5)
+                    })
+                    
                     HStack(alignment: .top){
+                        
                         NavigationLink(destination: FeedbackView(), label: {
-                            Card(title: "Nova medição")
-                                .shadow(radius: 8)
+                            Card(title: "Nova medição", background: "BlueBackground", illustration: "PlantaComSensor")
+                                .shadow(radius: 2.5)
                         })
-                        .accentColor(Color("principalColor"))
+                        
                         Spacer()
+                        
+                        NavigationLink(destination: FeedbackView(), label: {
+                            Card(title: "Cadastrar planta", background: "", illustration: "")
+                                .shadow(radius: 2.5)
+                        })
+                        
                     }
                     Spacer()
-                }//.VStack
+                    
+                }
                 .padding()
                 .navigationBarTitle("Meu Jardim")
-        }//.NavigationView
+        }
         
     }
 }

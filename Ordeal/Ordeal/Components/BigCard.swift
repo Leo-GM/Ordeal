@@ -1,24 +1,27 @@
 //
-//  Card.swift
+//  BigCard.swift
 //  Ordeal
 //
-//  Created by Caio Lopes on 14/11/23.
+//  Created by Caio Gomes Piteli on 16/11/23.
 //
 
 import SwiftUI
 
-struct Card: View {
+struct BigCard: View {
     @State var title: String
+    @State var background: String
+    @State var illustration: String
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 16) {
             ZStack(alignment: .center){
-                Image("BlueBackground")
+                Image(background)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 175, height: 125)
+                    .frame(width: 358, height: 125)
                 
-                Image("PlantaComSensor")
+                Image(illustration)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
@@ -27,7 +30,7 @@ struct Card: View {
                 .padding(.horizontal, 8)
         }
         .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 24))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
         
     }
     
@@ -35,7 +38,8 @@ struct Card: View {
     var cardText: some View {
         VStack{
             Text(title)
-                .font(.headline)
+                .font(.body)
+                .foregroundColor(.black)
                 .fontDesign(.rounded)
 
             .padding(.bottom, 16)
@@ -44,6 +48,4 @@ struct Card: View {
     }
 }
 
-#Preview {
-    Card(title: "Nova medição")
-}
+
