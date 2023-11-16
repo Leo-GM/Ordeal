@@ -13,27 +13,27 @@ struct MainView: View {
         NavigationView{
                 VStack(alignment: .leading, spacing: 16){
                     
-                    NavigationLink(destination: FeedbackView(), label: {
-                        BigCard(title: "Todas as plantas", background: "", illustration: "")
+                    NavigationLink(destination: Text("Tela de todas as plantas"), label: {
+                        BigCard(title: "Todas as plantas", background: "", illustration: "todasPlantas")
                             .shadow(radius: 2.5)
                     })
                     
-                    NavigationLink(destination: FeedbackView(), label: {
-                        BigCard(title: "Ultima medição", background: "", illustration: "")
+                    NavigationLink(destination: Text("Tela de última medicao"), label: {
+                        BigCard(title: "Ultima medição", background: "", illustration: "ultimaMedicao")
                             .shadow(radius: 2.5)
                     })
                     
                     HStack(alignment: .top){
                         
                         NavigationLink(destination: FeedbackView(), label: {
-                            Card(title: "Nova medição", background: "BlueBackground", illustration: "PlantaComSensor")
+                            Card(title: "Nova medição", background: "", illustration: "novaMedicao")
                                 .shadow(radius: 2.5)
                         })
                         
                         Spacer()
                         
-                        NavigationLink(destination: FeedbackView(), label: {
-                            Card(title: "Cadastrar planta", background: "", illustration: "")
+                        NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
+                            Card(title: "Cadastrar planta", background: "", illustration: "cadastrarPlanta")
                                 .shadow(radius: 2.5)
                         })
                         
@@ -41,7 +41,8 @@ struct MainView: View {
                     Spacer()
                     
                 }
-                .padding()
+                .padding(16)
+                .padding(.top, 16)
                 .navigationBarTitle("Meu Jardim")
         }
         

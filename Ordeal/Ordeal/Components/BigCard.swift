@@ -26,8 +26,12 @@ struct BigCard: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
             }
+            Divider()
+                //.frame(width: 157.5)
+                .padding(.trailing, 16)
+                .padding(.leading, 16)
             cardText
-                .padding(.horizontal, 8)
+                .padding(.horizontal, 16)
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 16))
