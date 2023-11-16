@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConnectBluetoothView: View {
-    @ObservedObject private var bluetoothViewModel = ViewController()
+    @ObservedObject private var bluetoothViewModel = BluetoothModel()
     
     var body: some View {
         List {
