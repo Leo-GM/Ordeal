@@ -85,13 +85,13 @@ struct FeedbackView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 135, height: 120)
-                                .shadow(radius: 2)
+                                
                             
                             Image(overallStatus.image())
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 59, height: 105)
-                                .shadow(radius: 2)
+                                
                         }
                     }
                 }
