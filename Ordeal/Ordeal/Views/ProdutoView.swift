@@ -10,17 +10,15 @@ import SwiftUI
 struct ProdutoView: View {
     var body: some View {
         NavigationView{
-//            ScrollView(.vertical){
                 List{
                     Section{
-                        NavigationLink(destination: Text("sim")) {
+                        NavigationLink(destination: ConnectBluetoothView()) {
                             BluetoothCard()
                         }
-                    }//.Section
-                }//.List
-//            }//.ScrollView
+                    }
+                }
         .navigationBarTitle("Produto")
-        }//.NavigationView
+        }
         
     }
 }

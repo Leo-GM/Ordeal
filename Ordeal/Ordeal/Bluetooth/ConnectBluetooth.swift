@@ -4,7 +4,7 @@ import CoreBluetooth
 
 class ViewController: NSObject, ObservableObject, CBPeripheralDelegate {
     private var centralManager: CBCentralManager!
-    var discoveredPeripherals = [CBPeripheral]()
+    @Published var discoveredPeripherals = [CBPeripheral]()
     @Published var connectedPeripheral: CBPeripheral?
     @Published var StringRecebida: String?
     
@@ -46,11 +46,13 @@ extension ViewController: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        self.discoveredPeripherals.append(peripheral)
         
-        if peripheral.name == "HC-08"{
-            connect(peripheral: peripheral)
+        
+        if peripheral.name == "Amazfit Neo"{
+            self.discoveredPeripherals.append(peripheral)
+            centralManager.stopScan()
         }
+        
     }
     
     func connect(peripheral: CBPeripheral) {
@@ -125,29 +127,29 @@ extension ViewController: CBCentralManagerDelegate {
     
 }
 
-
-struct ConnectBluetoothView: View {
-    @ObservedObject private var bluetoothViewModel = ViewController()
-    
-    var body: some View {
-        Text("Dado recebido pelo sensor arduino: \(bluetoothViewModel.StringRecebida ?? "NADA RECEBIDO")")
-       
-        if bluetoothViewModel.connectedPeripheral?.name == "HC-08"{
-            Circle() // Cria um círculo
-                    .fill(Color.green)
-                    .frame(width: 100, height: 100)
-                    .padding()
-        }else{
-            Circle() // Cria um círculo
-                    .fill(Color.red)
-                    .frame(width: 100, height: 100)
-                    .padding()
-        }
-    }
-}
-
-struct ConnectBluetoothView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConnectBluetoothView()
-    }
-}
+//
+//struct ConnectBluetoothView: View {
+//    @ObservedObject private var bluetoothViewModel = ViewController()
+//    
+//    var body: some View {
+//        Text("Dado recebido pelo sensor arduino: \(bluetoothViewModel.StringRecebida ?? "NADA RECEBIDO")")
+//       
+//        if bluetoothViewModel.connectedPeripheral?.name == "HC-08"{
+//            Circle() // Cria um círculo
+//                    .fill(Color.green)
+//                    .frame(width: 100, height: 100)
+//                    .padding()
+//        }else{
+//            Circle() // Cria um círculo
+//                    .fill(Color.red)
+//                    .frame(width: 100, height: 100)
+//                    .padding()
+//        }
+//    }
+//}
+//
+//struct ConnectBluetoothView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ConnectBluetoothView()
+//    }
+//}
