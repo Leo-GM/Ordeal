@@ -9,7 +9,19 @@ import SwiftUI
 
 struct ProdutoView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+//            ScrollView(.vertical){
+                List{
+                    Section{
+                        NavigationLink(destination: Text("sim")) {
+                            BluetoothCard()
+                        }
+                    }//.Section
+                }//.List
+//            }//.ScrollView
+        .navigationBarTitle("Produto")
+        }//.NavigationView
+        
     }
 }
 

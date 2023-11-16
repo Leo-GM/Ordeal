@@ -12,7 +12,6 @@ struct FeedbackView: View {
     var umidadeIdealEspecie = 50
     
     var body: some View {
-        NavigationView{
             List {
                 
                 Section{
@@ -61,7 +60,7 @@ struct FeedbackView: View {
                                     .padding(.trailing, 30)
                                 
                                 Spacer()
-                                Image(systemName: checkPlantStateNPK(nitrogenioRecebido: <#T##Int#>, fosforoRecebido: <#T##Int#>, potassioRecebido: <#T##Int#>))
+                                Image(systemName: checkPlantStateNPK(nitrogenioRecebido: 23, fosforoRecebido: 23, potassioRecebido: 23))
                                     .padding(.trailing, 15)
                                     .foregroundColor(Color("principalColor"))
                             }
@@ -88,7 +87,6 @@ struct FeedbackView: View {
                         }
                     }
                 }
-            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
@@ -98,9 +96,12 @@ struct FeedbackView: View {
                         .fontDesign(.rounded)
                         .foregroundStyle(Color("principalColor"))
                 }
+                
             }
+            
 
         }
+        .accentColor(Color("principalColor"))
     }
 }
 
