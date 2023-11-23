@@ -12,8 +12,8 @@ struct FeedbackView: View {
     var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
     var humidityReceived = 0 //we are going to receive this value from the view before this one
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
-    var phosphoroReceived = 1 //we are going to receive this value from the view before this one
-    var potassiumReceived = 30 //we are going to receive this value from the view before this one
+    var phosphoroReceived = 0 //we are going to receive this value from the view before this one
+    var potassiumReceived = 0 //we are going to receive this value from the view before this one
     
     var body: some View {
         List {
@@ -21,6 +21,11 @@ struct FeedbackView: View {
             let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived)
             let nutrientsStatus = bluetoothViewModel.checkNPKPlantState(nitrogenReceived: nitrogenReceived, phosphorReceived: phosphoroReceived, potassiumReceived: potassiumReceived)
             let overallStatus = bluetoothViewModel.checkOveralStatus(humidyStatus: humidityStatus, nutrientsStatus: nutrientsStatus)
+            let nitrogenStatus = bluetoothViewModel.checkNitrogenPlantState(nitrogenReceived: nitrogenReceived)
+            let phosphoroStatus = bluetoothViewModel.checkPhosphoroPlantState(phosphoroReceived: phosphoroReceived)
+            let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
+
+
             
             Section (){
                 HStack{
@@ -34,16 +39,14 @@ struct FeedbackView: View {
                         
                         Text("Espécie da Planta") //we are going to receive this value from the view before this one
                             .font(.caption)
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color("BodyColor"))
                             .padding(.bottom, 24)
-                        
-                        //Spacer()
-                        
+                                                
                         HStack{
                             Text("Umidade")
                                 .font(.system(size: 17))
                                 .fontDesign(.rounded)
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color("BodyColor"))
                                 .padding(.trailing, 30)
                             
                             Spacer()
@@ -60,7 +63,7 @@ struct FeedbackView: View {
                             Text("Nutrientes")
                                 .font(.body)
                                 .fontDesign(.rounded)
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color("BodyColor"))
                                 .padding(.trailing, 30)
                             
                             Spacer()
@@ -78,148 +81,105 @@ struct FeedbackView: View {
                     VStack{
                         
                         
-                        
-                        
                         ZStack{
                             Image("feedbackFundoCard")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 135, height: 120)
-                                .shadow(radius: 2)
                             
                             Image(overallStatus.image())
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 59, height: 105)
-                                .shadow(radius: 2)
                         }
                     }
                 }
             }
             
-            Section(){
-                HStack{
+            Section(header:
+                Text("Instrução")
+                    .fontDesign(.rounded)
+            ){
+                
+                Text(overallStatus.instruction())
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .foregroundColor(Color("BodyColor"))
+                    .fontDesign(.rounded)
+                
+                
+            }
+            
+            Section(header: 
+                        Text("Valores da medição")
+                            .fontDesign(.rounded)
+            ){
+                
+                Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 16){
                     
-                    VStack(alignment: .leading){
-                        Text("Instrução")
-                            .font(.headline)
-                            .foregroundColor(Color("principalColor"))
-                            .padding(.bottom, 8)
+                    GridRow {
+                        Text("")
                         
-                        // MARK: - Como fazer o texto mudar para ser exibido
-                        Text(overallStatus.instruction())
+                        Text("")
+                        Spacer()
+                        
+                        Text("Ideal")
                             .font(.body)
                             .fontWeight(.regular)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("BodyColor"))
                             .fontDesign(.rounded)
                         
-                        Divider()
+                        Spacer()
                         
-                        Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 24){
-                            GridRow {
-                                Text("")
-                                
-                                Text("")
-                                Spacer()
-                                
-                                Text("Ideal")
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                                
-                                Spacer()
-                                
-                                Text("Atual")
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                                
-                            }
-                            
-                            GridRow {
-                                Image(systemName: humidityStatus.downimage())
-                                    .foregroundColor(Color(humidityStatus.color()) )
-                                    .font(.body)
-                                
-                                
-                                Text("Umidade (%)")
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                                
-                                Spacer()
-                                
-                                Text("\(idealHumiditySpecie)")
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                                
-                                Spacer()
-                                
-                                Text("\(humidityReceived)")
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                                
-                            }
-                            
-                            GridRow {
-                                
-                                Image(systemName: nutrientsStatus.downimage())
-                                    .foregroundColor(Color(nutrientsStatus.color()) )
-                                    .font(.body)
-                                
-                                
-                                Text("NPK (mmg/kg)")
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                                    .padding(.leading, 14)
-                                
-                                
-                                Spacer()
-                                
-                                Text("230") // Will it be a fix value for NPK or will it have N / P / K
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                                
-                                Spacer()
-                                
-                                Text("\(nitrogenReceived)") // I need to display de NPK value not only Nitrogen
-                                    .font(.body)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.black)
-                                    .fontDesign(.rounded)
-                            }
-                        }.padding(.top, 16)
-                        
+                        Text("Atual")
+                            .font(.body)
+                            .fontWeight(.regular)
+                            .foregroundColor(Color("BodyColor"))
+                            .fontDesign(.rounded)
                         
                     }
                     
+                    // Humidity Line
+                    GridRow {
+              
+                        LineTableFeedback(icon: humidityStatus.downimage(), iconColor: humidityStatus.color(), idealValue: idealHumiditySpecie, valueReceived: humidityReceived, lineTitle: "Umidade\n     (%)")
+                    }
+                    
+                    // Nitrogen Line
+                    GridRow {
+                        LineTableFeedback(icon: nitrogenStatus.image(), iconColor: nitrogenStatus.color(), idealValue: 30, valueReceived: nitrogenReceived, lineTitle: "Nitrogênio\n(mmg/kg)")
+        
+                    }
+                    
+                    // Phosphoro Line
+                    GridRow {
+                        LineTableFeedback(icon: phosphoroStatus.image(), iconColor: phosphoroStatus.color(), idealValue: 5, valueReceived: phosphoroReceived, lineTitle: "Fósforo\n(mmg/kg)")
+
+                        
+                    }
+                    
+                    // Potassium Line
+                    GridRow {
+                        LineTableFeedback(icon: potassiumStatus.image(), iconColor: potassiumStatus.color(), idealValue: 25, valueReceived: potassiumReceived, lineTitle: "Potássio\n(mmg/kg)")
+
+                    }
+                    
+                    
                 }
-                
             }
+            .padding(.top, 8)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
                     Text("Resultado")
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                         .font(.system(size: 17))
-                        .fontDesign(.rounded)
-                        .foregroundStyle(Color("principalColor"))
                 }
             }
             
         }
+
     }
-        
+    
 }
 

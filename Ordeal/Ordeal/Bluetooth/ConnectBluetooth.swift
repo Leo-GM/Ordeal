@@ -190,7 +190,6 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
         
     }
     
-    
     func checkOveralStatus(humidyStatus: HumidityPlantState,
                            nutrientsStatus: NPKPlantState) -> GeneralPlantState {
         
@@ -221,6 +220,135 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
             return .excessHumidityExcessNPK
         }
         
+    }
+    
+    // MARK: - Check Nitrogen State
+    
+    enum NitrogenState {
+        case lack
+        case ideal
+        case excess
+        
+
+        func color() -> String {
+            switch self {
+            case .lack:
+                return "secondaryColor"
+            case .ideal:
+                return "principalColor"
+            case .excess:
+                return "secondaryColor"
+            }
+        }
+        
+        func image() -> String{
+            switch self {
+            case .lack:
+                return "arrow.down"
+            case .ideal:
+                return "checkmark"
+            case .excess:
+                return "arrow.up"
+            }
+        }
+    }
+    
+    func checkNitrogenPlantState(nitrogenReceived: Int) -> NitrogenState{
+        let nitrogenInrange = (10...50).contains(nitrogenReceived)
+        
+        if nitrogenInrange{
+            return .ideal
+        }else if nitrogenReceived > 50{
+            return .excess
+        }else {
+            return .lack
+        }
+    }
+    
+    // MARK: - Check Phosphoro State
+    
+    enum PhosphoroState {
+        case lack
+        case ideal
+        case excess
+        
+
+        func color() -> String {
+            switch self {
+            case .lack:
+                return "secondaryColor"
+            case .ideal:
+                return "principalColor"
+            case .excess:
+                return "secondaryColor"
+            }
+        }
+        
+        func image() -> String{
+            switch self {
+            case .lack:
+                return "arrow.down"
+            case .ideal:
+                return "checkmark"
+            case .excess:
+                return "arrow.up"
+            }
+        }
+    }
+    
+    func checkPhosphoroPlantState(phosphoroReceived: Int) -> PhosphoroState{
+        let phosphoroInrange = (1...10).contains(phosphoroReceived)
+        
+        if phosphoroInrange{
+            return .ideal
+        }else if phosphoroReceived > 50{
+            return .excess
+        }else {
+            return .lack
+        }
+    }
+   
+    // MARK: - Check potassium State
+    
+    enum PotassiumState {
+        case lack
+        case ideal
+        case excess
+        
+
+        func color() -> String {
+            switch self {
+            case .lack:
+                return "secondaryColor"
+            case .ideal:
+                return "principalColor"
+            case .excess:
+                return "secondaryColor"
+            }
+        }
+        
+        func image() -> String{
+            switch self {
+            case .lack:
+                return "arrow.down"
+            case .ideal:
+                return "checkmark"
+            case .excess:
+                return "arrow.up"
+            }
+        }
+    }
+    
+    func checkPotassiumPlantState(potassiumReceived: Int) -> PotassiumState{
+        let potassiumInrange = (10...35).contains(potassiumReceived)
+        
+        if potassiumInrange{
+            return .ideal
+        }else if potassiumReceived > 50{
+            return .excess
+        }else {
+            return .lack
+        }
     }
     
     
