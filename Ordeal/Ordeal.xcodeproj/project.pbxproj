@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7425D5722B0F746400321F99 /* LineTableFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425D5712B0F746400321F99 /* LineTableFeedback.swift */; };
 		744718CD2B06415A00F780C7 /* BigCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CC2B06415A00F780C7 /* BigCard.swift */; };
 		744718CF2B0647F900F780C7 /* ConnectBluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */; };
 		74A79D5C2B025E0300FE386C /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A79D5B2B025E0300FE386C /* Feedback.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7425D5712B0F746400321F99 /* LineTableFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTableFeedback.swift; sourceTree = "<group>"; };
 		744718CC2B06415A00F780C7 /* BigCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigCard.swift; sourceTree = "<group>"; };
 		744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetoothView.swift; sourceTree = "<group>"; };
 		74A79D5B2B025E0300FE386C /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
@@ -123,9 +125,10 @@
 		EA9AA53B2AFE708800C5AEDC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				786069D02B03979300149ED5 /* SmallCard.swift */,
-				78AD77C42B03B86000812221 /* BluetoothCard.swift */,
 				744718CC2B06415A00F780C7 /* BigCard.swift */,
+				78AD77C42B03B86000812221 /* BluetoothCard.swift */,
+				786069D02B03979300149ED5 /* SmallCard.swift */,
+				7425D5712B0F746400321F99 /* LineTableFeedback.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */,
+				7425D5722B0F746400321F99 /* LineTableFeedback.swift in Sources */,
 				EA66A3AE2AE93BA80014AF6D /* Persistence.swift in Sources */,
 				78AD77C52B03B86000812221 /* BluetoothCard.swift in Sources */,
 				74A79D5C2B025E0300FE386C /* Feedback.swift in Sources */,
@@ -363,7 +367,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = FH5247AW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to coneect to sensors";
@@ -394,7 +398,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = FH5247AW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to coneect to sensors";
