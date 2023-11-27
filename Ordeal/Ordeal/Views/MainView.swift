@@ -14,26 +14,26 @@ struct MainView: View {
                 VStack(alignment: .leading, spacing: 16){
                     
                     NavigationLink(destination: Text("Tela de todas as plantas"), label: {
-                        BigCard(title: "Todas as plantas", background: "", illustration: "todasPlantas")
+                        BigCard(title: "Todas as plantas", illustration: "todasPlantas")
                             .shadow(radius: 2.5)
                     })
                     
                     NavigationLink(destination: Text("Tela de última medicao"), label: {
-                        BigCard(title: "Ultima medição", background: "", illustration: "ultimaMedicao")
+                        LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
                             .shadow(radius: 2.5)
                     })
                     
                     HStack(alignment: .top){
                         
                         NavigationLink(destination: FeedbackView(), label: {
-                            Card(title: "Nova medição", background: "", illustration: "novaMedicao")
+                            Card(title: "Nova medição", illustration: "novaMedicao")
                                 .shadow(radius: 2.5)
                         })
                         
                         Spacer()
                         
                         NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
-                            Card(title: "Cadastrar planta", background: "", illustration: "cadastrarPlanta")
+                            Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
                                 .shadow(radius: 2.5)
                         })
                         
