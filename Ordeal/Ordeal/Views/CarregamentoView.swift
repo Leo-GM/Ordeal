@@ -71,6 +71,7 @@ struct CarregamentoView: View {
                 
                 
             }
+            .navigationBarBackButtonHidden(true)
             
             .onAppear{
                 timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: continueTimer) { timer in

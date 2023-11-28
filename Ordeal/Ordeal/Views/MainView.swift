@@ -45,6 +45,8 @@ struct MainView: View {
                         NavigationLink(destination: CarregamentoView(), isActive: $navigaterToNext) {
                             
                         }
+                        
+
                         Spacer()
                         
                         NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
