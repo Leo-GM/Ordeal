@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FeedbackView: View {
     @ObservedObject private var bluetoothViewModel = BluetoothModel()
-    var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
+    @State var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
     var humidityReceived = 0 //we are going to receive this value from the view before this one
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
     var phosphoroReceived = 0 //we are going to receive this value from the view before this one
