@@ -9,6 +9,11 @@ import SwiftUI
 
 struct MainView: View {
 
+    @State private var showingSheet = false
+    var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
+    @State private var especie = "Não sei"
+    @State private var navigaterToNext = false
+    
     var body: some View {
         NavigationView{
                 VStack(alignment: .leading, spacing: 16){
@@ -27,12 +32,19 @@ struct MainView: View {
                     
                     HStack(alignment: .top){
                         
-                        NavigationLink(destination: FeedbackView(), label: {
-                            Card(title: "Nova medição", illustration: "novaMedicao")
-                                .shadow(radius: 2.5)
-                                .background(Color(red: 255, green: 255, blue: 255))
-                        })
+
+                        Button(action: {
+                            showingSheet.toggle()
+                                }) {
+                                    Card(title: "Nova medição", illustration: "novaMedicao")
+                                        .shadow(radius: 2.5)
+                                } .sheet(isPresented: $showingSheet) {
+                                    responderSheet                                }
                         
+                        
+                        NavigationLink(destination: CarregamentoView(), isActive: $navigaterToNext) {
+                            
+                        }
                         Spacer()
                         
                         NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
@@ -52,6 +64,65 @@ struct MainView: View {
         }
 
         
+    }
+    var responderSheet: some View {
+        VStack {
+            HStack{
+                Spacer()
+                Button(action: {
+                   
+                    showingSheet = false
+                            
+                }) {
+                    Text("Cancel")
+                        .padding(.top, 10)
+                        .foregroundColor(.blue)
+                }
+               
+                Spacer()
+                    
+                Text("Selecione a espécie")
+                    .padding(.top, 10)
+                    .foregroundColor(.primary)
+                    .fontWeight(.bold)
+                Spacer()
+                
+                Button(action: {
+                    navigaterToNext = true
+                    showingSheet = false
+                            
+                }) {
+                    Text("Medir")
+                        .padding(.top, 10)
+                        .foregroundColor(.blue)
+                        .fontWeight(.bold)
+                }
+                
+            Spacer()
+            }
+            
+
+            Spacer()
+
+            VStack {
+                List{
+                    HStack{
+                        
+                        Spacer()
+                        
+                        Picker("Espécie", selection: $especie) {
+                            ForEach(especies, id: \.self) {
+                                Text($0)
+                            }
+                        }.presentationDetents([.height(UIScreen.main.bounds.height / 4)])
+                        Spacer()
+                    }
+                }
+                
+            }
+        
+            Spacer()
+        }
     }
 }
 
