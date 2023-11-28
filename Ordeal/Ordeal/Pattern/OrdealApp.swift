@@ -45,6 +45,8 @@ struct OrdealApp: App {
             //ContentView()
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
             
+            @StateObject var bluetoothViewModel = BluetoothModel()
+
             TabView{
                 MainView()
                     .tabItem {Label("Jardim", systemImage: "leaf.circle") }
@@ -55,6 +57,8 @@ struct OrdealApp: App {
                 
             }
             .accentColor(Color("principalColor"))
+            .environmentObject(bluetoothViewModel)
+
         }
         
     }
