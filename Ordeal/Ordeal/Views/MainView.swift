@@ -14,13 +14,15 @@ struct MainView: View {
                 VStack(alignment: .leading, spacing: 16){
                     
                     NavigationLink(destination: Text("Tela de todas as plantas"), label: {
-                        BigCard(title: "Todas as plantas", illustration: "todasPlantas")
+                        LastMeasurementCard(title: "Todas as plantas", illustration: "todasPlantas")
                             .shadow(radius: 2.5)
+                            .background(Color(red: 255, green: 255, blue: 255))
                     })
                     
                     NavigationLink(destination: Text("Tela de última medicao"), label: {
                         LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
                             .shadow(radius: 2.5)
+                            .background(Color(red: 255, green: 255, blue: 255))
                     })
                     
                     HStack(alignment: .top){
@@ -28,6 +30,7 @@ struct MainView: View {
                         NavigationLink(destination: FeedbackView(), label: {
                             Card(title: "Nova medição", illustration: "novaMedicao")
                                 .shadow(radius: 2.5)
+                                .background(Color(red: 255, green: 255, blue: 255))
                         })
                         
                         Spacer()
@@ -35,6 +38,7 @@ struct MainView: View {
                         NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
                             Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
                                 .shadow(radius: 2.5)
+                                .background(Color(red: 255, green: 255, blue: 255))
                         })
                         
                     }
@@ -44,10 +48,13 @@ struct MainView: View {
                 .padding(16)
                 .padding(.top, 16)
                 .navigationBarTitle("Meu Jardim")
+                .background(Color(red: 242, green: 242, blue: 247))
         }
+
         
     }
 }
+
 
 #Preview {
     MainView()

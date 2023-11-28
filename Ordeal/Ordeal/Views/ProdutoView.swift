@@ -23,6 +23,8 @@ struct ProdutoView: View {
     }
 }
 
+/*
 #Preview {
     ProdutoView()
 }
+*/
