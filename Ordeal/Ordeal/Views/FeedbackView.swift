@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct FeedbackView: View {
-    @ObservedObject private var bluetoothViewModel = BluetoothModel()
-    @State var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
-    var humidityReceived = 0 //we are going to receive this value from the view before this one
+
+    @EnvironmentObject var bluetoothViewModel: BluetoothModel
+    
+    var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
+
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
     var phosphoroReceived = 0 //we are going to receive this value from the view before this one
     var potassiumReceived = 0 //we are going to receive this value from the view before this one
     
+    
     var body: some View {
+        
+        lazy var humidityReceived = bluetoothViewModel.IntValueReceived
+        
         List {
             
             let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived)
@@ -24,6 +30,7 @@ struct FeedbackView: View {
             let nitrogenStatus = bluetoothViewModel.checkNitrogenPlantState(nitrogenReceived: nitrogenReceived)
             let phosphoroStatus = bluetoothViewModel.checkPhosphoroPlantState(phosphoroReceived: phosphoroReceived)
             let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
+            
 
 
             
@@ -176,9 +183,7 @@ struct FeedbackView: View {
                         .font(.system(size: 17))
                 }
             }
-            
         }
-
     }
     
 }

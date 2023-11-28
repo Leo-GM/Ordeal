@@ -4,10 +4,12 @@ import CoreBluetooth
 
 class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
     private var centralManager: CBCentralManager!
+    
     @Published var discoveredPeripherals = [CBPeripheral]()
     @Published var connectedPeripheral: CBPeripheral?
     @Published var ValueReceived: String?
-
+    @Published var IntValueReceived: Int = 101
+    
     enum GeneralPlantState {
         case idealParameters
         case lackHumidityLackNPK
@@ -386,7 +388,7 @@ extension BluetoothModel: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
         
-        if peripheral.name == "Amazfit Neo"{
+        if peripheral.name == "HC-08"{
             self.discoveredPeripherals.append(peripheral)
             centralManager.stopScan()
         }
@@ -454,43 +456,25 @@ extension BluetoothModel: CBCentralManagerDelegate {
         guard let value = characteristic.value else {
             return
         }
-        print("Valor recebido: \(value)")
+        print("Valor recebido Data: \(value)")
         
         if let value = characteristic.value {
-            // Making the data received be a string
-            if let stringValue = String(data: value, encoding: .utf8) {
-                print("Valor recebido: \(stringValue)")
-                ValueReceived = stringValue
+            
+        // Making the data received be a string
+        if let stringValue = String(data: value, encoding: .utf8) {
+            ValueReceived = stringValue
+            print("Valor recebido String: \(ValueReceived)")
+        }
+            
+        // Making the data received be a int
+            if let intValue = Int(ValueReceived ?? "1234") {
+                IntValueReceived = intValue
+                print("Valor recebido inteiro esse aqui: \(IntValueReceived)")
+                
             }
+            
         }
     }
     
 }
 
-
-// -----VIEW USADA PARA TESTES----- //
-/* struct ConnectBluetoothView: View {
- @ObservedObject private var bluetoothViewModel = ViewController()
- 
- var body: some View {
- Text("Dado recebido pelo sensor arduino: \(bluetoothViewModel.StringRecebida ?? "NADA RECEBIDO")")
- 
- if bluetoothViewModel.connectedPeripheral?.name == "HC-08"{
- Circle() // Cria um círculo
- .fill(Color.green)
- .frame(width: 100, height: 100)
- .padding()
- }else{
- Circle() // Cria um círculo
- .fill(Color.red)
- .frame(width: 100, height: 100)
- .padding()
- }
- }
- }
- 
- struct ConnectBluetoothView_Previews: PreviewProvider {
- static var previews: some View {
- ConnectBluetoothView()
- }
- } */

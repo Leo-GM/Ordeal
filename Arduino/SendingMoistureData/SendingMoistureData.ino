@@ -19,10 +19,10 @@ void setup() {
 void loop() {
 moisture = 0;
 
-for (vezesMedida=0; vezesMedida<15; vezesMedida++){
+for (vezesMedida=0; vezesMedida<10; vezesMedida++){
   int medida = analogRead(A0);
   dadosUmidade[vezesMedida] = medida;
-  delay(1000);
+  delay(500);
 }
 
 for (interactions = 0; interactions<15; interactions++){
