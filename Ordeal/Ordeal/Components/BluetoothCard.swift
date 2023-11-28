@@ -22,6 +22,7 @@ struct BluetoothCard: View {
     }
 }
 
+/*
 #Preview {
     List{
         Section{
@@ -29,3 +30,4 @@ struct BluetoothCard: View {
         }
     }
 }
+*/

@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35072F052B14CAB30073D5E1 /* GardenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35072F042B14CAB30073D5E1 /* GardenCard.swift */; };
 		7425D5722B0F746400321F99 /* LineTableFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7425D5712B0F746400321F99 /* LineTableFeedback.swift */; };
 		744718CD2B06415A00F780C7 /* BigCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CC2B06415A00F780C7 /* BigCard.swift */; };
 		744718CF2B0647F900F780C7 /* ConnectBluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */; };
+		74876CD22B10ECF20059EBF5 /* LastMeasurementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */; };
 		74A79D5C2B025E0300FE386C /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A79D5B2B025E0300FE386C /* Feedback.swift */; };
 		74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */; };
 		786069D12B03979300149ED5 /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786069D02B03979300149ED5 /* SmallCard.swift */; };
@@ -24,12 +26,15 @@
 		EA66A3B12AE93BA80014AF6D /* Ordeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA66A3AF2AE93BA80014AF6D /* Ordeal.xcdatamodeld */; };
 		EA9AA5342AFE512700C5AEDC /* ProdutoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */; };
 		EA9AA5362AFE513600C5AEDC /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AA5352AFE513600C5AEDC /* PerfilView.swift */; };
+		EAD16B7B2B160F1A0059AE72 /* CarregamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD16B7A2B160F1A0059AE72 /* CarregamentoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35072F042B14CAB30073D5E1 /* GardenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCard.swift; sourceTree = "<group>"; };
 		7425D5712B0F746400321F99 /* LineTableFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTableFeedback.swift; sourceTree = "<group>"; };
 		744718CC2B06415A00F780C7 /* BigCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigCard.swift; sourceTree = "<group>"; };
 		744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetoothView.swift; sourceTree = "<group>"; };
+		74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMeasurementCard.swift; sourceTree = "<group>"; };
 		74A79D5B2B025E0300FE386C /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetooth.swift; sourceTree = "<group>"; };
 		786069D02B03979300149ED5 /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallCard.swift; path = Ordeal/Views/SmallCard.swift; sourceTree = SOURCE_ROOT; };
@@ -46,6 +51,7 @@
 		EA66A3B22AE93BA80014AF6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdutoView.swift; sourceTree = "<group>"; };
 		EA9AA5352AFE513600C5AEDC /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
+		EAD16B7A2B160F1A0059AE72 /* CarregamentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarregamentoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 				EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */,
 				EA9AA5352AFE513600C5AEDC /* PerfilView.swift */,
 				78C30EF22B0268D900C7D4F5 /* MainView.swift */,
+				EAD16B7A2B160F1A0059AE72 /* CarregamentoView.swift */,
 				744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */,
 			);
 			path = Views;
@@ -126,6 +133,8 @@
 				78AD77C42B03B86000812221 /* BluetoothCard.swift */,
 				786069D02B03979300149ED5 /* SmallCard.swift */,
 				7425D5712B0F746400321F99 /* LineTableFeedback.swift */,
+				74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */,
+				35072F042B14CAB30073D5E1 /* GardenCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -220,12 +229,15 @@
 			files = (
 				74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */,
 				7425D5722B0F746400321F99 /* LineTableFeedback.swift in Sources */,
+				35072F052B14CAB30073D5E1 /* GardenCard.swift in Sources */,
 				EA66A3AE2AE93BA80014AF6D /* Persistence.swift in Sources */,
 				78AD77C52B03B86000812221 /* BluetoothCard.swift in Sources */,
+				EAD16B7B2B160F1A0059AE72 /* CarregamentoView.swift in Sources */,
 				74A79D5C2B025E0300FE386C /* Feedback.swift in Sources */,
 				78C30EF32B0268D900C7D4F5 /* MainView.swift in Sources */,
 				EA66A3A72AE93BA80014AF6D /* ContentView.swift in Sources */,
 				744718CF2B0647F900F780C7 /* ConnectBluetoothView.swift in Sources */,
+				74876CD22B10ECF20059EBF5 /* LastMeasurementCard.swift in Sources */,
 				EA51DE3B2AFD20CD0031FFD3 /* FeedbackView.swift in Sources */,
 				EA9AA5342AFE512700C5AEDC /* ProdutoView.swift in Sources */,
 				EA66A3B12AE93BA80014AF6D /* Ordeal.xcdatamodeld in Sources */,
@@ -373,6 +385,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -404,6 +417,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
