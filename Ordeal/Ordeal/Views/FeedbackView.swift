@@ -24,8 +24,6 @@ struct FeedbackView: View {
             let nitrogenStatus = bluetoothViewModel.checkNitrogenPlantState(nitrogenReceived: nitrogenReceived)
             let phosphoroStatus = bluetoothViewModel.checkPhosphoroPlantState(phosphoroReceived: phosphoroReceived)
             let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
-
-
             
             Section (){
                 HStack{
@@ -41,7 +39,7 @@ struct FeedbackView: View {
                             .font(.caption)
                             .foregroundColor(Color("BodyColor"))
                             .padding(.bottom, 24)
-                                                
+                        
                         HStack{
                             Text("Umidade")
                                 .font(.system(size: 17))
@@ -80,7 +78,6 @@ struct FeedbackView: View {
                     
                     VStack{
                         
-                        
                         ZStack{
                             Image("feedbackFundoCard")
                                 .resizable()
@@ -95,24 +92,25 @@ struct FeedbackView: View {
                     }
                 }
             }
-            
-            Section(header:
-                Text("Instrução")
+        //  .listRowInsets(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+           .listSectionSpacing(.custom(-10))
+        
+                Section(header: Text("Instrução")
                     .fontDesign(.rounded)
-            ){
-                
-                Text(overallStatus.instruction())
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .foregroundColor(Color("BodyColor"))
-                    .fontDesign(.rounded)
-                
-                
+                    .padding(.bottom, 0)
+                ){
+                    Text(overallStatus.instruction())
+                        .font(.body)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color("BodyColor"))
+                        .fontDesign(.rounded)
             }
+            .listSectionSpacing(.custom(0))
             
             Section(header: 
-                        Text("Valores da medição")
-                            .fontDesign(.rounded)
+                Text("Valores da medição")
+                .fontDesign(.rounded)
+                .padding(.bottom, 5)
             ){
                 
                 Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 16){
@@ -141,33 +139,33 @@ struct FeedbackView: View {
                     
                     // Humidity Line
                     GridRow {
-              
+                        
                         LineTableFeedback(icon: humidityStatus.downimage(), iconColor: humidityStatus.color(), idealValue: idealHumiditySpecie, valueReceived: humidityReceived, lineTitle: "Umidade\n     (%)")
                     }
                     
                     // Nitrogen Line
                     GridRow {
                         LineTableFeedback(icon: nitrogenStatus.image(), iconColor: nitrogenStatus.color(), idealValue: 30, valueReceived: nitrogenReceived, lineTitle: "Nitrogênio\n(mmg/kg)")
-        
+                        
                     }
                     
                     // Phosphoro Line
                     GridRow {
                         LineTableFeedback(icon: phosphoroStatus.image(), iconColor: phosphoroStatus.color(), idealValue: 5, valueReceived: phosphoroReceived, lineTitle: "Fósforo\n(mmg/kg)")
-
+                        
                         
                     }
                     
                     // Potassium Line
                     GridRow {
                         LineTableFeedback(icon: potassiumStatus.image(), iconColor: potassiumStatus.color(), idealValue: 25, valueReceived: potassiumReceived, lineTitle: "Potássio\n(mmg/kg)")
-
+                        
                     }
-                    
                     
                 }
             }
-            .padding(.top, 8)
+            .listSectionSpacing(.custom(-10))
+          //  .padding(.top, 8)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
