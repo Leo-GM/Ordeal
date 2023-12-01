@@ -9,6 +9,8 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
     @Published var connectedPeripheral: CBPeripheral?
     @Published var ValueReceived: String?
     @Published var IntValueReceived: Int = 101
+    @Published var isHC08Connected = false
+
     
     enum GeneralPlantState {
         case idealParameters
@@ -407,11 +409,18 @@ extension BluetoothModel: CBCentralManagerDelegate {
         
         print("Procurando seus servicos...")
         peripheral.discoverServices(nil)
+        
+        if peripheral.name == "HC-08" {
+                self.isHC08Connected = true
+            }
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         // Handle error
         print("WARNING: Conexão falhou")
+        if peripheral.name == "HC-08" {
+                self.isHC08Connected = false
+            }
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {

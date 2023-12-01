@@ -16,8 +16,10 @@ struct ConnectBluetoothView: View {
                 
                 ForEach(bluetoothViewModel.discoveredPeripherals, id: \.self) { elemento in
                     Button("\(elemento.name!)") {
+                        
                         bluetoothViewModel.connect(peripheral: elemento)
                     }
+                    
                 }
             }
         }

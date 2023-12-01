@@ -11,7 +11,6 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
     @State private var progress = 0.0
     @State private var currentImageIndex = 0
     @State private var continueTimer = true
-    
     @State var timer:Timer?
     
     func makeBody(configuration: Configuration) -> some View {
@@ -39,6 +38,9 @@ struct CarregamentoView: View {
     @State private var currentImageIndex = 0
     @State private var continueTimer = true
     @State private var isFeedbackViewActive = false
+    @State var especieCarregamento:String
+    @State var nomeCarregamento:String
+
 
     
     
@@ -93,7 +95,7 @@ struct CarregamentoView: View {
                     }
                 }
             }.background(
-                NavigationLink("", destination: FeedbackView(), isActive: $isFeedbackViewActive)
+                NavigationLink("", destination: FeedbackView(especieFeedback: especieCarregamento,nomeFeedback: nomeCarregamento), isActive: $isFeedbackViewActive)
                     .opacity(0) // Link de navegação invisível
                 )
             
@@ -104,6 +106,3 @@ struct CarregamentoView: View {
     
 }
 
-#Preview {
-    CarregamentoView()
-}
