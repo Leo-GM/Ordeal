@@ -14,8 +14,8 @@ struct LastMeasurementCard: View {
     var body: some View {
         
         VStack(alignment: .leading, spacing: 16) {
+            
             VStack{
-                
                 Text("Orquidea")
                     .font(.body)
                     .foregroundColor(Color("BodyColor"))
@@ -33,12 +33,14 @@ struct LastMeasurementCard: View {
                         .fontWeight(.regular)
                         .fontDesign(.rounded)
                         .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     Spacer()
                     
                     Image(illustration)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .fixedSize()
+                       // .aspectRatio(contentMode: .fit)
                     
                     Spacer()
                 }
@@ -52,6 +54,7 @@ struct LastMeasurementCard: View {
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 16))
+        
         
     }
     

@@ -17,21 +17,19 @@ struct MainView: View {
     var body: some View {
         NavigationView{
                 VStack(alignment: .leading, spacing: 16){
-                    
                     NavigationLink(destination: Text("Tela de todas as plantas"), label: {
-                        LastMeasurementCard(title: "Todas as plantas", illustration: "todasPlantas")
+                        GardenCard(title: "Todas as plantas", illustration: "garden")
                             .shadow(radius: 2.5)
-                            .background(Color(red: 255, green: 255, blue: 255))
+                        
                     })
                     
                     NavigationLink(destination: Text("Tela de última medicao"), label: {
                         LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
                             .shadow(radius: 2.5)
-                            .background(Color(red: 255, green: 255, blue: 255))
+                        
                     })
                     
                     HStack(alignment: .top){
-                        
 
                         Button(action: {
                             showingSheet.toggle()
@@ -45,7 +43,6 @@ struct MainView: View {
                         NavigationLink(destination: CarregamentoView(), isActive: $navigaterToNext) {
                             
                         }
-                        
 
                         Spacer()
                         
@@ -62,9 +59,9 @@ struct MainView: View {
                 .padding(16)
                 .padding(.top, 16)
                 .navigationBarTitle("Meu Jardim")
-                .background(Color(red: 242, green: 242, blue: 247))
+              
         }
-
+        //.background(Color(.systemBackground))
         
     }
     var responderSheet: some View {
@@ -131,4 +128,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .background(Color(.systemBackground))
 }

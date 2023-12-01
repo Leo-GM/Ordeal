@@ -13,24 +13,25 @@ struct Card: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 16) {
-            
-            
+        VStack(alignment: .center, spacing: 0) {
+
             Image(illustration)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .padding(16)
-                .frame(width: 100, height: 110)
-            
+                .fixedSize()
+                .frame(width: 175, height: 125)
+ 
             Divider()
-            //.frame(width: 157.5)
                 .padding(.trailing, 16)
                 .padding(.leading, 16)
             cardText
                 .padding(.horizontal, 16)
+           
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 16))
+      
+        
+
         
     }
     
