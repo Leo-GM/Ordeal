@@ -17,6 +17,10 @@
 		786069D12B03979300149ED5 /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786069D02B03979300149ED5 /* SmallCard.swift */; };
 		78AD77C52B03B86000812221 /* BluetoothCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AD77C42B03B86000812221 /* BluetoothCard.swift */; };
 		78C30EF32B0268D900C7D4F5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C30EF22B0268D900C7D4F5 /* MainView.swift */; };
+		78D7007F2B18B29E00C52F34 /* TodasPlantasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7007E2B18B29E00C52F34 /* TodasPlantasView.swift */; };
+		78D700812B18B8CD00C52F34 /* PlantaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D700802B18B8CD00C52F34 /* PlantaCard.swift */; };
+		78D700842B18BEFC00C52F34 /* Plantas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D700832B18BEFC00C52F34 /* Plantas.swift */; };
+		78D700862B18D62200C52F34 /* PlantaIndividualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D700852B18D62200C52F34 /* PlantaIndividualView.swift */; };
 		EA51DE3B2AFD20CD0031FFD3 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA51DE3A2AFD20CD0031FFD3 /* FeedbackView.swift */; };
 		EA66A3A52AE93BA80014AF6D /* OrdealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66A3A42AE93BA80014AF6D /* OrdealApp.swift */; };
 		EA66A3A72AE93BA80014AF6D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66A3A62AE93BA80014AF6D /* ContentView.swift */; };
@@ -40,6 +44,10 @@
 		786069D02B03979300149ED5 /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallCard.swift; path = Ordeal/Views/SmallCard.swift; sourceTree = SOURCE_ROOT; };
 		78AD77C42B03B86000812221 /* BluetoothCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCard.swift; sourceTree = "<group>"; };
 		78C30EF22B0268D900C7D4F5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		78D7007E2B18B29E00C52F34 /* TodasPlantasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodasPlantasView.swift; sourceTree = "<group>"; };
+		78D700802B18B8CD00C52F34 /* PlantaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantaCard.swift; sourceTree = "<group>"; };
+		78D700832B18BEFC00C52F34 /* Plantas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plantas.swift; sourceTree = "<group>"; };
+		78D700852B18D62200C52F34 /* PlantaIndividualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantaIndividualView.swift; sourceTree = "<group>"; };
 		EA51DE3A2AFD20CD0031FFD3 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		EA66A3A12AE93BA80014AF6D /* Ordeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ordeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA66A3A42AE93BA80014AF6D /* OrdealApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdealApp.swift; sourceTree = "<group>"; };
@@ -73,6 +81,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		78D700822B18BEEB00C52F34 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				78D700832B18BEFC00C52F34 /* Plantas.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		EA66A3982AE93BA80014AF6D = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +108,7 @@
 		EA66A3A32AE93BA80014AF6D /* Ordeal */ = {
 			isa = PBXGroup;
 			children = (
+				78D700822B18BEEB00C52F34 /* Data */,
 				EA9AA53E2AFE712600C5AEDC /* Bluetooth */,
 				EA9AA53D2AFE711900C5AEDC /* Pattern */,
 				74A79D5A2B025DBF00FE386C /* Controller */,
@@ -122,6 +139,8 @@
 				78C30EF22B0268D900C7D4F5 /* MainView.swift */,
 				EAD16B7A2B160F1A0059AE72 /* CarregamentoView.swift */,
 				744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */,
+				78D7007E2B18B29E00C52F34 /* TodasPlantasView.swift */,
+				78D700852B18D62200C52F34 /* PlantaIndividualView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +154,7 @@
 				7425D5712B0F746400321F99 /* LineTableFeedback.swift */,
 				74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */,
 				35072F042B14CAB30073D5E1 /* GardenCard.swift */,
+				78D700802B18B8CD00C52F34 /* PlantaCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -228,8 +248,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */,
+				78D700812B18B8CD00C52F34 /* PlantaCard.swift in Sources */,
 				7425D5722B0F746400321F99 /* LineTableFeedback.swift in Sources */,
+				78D700862B18D62200C52F34 /* PlantaIndividualView.swift in Sources */,
+				78D700842B18BEFC00C52F34 /* Plantas.swift in Sources */,
 				35072F052B14CAB30073D5E1 /* GardenCard.swift in Sources */,
+				78D7007F2B18B29E00C52F34 /* TodasPlantasView.swift in Sources */,
 				EA66A3AE2AE93BA80014AF6D /* Persistence.swift in Sources */,
 				78AD77C52B03B86000812221 /* BluetoothCard.swift in Sources */,
 				EAD16B7B2B160F1A0059AE72 /* CarregamentoView.swift in Sources */,

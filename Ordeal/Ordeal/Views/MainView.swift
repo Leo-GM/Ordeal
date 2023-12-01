@@ -26,13 +26,11 @@ struct MainView: View {
     
     var body: some View {
         NavigationView{
-
-            VStack(alignment: .leading, spacing: 16){
-                
-                NavigationLink(destination: Text("Tela de todas as plantas"), label: {
+                VStack(alignment: .leading, spacing: 16){
+                    
+                    NavigationLink(destination: TodasPlantasView(), label: {
                         GardenCard(title: "Todas as plantas", illustration: "garden")
                             .shadow(radius: 2.5)
-                        
                     })
                     
                     NavigationLink(destination: Text("Tela de última medicao"), label: {
@@ -84,7 +82,6 @@ struct MainView: View {
             .padding(16)
             .padding(.top, 16)
             .navigationBarTitle("Meu Jardim")
-            .background(Color(red: 242, green: 242, blue: 247))
             .alert(isPresented: $showingAlert) {
                 Alert(
                     title: Text("Alerta"),
