@@ -54,6 +54,8 @@ struct OrdealApp: App {
                     .tabItem {Label("Produto", systemImage: "sensor") }
                 PerfilView()
                     .tabItem {Label("Perfil", systemImage: "person.circle") }
+//                TodasPlantasView()
+//                    .tabItem {Label("Teste", systemImage: "bolt.heart") }
                 
             }
             .accentColor(Color("principalColor"))
