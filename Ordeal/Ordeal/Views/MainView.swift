@@ -26,16 +26,15 @@ struct MainView: View {
     
     var body: some View {
         NavigationView{
+            
                 VStack(alignment: .leading, spacing: 16){
                     
                     NavigationLink(destination: TodasPlantasView(), label: {
                         GardenCard(title: "Todas as plantas", illustration: "garden")
-                            .shadow(radius: 2.5)
                     })
                     
                     NavigationLink(destination: Text("Tela de última medicao"), label: {
                         LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
-                            .shadow(radius: 2.5)
                         
                     })
                 
@@ -53,7 +52,6 @@ struct MainView: View {
                         
                     }) {
                         Card(title: "Nova medição", illustration: "novaMedicao")
-                            .shadow(radius: 2.5)
                             
                     } .sheet(isPresented: $showingSheet) {
                         responderSheet                        
@@ -68,8 +66,6 @@ struct MainView: View {
                     
                     NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
                         Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
-                            .shadow(radius: 2.5)
-                            .background(Color(red: 255, green: 255, blue: 255))
                     })
                     
                     
@@ -82,6 +78,8 @@ struct MainView: View {
             .padding(16)
             .padding(.top, 16)
             .navigationBarTitle("Meu Jardim")
+            .background(Color(UIColor.systemGray6))
+
             .alert(isPresented: $showingAlert) {
                 Alert(
                     title: Text("Alerta"),

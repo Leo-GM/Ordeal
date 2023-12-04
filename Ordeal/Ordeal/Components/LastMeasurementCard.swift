@@ -10,14 +10,16 @@ import SwiftUI
 struct LastMeasurementCard: View {
     @State var title: String
     @State var illustration: String
-    
+    @EnvironmentObject var bluetoothViewModel: BluetoothModel
+
     var body: some View {
+        
         
         VStack(alignment: .leading, spacing: 16) {
             
             VStack{
                 Text("Orquidea")
-                    .font(.body)
+                    .font(.callout)
                     .foregroundColor(Color("BodyColor"))
                     .fontWeight(.regular)
                     .fontDesign(.rounded)
@@ -28,7 +30,7 @@ struct LastMeasurementCard: View {
                     Spacer()
                     
                     Text("A planta está seca e com poucos nutrientes 􀇾")
-                        .font(.body)
+                        .font(.callout)
                         .foregroundColor(Color("BodyColor"))
                         .fontWeight(.regular)
                         .fontDesign(.rounded)
@@ -64,7 +66,7 @@ struct LastMeasurementCard: View {
             HStack{
                 Spacer()
                 Text(title)
-                    .font(.body)
+                    .font(.callout)
                     .foregroundColor(.black)
                     .fontWeight(.medium)
                     .fontDesign(.rounded)

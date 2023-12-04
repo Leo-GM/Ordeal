@@ -61,6 +61,8 @@ struct OrdealApp: App {
             .accentColor(Color("principalColor"))
             .environmentObject(bluetoothViewModel)
 
+
+
         }
         
     }

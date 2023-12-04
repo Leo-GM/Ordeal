@@ -15,6 +15,7 @@ struct FeedbackView: View {
     @State var especieFeedback:String
     @State var nomeFeedback:String
     
+    
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
     var phosphoroReceived = 0 //we are going to receive this value from the view before this one
     var potassiumReceived = 0 //we are going to receive this value from the view before this one
@@ -48,6 +49,7 @@ struct FeedbackView: View {
             let nitrogenStatus = bluetoothViewModel.checkNitrogenPlantState(nitrogenReceived: nitrogenReceived)
             let phosphoroStatus = bluetoothViewModel.checkPhosphoroPlantState(phosphoroReceived: phosphoroReceived)
             let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
+            
             
             
             

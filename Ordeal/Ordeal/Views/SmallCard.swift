@@ -41,7 +41,7 @@ struct Card: View {
             HStack{
                 Spacer()
                 Text(title)
-                    .font(.body)
+                    .font(.callout)
                     .foregroundColor(.black)
                     .fontWeight(.medium)
                     .fontDesign(.rounded)
