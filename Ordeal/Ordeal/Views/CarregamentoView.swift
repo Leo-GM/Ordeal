@@ -34,6 +34,7 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
 
 struct CarregamentoView: View {
     
+    @EnvironmentObject var bluetoothViewModel: BluetoothModel
     @State private var progress = 0.0
     @State private var currentImageIndex = 0
     @State private var continueTimer = true
@@ -92,6 +93,8 @@ struct CarregamentoView: View {
                         self.timer?.invalidate()
                         timer.invalidate()
                         self.isFeedbackViewActive = true
+                        bluetoothViewModel.flag = 1
+                        
                     }
                 }
             }.background(

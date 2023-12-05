@@ -10,6 +10,7 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
     @Published var ValueReceived: String?
     @Published var IntValueReceived: Int = 101
     @Published var isHC08Connected = false
+    @Published var flag = 0
 
     
     enum GeneralPlantState {
@@ -470,17 +471,20 @@ extension BluetoothModel: CBCentralManagerDelegate {
         if let value = characteristic.value {
             
         // Making the data received be a string
-        if let stringValue = String(data: value, encoding: .utf8) {
-            ValueReceived = stringValue
-            print("Valor recebido String: \(ValueReceived)")
-        }
-            
-        // Making the data received be a int
-            if let intValue = Int(ValueReceived ?? "1234") {
-                IntValueReceived = intValue
-                print("Valor recebido inteiro esse aqui: \(IntValueReceived)")
+            if flag == 0{
+                if let stringValue = String(data: value, encoding: .utf8) {
+                    ValueReceived = stringValue
+                    print("Valor recebido String: \(ValueReceived)")
+                }
                 
+                // Making the data received be a int
+                if let intValue = Int(ValueReceived ?? "1234") {
+                    IntValueReceived = intValue
+                    print("Valor recebido inteiro esse aqui: \(IntValueReceived)")
+                    
+                }
             }
+            
             
         }
     }

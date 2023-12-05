@@ -7,5 +7,5 @@
 
 import Foundation
 
-/*especie, nome, umidade ideal, overallStatus.image, overallStatus.instruction., humidityStatus.image, humidityStatus.color, nutrientsStatus.image, nutrientsStatus.color, nutrientsStatus, nitrogenStatus, phosphoroStatus, potassiumStatus
+/*especie, nome, umidade ideal, humidityReceived, nitrogenReceived, phosphoroReceived, potassiumReceived
  */

@@ -25,7 +25,7 @@ struct MainView: View {
     
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             
                 VStack(alignment: .leading, spacing: 16){
                     
@@ -96,6 +96,7 @@ struct MainView: View {
         
     }
     var responderSheet: some View {
+        
         VStack {
             HStack{
                 Spacer()
@@ -122,7 +123,7 @@ struct MainView: View {
                    
                         navigaterToNext = true
                         showingSheet = false
-                    
+                    bluetoothViewModel.flag = 0
                     
                     
                     
