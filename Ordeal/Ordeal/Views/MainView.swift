@@ -123,7 +123,7 @@ struct MainView: View {
                    
                         navigaterToNext = true
                         showingSheet = false
-                    bluetoothViewModel.flag = 0
+                        bluetoothViewModel.flag = 0
                     
                     
                     
