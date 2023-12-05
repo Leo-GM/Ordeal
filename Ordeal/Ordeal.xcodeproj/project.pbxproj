@@ -14,6 +14,7 @@
 		74876CD22B10ECF20059EBF5 /* LastMeasurementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */; };
 		74A79D5C2B025E0300FE386C /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A79D5B2B025E0300FE386C /* Feedback.swift */; };
 		74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */; };
+		74F92B102B1E9D7D0073F0FF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F92B0F2B1E9D7D0073F0FF /* Router.swift */; };
 		786069D12B03979300149ED5 /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786069D02B03979300149ED5 /* SmallCard.swift */; };
 		78AD77C52B03B86000812221 /* BluetoothCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AD77C42B03B86000812221 /* BluetoothCard.swift */; };
 		78C30EF32B0268D900C7D4F5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C30EF22B0268D900C7D4F5 /* MainView.swift */; };
@@ -31,6 +32,7 @@
 		EA9AA5342AFE512700C5AEDC /* ProdutoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */; };
 		EA9AA5362AFE513600C5AEDC /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9AA5352AFE513600C5AEDC /* PerfilView.swift */; };
 		EAD16B7B2B160F1A0059AE72 /* CarregamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD16B7A2B160F1A0059AE72 /* CarregamentoView.swift */; };
+		EAE130BB2B1E171D0029C4B7 /* LastFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE130BA2B1E171D0029C4B7 /* LastFeedback.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,7 @@
 		74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMeasurementCard.swift; sourceTree = "<group>"; };
 		74A79D5B2B025E0300FE386C /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetooth.swift; sourceTree = "<group>"; };
+		74F92B0F2B1E9D7D0073F0FF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		786069D02B03979300149ED5 /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallCard.swift; path = Ordeal/Views/SmallCard.swift; sourceTree = SOURCE_ROOT; };
 		78AD77C42B03B86000812221 /* BluetoothCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCard.swift; sourceTree = "<group>"; };
 		78C30EF22B0268D900C7D4F5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		EA9AA5332AFE512700C5AEDC /* ProdutoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdutoView.swift; sourceTree = "<group>"; };
 		EA9AA5352AFE513600C5AEDC /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 		EAD16B7A2B160F1A0059AE72 /* CarregamentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarregamentoView.swift; sourceTree = "<group>"; };
+		EAE130BA2B1E171D0029C4B7 /* LastFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFeedback.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				74A79D5B2B025E0300FE386C /* Feedback.swift */,
+				74F92B0F2B1E9D7D0073F0FF /* Router.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -85,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				78D700832B18BEFC00C52F34 /* Plantas.swift */,
+				EAE130BA2B1E171D0029C4B7 /* LastFeedback.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -263,11 +269,13 @@
 				744718CF2B0647F900F780C7 /* ConnectBluetoothView.swift in Sources */,
 				74876CD22B10ECF20059EBF5 /* LastMeasurementCard.swift in Sources */,
 				EA51DE3B2AFD20CD0031FFD3 /* FeedbackView.swift in Sources */,
+				74F92B102B1E9D7D0073F0FF /* Router.swift in Sources */,
 				EA9AA5342AFE512700C5AEDC /* ProdutoView.swift in Sources */,
 				EA66A3B12AE93BA80014AF6D /* Ordeal.xcdatamodeld in Sources */,
 				744718CD2B06415A00F780C7 /* BigCard.swift in Sources */,
 				EA66A3A52AE93BA80014AF6D /* OrdealApp.swift in Sources */,
 				EA9AA5362AFE513600C5AEDC /* PerfilView.swift in Sources */,
+				EAE130BB2B1E171D0029C4B7 /* LastFeedback.swift in Sources */,
 				786069D12B03979300149ED5 /* SmallCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +417,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,7 +449,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

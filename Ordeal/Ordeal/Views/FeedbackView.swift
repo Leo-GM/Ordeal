@@ -15,6 +15,7 @@ struct FeedbackView: View {
     @State var especieFeedback:String
     @State var nomeFeedback:String
     
+    
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
     var phosphoroReceived = 0 //we are going to receive this value from the view before this one
     var potassiumReceived = 0 //we are going to receive this value from the view before this one
@@ -48,9 +49,6 @@ struct FeedbackView: View {
             let nitrogenStatus = bluetoothViewModel.checkNitrogenPlantState(nitrogenReceived: nitrogenReceived)
             let phosphoroStatus = bluetoothViewModel.checkPhosphoroPlantState(phosphoroReceived: phosphoroReceived)
             let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
-            
-            
-            
             
             Section (){
                 HStack{
@@ -105,7 +103,6 @@ struct FeedbackView: View {
                     
                     VStack{
                         
-                        
                         ZStack{
                             Image("feedbackFundoCard")
                                 .resizable()
@@ -120,24 +117,25 @@ struct FeedbackView: View {
                     }
                 }
             }
-            
-            Section(header:
-                        Text("Instrução")
-                .fontDesign(.rounded)
-            ){
-                
-                Text(overallStatus.instruction())
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .foregroundColor(Color("BodyColor"))
+        //  .listRowInsets(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+           .listSectionSpacing(.custom(-10))
+        
+                Section(header: Text("Instrução")
                     .fontDesign(.rounded)
-                
-                
+                    .padding(.bottom, 0)
+                ){
+                    Text(overallStatus.instruction())
+                        .font(.body)
+                        .fontWeight(.regular)
+                        .foregroundColor(Color("BodyColor"))
+                        .fontDesign(.rounded)
             }
+            .listSectionSpacing(.custom(0))
             
-            Section(header:
-                        Text("Valores da medição")
+            Section(header: 
+                Text("Valores da medição")
                 .fontDesign(.rounded)
+                .padding(.bottom, 5)
             ){
                 
                 Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 16){
@@ -189,11 +187,11 @@ struct FeedbackView: View {
                         
                     }
                     
-                    
                 }
             }
-            .padding(.top, 8)
-            .navigationBarBackButtonHidden(true)
+            .listSectionSpacing(.custom(-10))
+          //  .padding(.top, 8)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal) {
                     Text("Resultado")

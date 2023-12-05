@@ -98,8 +98,6 @@ struct CarregamentoView: View {
                 NavigationLink("", destination: FeedbackView(especieFeedback: especieCarregamento,nomeFeedback: nomeCarregamento), isActive: $isFeedbackViewActive)
                     .opacity(0) // Link de navegação invisível
                 )
-            
-            
         }
     
     

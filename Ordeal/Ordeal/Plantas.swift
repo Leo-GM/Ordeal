@@ -8,10 +8,11 @@
 import Foundation
 
 //struct de Modelo de planta
-struct IdentifiablePlantas: Identifiable {
+struct IdentifiablePlantas: Identifiable, Hashable{
     let id = UUID()
     let nome: String
     let especie: String
+    
 //    let imagem: String
         //adicionar logica de transformar String em imagem de perfil
     //adicionar página
@@ -20,6 +21,7 @@ struct IdentifiablePlantas: Identifiable {
 
 //struct de Dados das plantas
 class Plantas: ObservableObject{
+
     @Published var plantas: [IdentifiablePlantas] =
         [IdentifiablePlantas(nome: "Orquídea", especie: "Orchidaceae"),
          IdentifiablePlantas(nome: "Hortênsia", especie: "Hydrangea macrophylla"),

@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct OrdealApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject private var router = Router()
     
 //    init() {
 //            //Use this if NavigationBarTitle is with Large Font
@@ -50,6 +51,7 @@ struct OrdealApp: App {
             TabView{
                 MainView()
                     .tabItem {Label("Jardim", systemImage: "leaf.circle") }
+                    .environmentObject(router)
                 ProdutoView()
                     .tabItem {Label("Produto", systemImage: "sensor") }
                 PerfilView()
@@ -60,6 +62,8 @@ struct OrdealApp: App {
             }
             .accentColor(Color("principalColor"))
             .environmentObject(bluetoothViewModel)
+
+
 
         }
         

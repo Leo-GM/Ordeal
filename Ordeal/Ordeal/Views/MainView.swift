@@ -12,7 +12,9 @@ struct MainView: View {
     
     @State private var showingSheet = false
     @State private var showingAlert = false
-    
+    @EnvironmentObject var router: Router
+    @ObservedObject var plantaData = Plantas()
+
     
     var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
     @State var especie = "Não sei"
@@ -25,19 +27,18 @@ struct MainView: View {
     
     
     var body: some View {
-        NavigationView{
+        NavigationStack(path: $router.path){
+            
                 VStack(alignment: .leading, spacing: 16){
                     
-                    NavigationLink(destination: TodasPlantasView(), label: {
+                    NavigationLink(value: "TodasPlantas"){
                         GardenCard(title: "Todas as plantas", illustration: "garden")
-                            .shadow(radius: 2.5)
-                    })
+                    }
                     
-                    NavigationLink(destination: Text("Tela de última medicao"), label: {
+                    
+                    NavigationLink(value: "UltimaMedicao"){
                         LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
-                            .shadow(radius: 2.5)
-                        
-                    })
+                    }
                 
                 HStack(alignment: .top){
                     
@@ -53,7 +54,6 @@ struct MainView: View {
                         
                     }) {
                         Card(title: "Nova medição", illustration: "novaMedicao")
-                            .shadow(radius: 2.5)
                             
                     } .sheet(isPresented: $showingSheet) {
                         responderSheet                        
@@ -61,15 +61,22 @@ struct MainView: View {
                     
                     
                     NavigationLink(destination: CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome), isActive: $navigaterToNext) {
-                        
                     }
+                    
+                    
+                    
+//                    onChange(of: navigaterToNext, 
+//                             if navigaterToNext{
+//                        NavigationLink(value: "Carregamento"){
+//                            
+//                        }}
+//                    )
+                    
                     
                     Spacer()
                     
                     NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
                         Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
-                            .shadow(radius: 2.5)
-                            .background(Color(red: 255, green: 255, blue: 255))
                     })
                     
                     
@@ -82,6 +89,8 @@ struct MainView: View {
             .padding(16)
             .padding(.top, 16)
             .navigationBarTitle("Meu Jardim")
+            .background(Color(UIColor.systemGray6))
+
             .alert(isPresented: $showingAlert) {
                 Alert(
                     title: Text("Alerta"),
@@ -89,7 +98,21 @@ struct MainView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
+            
+            .navigationDestination(for: String.self){ value in
+                switch value{
+                case "TodasPlantas":
+                    TodasPlantasView()
+                case "UltimaMedicao":
+                    Text("Ultima medicao")
+                case "Carregamento":
+                    CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome)
+                default:
+                    Text("ERRO")
+                }
+            }
         }            .navigationBarBackButtonHidden(true)
+            
 
         
         
@@ -121,12 +144,8 @@ struct MainView: View {
                 
                 Button(action: {
                     
-                   
                         navigaterToNext = true
                         showingSheet = false
-                    
-                    
-                    
                     
                     
                 }) {

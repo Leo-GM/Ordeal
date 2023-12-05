@@ -10,6 +10,7 @@ import SwiftUI
 struct GardenCard: View {
     @State var title: String
     @State var illustration: String
+    @State var plantaData = Plantas()
     
     var body: some View {
         
@@ -17,7 +18,7 @@ struct GardenCard: View {
             
             VStack{
                 Text("")
-                    .font(.body)
+                    .font(.callout)
                     .foregroundColor(Color("BodyColor"))
                     .fontWeight(.regular)
                     .fontDesign(.rounded)
@@ -27,8 +28,8 @@ struct GardenCard: View {
                 HStack{
                     Spacer()
                     
-                    Text("Você possui 5 plantas cadastradas")
-                        .font(.body)
+                    Text("Você possui \(plantaData.plantas.count) plantas cadastradas")
+                        .font(.callout)
                         .foregroundColor(Color("BodyColor"))
                         .fontWeight(.regular)
                         .fontDesign(.rounded)
@@ -56,6 +57,7 @@ struct GardenCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 16))
         
         
+        
     }
     
     
@@ -64,7 +66,7 @@ struct GardenCard: View {
             HStack{
                 Spacer()
                 Text(title)
-                    .font(.body)
+                    .font(.callout)
                     .foregroundColor(.black)
                     .fontWeight(.medium)
                     .fontDesign(.rounded)
