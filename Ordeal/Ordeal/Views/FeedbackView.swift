@@ -8,14 +8,39 @@
 import SwiftUI
 
 struct FeedbackView: View {
-    @ObservedObject private var bluetoothViewModel = BluetoothModel()
-    var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
-    var humidityReceived = 0 //we are going to receive this value from the view before this one
+    
+    @EnvironmentObject var bluetoothViewModel: BluetoothModel
+    
+    @State var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
+    @State var especieFeedback:String
+    @State var nomeFeedback:String
+    
+    
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
     var phosphoroReceived = 0 //we are going to receive this value from the view before this one
     var potassiumReceived = 0 //we are going to receive this value from the view before this one
     
+    
     var body: some View {
+        
+        lazy var humidityReceived = bluetoothViewModel.IntValueReceived
+        
+        VStack {
+            NavigationLink(destination: MainView()) {
+                HStack(spacing: 8) {
+                        Image(systemName: "chevron.left")
+                            .offset(y: -25) // Ajusta a posição verticalmente
+
+                            .frame(width: 22, height: 22) // Define um tamanho fixo, opcional
+                        
+                        Text("Tela Principal")
+                            .offset(y: -25) // Ajusta a posição verticalmente
+                            .padding(.leading, -5) // Ajusta o espaçamento à esquerda
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading) // Alinha à esquerda
+                    .padding(.leading, 16) // Adiciona um espaçamento à esquerda
+            }
+        }
         List {
             
             let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived)
@@ -28,14 +53,14 @@ struct FeedbackView: View {
             Section (){
                 HStack{
                     VStack(alignment: .leading){
-                        Text("Nome da Planta") //we are going to receive this value from the view before this one
+                        Text("\(nomeFeedback)") //we are going to receive this value from the view before this one
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(Color("principalColor"))
                             .padding(.top, 8)
                             .fontDesign(.rounded)
                         
-                        Text("Espécie da Planta") //we are going to receive this value from the view before this one
+                        Text("\(especieFeedback)") //we are going to receive this value from the view before this one
                             .font(.caption)
                             .foregroundColor(Color("BodyColor"))
                             .padding(.bottom, 24)
@@ -174,9 +199,16 @@ struct FeedbackView: View {
                         .font(.system(size: 17))
                 }
             }
-            
+        }.onAppear{
+            if especieFeedback == "Samambaia" {
+                idealHumiditySpecie = 60
+            } else if especieFeedback == "Cacto" {
+                idealHumiditySpecie = 30
+            } else {
+                idealHumiditySpecie = 50
+            }
         }
-
+        
     }
     
 }

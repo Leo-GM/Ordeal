@@ -13,6 +13,8 @@ struct PerfilView: View {
     }
 }
 
+/*
 #Preview {
     PerfilView()
 }
+*/
