@@ -16,7 +16,6 @@ class Router: ObservableObject {
     }
     
     
-    
     func reset() {
         path = []
     }

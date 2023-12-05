@@ -17,28 +17,28 @@ struct MainView: View {
     @State private var showingAlert = false
     @EnvironmentObject var router: Router
     @ObservedObject var plantaData = Plantas()
-
+    
     var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
     @State var especie = "Não sei"
     @State private var navigaterToNext = false
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
     @State var nome = "Joaquim"
-
+    
     
     
     var body: some View {
         NavigationStack(path: $router.path){
             
-                VStack(alignment: .leading, spacing: 16){
-                    
-                    NavigationLink(value: "TodasPlantas"){
-                        GardenCard(title: "Todas as plantas", illustration: "garden")
-                    }
-                    
-                    
-                    NavigationLink(value: "UltimaMedicao"){
-                        LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
-                    }
+            VStack(alignment: .leading, spacing: 16){
+                
+                NavigationLink(value: "TodasPlantas"){
+                    GardenCard(title: "Todas as plantas", illustration: "garden")
+                }
+                
+                
+                NavigationLink(value: "UltimaMedicao"){
+                    LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
+                }
                 
                 HStack(alignment: .top){
                     
@@ -49,14 +49,14 @@ struct MainView: View {
                         }else{
                             showingSheet.toggle()
                         }
-
+                        
                         
                         
                     }) {
                         Card(title: "Nova medição", illustration: "novaMedicao")
-                            
+                        
                     } .sheet(isPresented: $showingSheet) {
-                        responderSheet                        
+                        responderSheet
                     }
                     
                     
@@ -66,10 +66,10 @@ struct MainView: View {
                     NavigationLink(value: "CadastrarPlantas"){
                         Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
                     }
-                
                     
                     
-                   
+                    
+                    
                     
                 }
                 Spacer()
@@ -79,7 +79,7 @@ struct MainView: View {
             .padding(.top, 16)
             .navigationBarTitle("Meu Jardim")
             .background(Color(UIColor.systemGray6))
-
+            
             .alert(isPresented: $showingAlert) {
                 Alert(
                     title: Text("Alerta"),
@@ -138,8 +138,8 @@ struct MainView: View {
                 
                 Button(action: {
                     
-                        navigaterToNext = true
-                        showingSheet = false
+                    navigaterToNext = true
+                    showingSheet = false
                     
                     
                 }) {

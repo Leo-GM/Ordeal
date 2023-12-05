@@ -11,6 +11,8 @@ import SwiftUI
 struct OrdealApp: App {
     let persistenceController = PersistenceController.shared
     @StateObject private var router = Router()
+    @StateObject private var routerProfile = Router()
+
     
 //    init() {
 //            //Use this if NavigationBarTitle is with Large Font
@@ -56,6 +58,7 @@ struct OrdealApp: App {
                     .tabItem {Label("Produto", systemImage: "sensor") }
                 PerfilView()
                     .tabItem {Label("Perfil", systemImage: "person.circle") }
+                    .environmentObject(routerProfile)
 //                TodasPlantasView()
 //                    .tabItem {Label("Teste", systemImage: "bolt.heart") }
                 
