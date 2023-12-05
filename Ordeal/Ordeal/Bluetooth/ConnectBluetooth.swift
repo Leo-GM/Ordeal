@@ -461,7 +461,13 @@ extension BluetoothModel: CBCentralManagerDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("desconectou")
+        Alert(
+            title: Text("Alerta"),
+            message: Text("O sensor foi desconectado. Vamos tentar reconectar, verifique na aba 'produto' se a reconexão foi realizada."),
+            dismissButton: .default(Text("OK"))
+        )
+        
+        centralManager.connect(peripheral, options: nil)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
