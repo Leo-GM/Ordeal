@@ -11,7 +11,7 @@ struct TodasPlantasView: View {
     
     @State private var termoPesquisa = ""
     @ObservedObject var plantaData = Plantas()
-    
+    @State var selection: UUID?
     
     var body: some View {
             List{
@@ -29,17 +29,26 @@ struct TodasPlantasView: View {
                     //Lista de Plantas existentes
                     Section{
                         ForEach(plantaData.filtrarPlantas(por: termoPesquisa)) { planta in
-                            NavigationLink(destination: PlantaIndividualView(planta: planta)) {
-                                // Exiba as informações da planta
+                            ZStack {
                                 PlantaCard(title: planta.nome, especie: planta.especie)
-                            }//.NavigationLink
-                            
+                                NavigationLink(destination: PlantaIndividualView(planta: planta), tag: planta.id, selection: $selection) {
+                                    EmptyView()
+                                }
+                            }
+//                            NavigationLink(destination: PlantaIndividualView(planta: planta),
+//                                           tag: planta.id, selection: $selection) {
+//                                Text(planta.nome)
+//                                // Exiba as informações da planta
+//                                //PlantaCard(title: planta.nome, especie: planta.especie)
+                            //}//.NavigationLink
+                            .listRowSeparator(.visible, edges: .bottom)
                         }
                         .onDelete(perform: plantaData.apagarPlanta)
                     }//.Section
                 
                 }//.VStack
             }//.List
+            .listStyle(.plain)
             .navigationTitle("Todas as Plantas")
         
     }
