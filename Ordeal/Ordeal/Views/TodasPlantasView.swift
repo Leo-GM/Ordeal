@@ -42,7 +42,16 @@ struct TodasPlantasView: View {
                 }//.VStack
             }//.List
             .navigationTitle("Todas as Plantas")
-          
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading:
+                        Button(action: {
+                router.reset()
+                        }) {
+                            Image(systemName: "chevron.left")
+                            Text("Voltar")
+                }
+            )
+            
         
     }
     

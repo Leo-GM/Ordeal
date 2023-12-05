@@ -14,7 +14,7 @@ struct FeedbackView: View {
     @State var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
     @State var especieFeedback:String
     @State var nomeFeedback:String
-    
+    @EnvironmentObject var router: Router
     
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
     var phosphoroReceived = 0 //we are going to receive this value from the view before this one
@@ -25,22 +25,6 @@ struct FeedbackView: View {
         
         lazy var humidityReceived = bluetoothViewModel.IntValueReceived
         
-        VStack {
-            NavigationLink(destination: MainView()) {
-                HStack(spacing: 8) {
-                        Image(systemName: "chevron.left")
-                            .offset(y: -25) // Ajusta a posição verticalmente
-
-                            .frame(width: 22, height: 22) // Define um tamanho fixo, opcional
-                        
-                        Text("Tela Principal")
-                            .offset(y: -25) // Ajusta a posição verticalmente
-                            .padding(.leading, -5) // Ajusta o espaçamento à esquerda
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading) // Alinha à esquerda
-                    .padding(.leading, 16) // Adiciona um espaçamento à esquerda
-            }
-        }
         List {
             
             let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived)
@@ -189,6 +173,14 @@ struct FeedbackView: View {
                     
                 }
             }
+            .navigationBarItems(leading:
+                        Button(action: {
+                router.reset()
+                        }) {
+                            Image(systemName: "chevron.left")
+                            Text("Voltar")
+                }
+            )
             .listSectionSpacing(.custom(-10))
           //  .padding(.top, 8)
             .navigationBarTitleDisplayMode(.inline)
@@ -199,6 +191,7 @@ struct FeedbackView: View {
                         .font(.system(size: 17))
                 }
             }
+            .navigationBarBackButtonHidden(true)
         }.onAppear{
             if especieFeedback == "Samambaia" {
                 idealHumiditySpecie = 60

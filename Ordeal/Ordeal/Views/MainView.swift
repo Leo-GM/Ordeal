@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//enum AppViews: String {
+//    case
+//}
 
 struct MainView: View {
     
@@ -15,15 +18,12 @@ struct MainView: View {
     @EnvironmentObject var router: Router
     @ObservedObject var plantaData = Plantas()
 
-    
     var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
     @State var especie = "Não sei"
     @State private var navigaterToNext = false
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
     @State var nome = "Joaquim"
-    
-    
-    
+
     
     
     var body: some View {
@@ -60,24 +60,13 @@ struct MainView: View {
                     }
                     
                     
-                    NavigationLink(destination: CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome), isActive: $navigaterToNext) {
-                    }
-                    
-                    
-                    
-//                    onChange(of: navigaterToNext, 
-//                             if navigaterToNext{
-//                        NavigationLink(value: "Carregamento"){
-//                            
-//                        }}
-//                    )
-                    
                     
                     Spacer()
                     
-                    NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
+                    NavigationLink(value: "CadastrarPlantas"){
                         Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
-                    })
+                    }
+                
                     
                     
                    
@@ -99,25 +88,30 @@ struct MainView: View {
                 )
             }
             
+            .navigationDestination(isPresented: $navigaterToNext) {
+                CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome)
+                    .onAppear {
+                        router.path.append("Carregamento")
+                    }
+            }
+            
             .navigationDestination(for: String.self){ value in
                 switch value{
                 case "TodasPlantas":
                     TodasPlantasView()
                 case "UltimaMedicao":
                     Text("Ultima medicao")
+                case "CadastrarPlantas":
+                    Text("Tela para cadastrar plantas")
                 case "Carregamento":
                     CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome)
+                case "Feedback":
+                    FeedbackView(especieFeedback: especie,nomeFeedback: nome)
                 default:
                     Text("ERRO")
                 }
             }
         }            .navigationBarBackButtonHidden(true)
-            
-
-        
-        
-        
-        
         
     }
     var responderSheet: some View {

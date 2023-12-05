@@ -25,7 +25,6 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
         }
         .padding()
         
-            
         
     }
 }
@@ -40,67 +39,70 @@ struct CarregamentoView: View {
     @State private var isFeedbackViewActive = false
     @State var especieCarregamento:String
     @State var nomeCarregamento:String
-
-
+    @EnvironmentObject var router: Router
     
     
     @State var timer:Timer?
-        
     let images = ["plantona1", "plantona2", "plantona3"]
     
     
     var body: some View {
-       
-            VStack{
-                
-                Image(images[currentImageIndex])
-                
-                
-                
-                ProgressView(value: progress) {
-                    
-                }
-                .progressViewStyle(RoundedRectProgressViewStyle())
-                
-                Text("Coletando os Dados")
-                    .foregroundColor(.black)
-                    .fontWeight(.bold)
-                    .font(.subheadline)
-                    .padding()
-                    .tint(.purple)
-                
-                
-                
+        
+        VStack{
+            
+            Image(images[currentImageIndex])
+            
+            
+            
+            ProgressView(value: progress) {
                 
             }
-            .navigationBarBackButtonHidden(true)
+            .progressViewStyle(RoundedRectProgressViewStyle())
             
-            .onAppear{
-                timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: continueTimer) { timer in
-                    // Mudando para a próxima imagem
-                    self.currentImageIndex = (self.currentImageIndex + 1) % self.images.count
-                    
-                }
-                Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
-                    
-                    // self.progress += 0.0008
-                    self.progress += 0.00085
-                    
-                    if self.progress > 1.0 {
-                        self.progress = 1.0
-                        self.continueTimer = false
-                        self.timer?.invalidate()
-                        timer.invalidate()
-                        self.isFeedbackViewActive = true
-                    }
-                }
-            }.background(
-                NavigationLink("", destination: FeedbackView(especieFeedback: especieCarregamento,nomeFeedback: nomeCarregamento), isActive: $isFeedbackViewActive)
-                    .opacity(0) // Link de navegação invisível
-                )
+            Text("Coletando os Dados")
+                .foregroundColor(.black)
+                .fontWeight(.bold)
+                .font(.subheadline)
+                .padding()
+                .tint(.purple)
+            
+            
+            
+            
         }
-    
-    
+        .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $isFeedbackViewActive) {
+            FeedbackView(especieFeedback: especieCarregamento,nomeFeedback: nomeCarregamento)
+                .onAppear {
+                    router.path.append("Feedback")
+                }
+        }
+
+
+        .onAppear{
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: continueTimer) { timer in
+                // Mudando para a próxima imagem
+                self.currentImageIndex = (self.currentImageIndex + 1) % self.images.count
+                
+            }
+            Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+                
+                // self.progress += 0.0008
+                self.progress += 0.00085
+                
+                if self.progress > 1.0 {
+                    self.progress = 1.0
+                    self.continueTimer = false
+                    self.timer?.invalidate()
+                    timer.invalidate()
+                    self.isFeedbackViewActive = true
+                }
+            }
+        }
+        
+        
+    }
+
     
 }
 

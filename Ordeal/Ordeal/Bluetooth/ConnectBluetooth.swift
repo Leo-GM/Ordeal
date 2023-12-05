@@ -460,6 +460,10 @@ extension BluetoothModel: CBCentralManagerDelegate {
         
     }
     
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print("desconectou")
+    }
+    
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         
         guard let value = characteristic.value else {
