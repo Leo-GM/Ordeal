@@ -11,9 +11,10 @@ struct GardenCard: View {
     @State var title: String
     @State var illustration: String
     @ObservedObject var plantaData = Plantas()
+    @State var contador: Int
     
     var body: some View {
-        
+
         VStack(alignment: .leading, spacing: 16) {
             
             VStack{
@@ -27,8 +28,7 @@ struct GardenCard: View {
                
                 HStack{
                     Spacer()
-                    
-                    Text("Você possui \(plantaData.plantas.count) plantas cadastradas")
+                    Text("Você possui \(contador) plantas cadastradas")
                         .font(.callout)
                         .foregroundColor(Color("BodyColor"))
                         .fontWeight(.regular)
