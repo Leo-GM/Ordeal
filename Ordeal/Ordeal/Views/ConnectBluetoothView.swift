@@ -13,7 +13,9 @@ struct ConnectBluetoothView: View {
                     Button {
                         if isConnected {
                             // Desconectar se já estiver conectado
-                            isConnected = false
+                            
+                            bluetoothViewModel.disconnect()
+                                    isConnected = false
                         } else {
                             // Conectar se não estiver conectado
                             isConnecting = true
@@ -23,6 +25,7 @@ struct ConnectBluetoothView: View {
                                 isConnected = true
                             
                         }
+                        
                     } label: {
                         HStack {
                             Image(systemName: "antenna.radiowaves.left.and.right")

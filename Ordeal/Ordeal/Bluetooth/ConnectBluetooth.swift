@@ -415,6 +415,23 @@ extension BluetoothModel: CBCentralManagerDelegate {
             }
     }
     
+    func disconnect() {
+        guard let peripheral = connectedPeripheral else {
+            return // Não há nenhum dispositivo conectado, não há nada para desconectar
+        }
+
+        // Desconectar o dispositivo Bluetooth
+        centralManager.cancelPeripheralConnection(peripheral)
+
+        // Limpar a referência ao dispositivo desconectado
+        connectedPeripheral = nil
+        isHC08Connected = false
+    }
+    
+    func clearDiscoveredPeripherals() {
+            discoveredPeripherals.removeAll()
+        }
+    
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         // Handle error
         print("WARNING: Conexão falhou")
