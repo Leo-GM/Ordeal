@@ -41,13 +41,16 @@ struct CarregamentoView: View {
     @State private var isFeedbackViewActive = false
     @State var especieCarregamento:String
     @State var nomeCarregamento:String
+    @State private var textoIndex = 0
 
 
     
     
     @State var timer:Timer?
+    @State var timerTexto:Timer?
         
     let images = ["plantona1", "plantona2", "plantona3"]
+    let textos = ["tentando", "conseguiu", "pegando", "pegou"]
     
     
     var body: some View {
@@ -63,7 +66,7 @@ struct CarregamentoView: View {
                 }
                 .progressViewStyle(RoundedRectProgressViewStyle())
                 
-                Text("Coletando os Dados")
+                Text(textos[textoIndex])
                     .foregroundColor(.black)
                     .fontWeight(.bold)
                     .font(.subheadline)
@@ -80,6 +83,11 @@ struct CarregamentoView: View {
                 timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: continueTimer) { timer in
                     // Mudando para a próxima imagem
                     self.currentImageIndex = (self.currentImageIndex + 1) % self.images.count
+                    
+                }
+                timerTexto = Timer.scheduledTimer(withTimeInterval: 3.5, repeats: continueTimer) { timer in
+                    // Mudando para a próxima imagem
+                    self.textoIndex = (self.textoIndex + 1) % self.textos.count
                     
                 }
                 Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
