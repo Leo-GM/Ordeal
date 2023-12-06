@@ -13,6 +13,8 @@ struct MainView: View {
     @State private var showingSheet = false
     @State private var showingAlert = false
     
+    @ObservedObject var plantaData = Plantas()
+
     
     var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
     @State var especie = "Não sei"
@@ -22,21 +24,21 @@ struct MainView: View {
     
     
     
- 
+    
     var body: some View {
         NavigationStack{
             
-                VStack(alignment: .leading, spacing: 16){
+            VStack(alignment: .leading, spacing: 16){
+                
+                NavigationLink(destination: TodasPlantasView(), label: {
+                    GardenCard(title: "Todas as plantas", illustration: "garden", contador: plantaData.plantas.count)
+                })
+                
+                NavigationLink(destination: Text("Tela de última medicao"), label: {
+                    LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
                     
-                    NavigationLink(destination: TodasPlantasView(), label: {
-                        GardenCard(title: "Todas as plantas", illustration: "garden")
-                    })
-                    
-                    NavigationLink(destination: Text("Tela de última medicao"), label: {
-                        LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
-                        
-                    })
-
+                })
+                
                 HStack(alignment: .top){
                     Button(action: {
                         if !bluetoothViewModel.isHC08Connected {
@@ -47,9 +49,9 @@ struct MainView: View {
                         
                     }) {
                         Card(title: "Nova medição", illustration: "novaMedicao")
-                            
+                        
                     } .sheet(isPresented: $showingSheet) {
-                        responderSheet                        
+                        responderSheet
                     }
                     
                     
@@ -64,7 +66,7 @@ struct MainView: View {
                     })
                     
                     
-                   
+                    
                     
                 }
                 Spacer()
@@ -74,7 +76,7 @@ struct MainView: View {
             .padding(.top, 16)
             .navigationBarTitle("Meu Jardim")
             .background(Color(UIColor.systemGray6))
-
+            
             .alert(isPresented: $showingAlert) {
                 Alert(
                     title: Text("Alerta"),
@@ -83,13 +85,17 @@ struct MainView: View {
                 )
             }
         }            .navigationBarBackButtonHidden(true)
-
+            .onAppear{
+                bluetoothViewModel.flag = 1
+            }
+        
         
         
         
         
         
     }
+
     var responderSheet: some View {
         
         VStack {
@@ -115,10 +121,10 @@ struct MainView: View {
                 
                 Button(action: {
                     
-                   
-                        navigaterToNext = true
-                        showingSheet = false
-                        bluetoothViewModel.flag = 0
+                    
+                    navigaterToNext = true
+                    showingSheet = false
+                    bluetoothViewModel.flag = 0
                     
                     
                     

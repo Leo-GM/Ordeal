@@ -23,6 +23,7 @@ class LastFeedback: ObservableObject {
         let idealHumidity = feedbackManager.idealHumiditySpecie
         let humidityReceived = feedbackManager.humidityReceived
         
+
         var image = BluetoothModel.GeneralPlantState.image
         var instruction = BluetoothModel.GeneralPlantState.instruction
        // var flag = BluetoothModel.fl
