@@ -59,24 +59,7 @@ struct FeedbackView: View {
     var body: some View {
         
         lazy var humidityReceived = bluetoothViewModel.IntValueReceived
-        
-        
-        VStack {
-            NavigationLink(destination: MainView()) {
-                HStack(spacing: 8) {
-                        Image(systemName: "chevron.left")
-                            .offset(y: -25) // Ajusta a posição verticalmente
-
-                            .frame(width: 22, height: 22) // Define um tamanho fixo, opcional
-                        
-                        Text("Tela Principal")
-                            .offset(y: -25) // Ajusta a posição verticalmente
-                            .padding(.leading, -5) // Ajusta o espaçamento à esquerda
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading) // Alinha à esquerda
-                    .padding(.leading, 16) // Adiciona um espaçamento à esquerda
-            }
-        }
+            
         List {
             
             let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived)
@@ -104,7 +87,7 @@ struct FeedbackView: View {
                         
                         HStack{
                             Text("Umidade")
-                                .font(.system(size: 17))
+                                .font(.body)
                                 .fontDesign(.rounded)
                                 .foregroundColor(Color("BodyColor"))
                                 .padding(.trailing, 30)
@@ -229,6 +212,13 @@ struct FeedbackView: View {
                 }
             }
             .padding(.top, 8)
+            .navigationBarItems(leading:
+                                
+                NavigationLink(destination: MainView(), label: {
+                Image(systemName: "chevron.left")
+                Text("Voltar")
+                                })
+            )
             .navigationBarBackButtonHidden(true)
             .toolbar{
                 ToolbarItem(placement: .principal) {
