@@ -403,9 +403,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = FH5247AW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PlanTech;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -436,9 +437,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = FH5247AW32;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PlanTech;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
