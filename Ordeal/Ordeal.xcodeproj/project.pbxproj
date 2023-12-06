@@ -42,7 +42,7 @@
 		74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMeasurementCard.swift; sourceTree = "<group>"; };
 		74A79D5B2B025E0300FE386C /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetooth.swift; sourceTree = "<group>"; };
-		786069D02B03979300149ED5 /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallCard.swift; path = Ordeal/Views/SmallCard.swift; sourceTree = SOURCE_ROOT; };
+		786069D02B03979300149ED5 /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallCard.swift; path = Ordeal/Components/SmallCard.swift; sourceTree = SOURCE_ROOT; };
 		78AD77C42B03B86000812221 /* BluetoothCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCard.swift; sourceTree = "<group>"; };
 		78C30EF22B0268D900C7D4F5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		78D7007E2B18B29E00C52F34 /* TodasPlantasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodasPlantasView.swift; sourceTree = "<group>"; };
@@ -153,10 +153,10 @@
 			children = (
 				744718CC2B06415A00F780C7 /* BigCard.swift */,
 				78AD77C42B03B86000812221 /* BluetoothCard.swift */,
-				786069D02B03979300149ED5 /* SmallCard.swift */,
 				7425D5712B0F746400321F99 /* LineTableFeedback.swift */,
 				74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */,
 				35072F042B14CAB30073D5E1 /* GardenCard.swift */,
+				786069D02B03979300149ED5 /* SmallCard.swift */,
 				78D700802B18B8CD00C52F34 /* PlantaCard.swift */,
 			);
 			path = Components;

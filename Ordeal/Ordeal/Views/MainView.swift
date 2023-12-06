@@ -22,8 +22,7 @@ struct MainView: View {
     
     
     
-    
-    
+ 
     var body: some View {
         NavigationStack{
             
@@ -37,18 +36,14 @@ struct MainView: View {
                         LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
                         
                     })
-                
+
                 HStack(alignment: .top){
-                    
-                    
                     Button(action: {
                         if !bluetoothViewModel.isHC08Connected {
                             showingAlert = true
                         }else{
                             showingSheet.toggle()
                         }
-
-                        
                         
                     }) {
                         Card(title: "Nova medição", illustration: "novaMedicao")
