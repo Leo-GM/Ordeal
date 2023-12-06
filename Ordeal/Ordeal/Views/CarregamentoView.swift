@@ -71,12 +71,6 @@ struct CarregamentoView: View {
             
         }
         .navigationBarBackButtonHidden(true)
-        .navigationDestination(isPresented: $isFeedbackViewActive) {
-            FeedbackView(especieFeedback: especieCarregamento,nomeFeedback: nomeCarregamento)
-                .onAppear {
-                    router.path.append("Feedback")
-                }
-        }
 
 
         .onAppear{
@@ -96,6 +90,7 @@ struct CarregamentoView: View {
                     self.timer?.invalidate()
                     timer.invalidate()
                     self.isFeedbackViewActive = true
+                    router.navigateTo("Feedback")
                 }
             }
         }

@@ -60,15 +60,11 @@ struct MainView: View {
                     }
                     
                     
-                    
                     Spacer()
                     
                     NavigationLink(value: "CadastrarPlantas"){
                         Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
                     }
-                    
-                    
-                    
                     
                     
                 }
@@ -86,13 +82,6 @@ struct MainView: View {
                     message: Text("O Bluetooth não está conectado ao dispositivo HC-08."),
                     dismissButton: .default(Text("OK"))
                 )
-            }
-            
-            .navigationDestination(isPresented: $navigaterToNext) {
-                CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome)
-                    .onAppear {
-                        router.path.append("Carregamento")
-                    }
             }
             
             .navigationDestination(for: String.self){ value in
@@ -140,6 +129,7 @@ struct MainView: View {
                     
                     navigaterToNext = true
                     showingSheet = false
+                    router.navigateTo("Carregamento")
                     
                     
                 }) {

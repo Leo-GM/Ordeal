@@ -19,5 +19,9 @@ class Router: ObservableObject {
     func reset() {
         path = []
     }
+    
+    func navigateTo(_ appRoute: String) {
+            path.append(appRoute)
+        }
 }
 
