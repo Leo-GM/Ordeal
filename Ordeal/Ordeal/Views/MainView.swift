@@ -13,7 +13,7 @@ struct MainView: View {
     @State private var showingSheet = false
     @State private var showingAlert = false
     
-    @ObservedObject var plantaData = Plantas()
+    @ObservedObject var plantaData1 = Plantas()
 
     
     var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
@@ -30,8 +30,8 @@ struct MainView: View {
             
             VStack(alignment: .leading, spacing: 16){
                 
-                NavigationLink(destination: TodasPlantasView(), label: {
-                    GardenCard(title: "Todas as plantas", illustration: "garden", contador: plantaData.plantas.count)
+                NavigationLink(destination: TodasPlantasView(plantaData: plantaData1), label: {
+                    GardenCard(title: "Todas as plantas", illustration: "garden", plantaData: plantaData1)
                 })
                 
                 NavigationLink(destination: Text("Tela de última medicao"), label: {

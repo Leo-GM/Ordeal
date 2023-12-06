@@ -10,7 +10,7 @@ import SwiftUI
 struct TodasPlantasView: View {
     
     @State private var termoPesquisa = ""
-    @ObservedObject var plantaData = Plantas()
+    @ObservedObject var plantaData: Plantas
     
     
     var body: some View {
@@ -45,7 +45,7 @@ struct TodasPlantasView: View {
     }
 }
 
-
-#Preview {
-    TodasPlantasView()
-}
+//
+//#Preview {
+//    TodasPlantasView()
+//}
