@@ -23,9 +23,16 @@ class LastFeedback: ObservableObject {
         let idealHumidity = feedbackManager.idealHumiditySpecie
         let humidityReceived = feedbackManager.humidityReceived
         
-        var image = BluetoothModel.GeneralPlantState.image(<#T##self: BluetoothModel.GeneralPlantState##BluetoothModel.GeneralPlantState#>)
-        var instruction = BluetoothModel.GeneralPlantState.instruction(<#T##self: BluetoothModel.GeneralPlantState##BluetoothModel.GeneralPlantState#>)
+        var image = BluetoothModel.GeneralPlantState.image
+        var instruction = BluetoothModel.GeneralPlantState.instruction
+       // var flag = BluetoothModel.fl
         
+       // if flag == 0 {
+        //    Text("O texto está sendo exibido.")
+          //         }
+        //else {
+            //           Text("O texto está oculto.")
+              //     }
        // while( nao estiver atualizando)
         // guard feedback = ultima atual
            //  image e istrucao
