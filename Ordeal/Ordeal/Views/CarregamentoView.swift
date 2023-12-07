@@ -42,9 +42,8 @@ struct CarregamentoView: View {
     @State var especieCarregamento:String
     @State var nomeCarregamento:String
     @State private var textoIndex = 0
-
-
     
+
     
     @State var timer:Timer?
     @State var timerTexto:Timer?

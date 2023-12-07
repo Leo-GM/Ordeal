@@ -48,6 +48,7 @@ struct OrdealApp: App {
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
             
             @StateObject var bluetoothViewModel = BluetoothModel()
+            @StateObject var lastFeedback = LastFeedback()
 
             TabView{
                 MainView()

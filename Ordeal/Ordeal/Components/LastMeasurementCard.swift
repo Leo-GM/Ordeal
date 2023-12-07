@@ -11,12 +11,10 @@ struct LastMeasurementCard: View {
     @State var title: String
     @State var illustration: String
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
+    @EnvironmentObject var feedbackManager: FeedbackManager
+    @ObservedObject  var lastFeedback: LastFeedback
     
-   // @ObservedObject var especie = Plantas().plantas.last
-
     var body: some View {
-        
-        
         VStack(alignment: .leading, spacing: 16) {
             
             VStack{
@@ -31,7 +29,7 @@ struct LastMeasurementCard: View {
                 HStack{
                     Spacer()
                     
-                    Text("A planta está seca e com poucos nutrientes 􀇾")
+                    Text("\(lastFeedback.instruction)")
                         .font(.callout)
                         .foregroundColor(Color("BodyColor"))
                         .fontWeight(.regular)
@@ -41,7 +39,7 @@ struct LastMeasurementCard: View {
                     
                     Spacer()
                     
-                    Image(illustration)
+                    Image(lastFeedback.imagem)
                         .resizable()
                         .fixedSize()
                        // .aspectRatio(contentMode: .fit)

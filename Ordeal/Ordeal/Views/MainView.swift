@@ -20,8 +20,9 @@ struct MainView: View {
     @State var especie = "Não sei"
     @State private var navigaterToNext = false
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
+    @EnvironmentObject var feedbackManager : FeedbackManager
     @State var nome = "Joaquim"
-    
+    @StateObject var lastFeedback = LastFeedback(feedbackManager: feedbackManager, bluetoothViewModel: bluetoothViewModel)
     
     
     
@@ -35,7 +36,7 @@ struct MainView: View {
                 })
                 
                 NavigationLink(destination: Text("Tela de última medicao"), label: {
-                    LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
+                    LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao", lastFeedback: <#LastFeedback#>)
                     
                 })
                 

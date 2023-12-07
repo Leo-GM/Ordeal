@@ -6,42 +6,45 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 // Classe para gerenciar os dados
 
 class LastFeedback: ObservableObject {
-    @Published var feedbackManager: FeedbackManager
+   // @Publ var feedbackManager: FeedbackManager
+    @EnvironmentObject var bluetoothViewModel: BluetoothModel
 
-    init(feedbackManager: FeedbackManager) {
+    @Published var especie: String = ""
+    @Published var nome: String = ""
+    @Published var idealHumidity: Int = 0
+    @Published var humidityReceived: Int = 0
+    
+    @Published var flag: Int = 0
+    
+    @Published var imagem: String = ""
+    @Published var instruction: String = ""
+    
+
+    init(feedbackManager: FeedbackManager, bluetoothViewModel: BluetoothModel) {
         self.feedbackManager = feedbackManager
-    }
-
-    func acessarVariaveis() {
-        let especie = feedbackManager.especieFeedback
-        let nome = feedbackManager.nomeFeedback
-        let idealHumidity = feedbackManager.idealHumiditySpecie
-        let humidityReceived = feedbackManager.humidityReceived
+            
+        especie = feedbackManager.especieFeedback
+        nome = feedbackManager.nomeFeedback
+        idealHumidity = feedbackManager.idealHumiditySpecie
+        humidityReceived = feedbackManager.humidityReceived
+        flag = bluetoothViewModel.flag
         
-
-        var image = BluetoothModel.GeneralPlantState.image
-        var instruction = BluetoothModel.GeneralPlantState.instruction
-       // var flag = BluetoothModel.fl
+        let humidityStatus = bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumidity, humidityReceived: humidityReceived)
+        let nutrientsStatus = bluetoothViewModel.checkNPKPlantState(nitrogenReceived: 0, phosphorReceived: 0, potassiumReceived: 0)
+        let overallStatus = bluetoothViewModel.checkOveralStatus(humidyStatus: humidityStatus, nutrientsStatus: nutrientsStatus)
         
-       // if flag == 0 {
-        //    Text("O texto está sendo exibido.")
-          //         }
-        //else {
-            //           Text("O texto está oculto.")
-              //     }
-       // while( nao estiver atualizando)
-        // guard feedback = ultima atual
-           //  image e istrucao
-              // mandar para o card
-        // guard feedback = atuliza atual
-            // image e istrucao
-                // mandar para o card
-        // ... acesse outras variáveis conforme necessário ...
+        if flag == 0 { // está recebendo atualização para feedback
+            // Você pode acessar as propriedades e fazer o que precisa aqui
+            imagem = humidityStatus.image()
+            instruction = overallStatus.instruction()
+        }
     }
 }
+
 

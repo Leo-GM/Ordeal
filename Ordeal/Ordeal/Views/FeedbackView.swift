@@ -12,33 +12,11 @@ class FeedbackManager: ObservableObject {
     @Published var especieFeedback: String = ""
     @Published var nomeFeedback: String = ""
     
-    // Propriedades para status geral
-    @Published var overallStatusImage: String = ""
-    @Published var overallStatusInstruction: String = ""
-        
-    /* Propriedades para status de umidade
-    @Published var humidityStatusImage: String = ""
-    @Published var humidityStatusColor: String = ""
-        
-    // Propriedades para status de nutrientes
-    @Published var nutrientsStatusImage: String = ""
-    @Published var nutrientsStatusColor: String = ""
-        
-    // Propriedades específicas para cada nutriente
-    @Published var nitrogenStatus: String = ""
-    @Published var phosphorusStatus: String = ""
-    @Published var potassiumStatus: String = ""
-     */
-    // Propriedades específicas para cada nutriente
-    
     @Published var nitrogenReceived: Int = 0
     @Published var phosphorusReceived: Int = 0
     @Published var potassiumReceived: Int = 0
     @Published var humidityReceived: Int = 0
-     
-    func adicionarFeedback(_ feedback: String) {
-        // implemente conforme necessário
-    }
+    
 }
 
 import SwiftUI
@@ -253,6 +231,7 @@ struct FeedbackView: View {
             feedbackManager.idealHumiditySpecie = idealHumiditySpecie // Pega a umidade de acordo com a especie
         }
         .environmentObject(feedbackManager) // Tornando a instância do FeedbackManager acessível globalmente
+       
     }
     
 }
