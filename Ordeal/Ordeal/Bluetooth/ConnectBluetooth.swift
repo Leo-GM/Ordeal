@@ -370,6 +370,7 @@ extension BluetoothModel: CBCentralManagerDelegate {
             print("Procurando dispositivos...")
         case .poweredOff:
             print("Bluetooth ta desligado")
+            self.isHC08Connected = false
         case .resetting:
             // Wait for next state update and consider logging interruption of Bluetooth service
             print("Bluetooth ta resseting")

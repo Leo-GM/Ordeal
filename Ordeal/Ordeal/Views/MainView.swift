@@ -24,8 +24,6 @@ struct MainView: View {
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
     @State var nome = "Joaquim"
     
-    
-    
     var body: some View {
         NavigationStack(path: $router.path){
             
