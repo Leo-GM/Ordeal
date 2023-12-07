@@ -42,6 +42,7 @@ struct TodasPlantasView: View {
             }//.List
             .navigationTitle("Todas as Plantas")
         
+        
     }
 }
 

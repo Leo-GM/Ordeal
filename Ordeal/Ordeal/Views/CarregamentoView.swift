@@ -49,7 +49,7 @@ struct CarregamentoView: View {
     @State var timerTexto:Timer?
         
     let images = ["plantona1", "plantona2", "plantona3"]
-    let textos = ["tentando", "conseguiu", "pegando", "pegou"]
+    let textos = ["tentando...", "conseguiu...", "pegando...", "pegou..."]
     
     
     var body: some View {
