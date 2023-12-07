@@ -7,27 +7,17 @@
 
 import Foundation
 
-class FeedbackManager: ObservableObject {
-    @Published var idealHumiditySpecie = 50
-    @Published var especieFeedback: String = ""
-    @Published var nomeFeedback: String = ""
-    
-    @Published var nitrogenReceived: Int = 0
-    @Published var phosphorusReceived: Int = 0
-    @Published var potassiumReceived: Int = 0
-    @Published var humidityReceived: Int = 0
-    
-}
-
 import SwiftUI
 
 struct FeedbackView: View {
-    @StateObject var feedbackManager = FeedbackManager() // Criando a instância do FeedbackManager
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
+    @EnvironmentObject var lastfeedback: LastFeedback
     
     @State var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
     @State var especieFeedback:String
     @State var nomeFeedback:String
+    //@State var instructionCardLastFeedback: String
+    //@State var imageCardLastFeedback: String
     
     var nitrogenReceived = 0 //we are going to receive this value from the view before this one
     var phosphoroReceived = 0 //we are going to receive this value from the view before this one
@@ -63,6 +53,12 @@ struct FeedbackView: View {
             let nitrogenStatus = bluetoothViewModel.checkNitrogenPlantState(nitrogenReceived: nitrogenReceived)
             let phosphoroStatus = bluetoothViewModel.checkPhosphoroPlantState(phosphoroReceived: phosphoroReceived)
             let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
+            
+           
+//            instructionCardLastFeedback = overallStatus.instruction()
+//            imageCardLastFeedback = humidityStatus.image()
+            
+           
             
             
             Section (){
@@ -216,10 +212,6 @@ struct FeedbackView: View {
                 }
             }
         }.onAppear{
-            // Configurando o FeedbackManager
-            feedbackManager.especieFeedback = especieFeedback
-            feedbackManager.nomeFeedback = nomeFeedback
-            feedbackManager.humidityReceived = humidityReceived
             if especieFeedback == "Samambaia" {
                 idealHumiditySpecie = 60
             } else if especieFeedback == "Cacto" {
@@ -227,10 +219,13 @@ struct FeedbackView: View {
             } else {
                 idealHumiditySpecie = 50
             }
+            
+            lastfeedback.updateValues(image: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: idealHumiditySpecie).image(), instruction: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived).instruction())
+            
+           
 
-            feedbackManager.idealHumiditySpecie = idealHumiditySpecie // Pega a umidade de acordo com a especie
+            
         }
-        .environmentObject(feedbackManager) // Tornando a instância do FeedbackManager acessível globalmente
        
     }
     

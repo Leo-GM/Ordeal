@@ -48,11 +48,12 @@ struct OrdealApp: App {
                 //.environment(\.managedObjectContext, persistenceController.container.viewContext)
             
             @StateObject var bluetoothViewModel = BluetoothModel()
-            @StateObject var lastFeedback = LastFeedback()
+            @StateObject var lastFeedback = LastFeedback(imagem: "empty", instruction: "Nenhuma medição realizada ainda...")
 
             TabView{
                 MainView()
                     .tabItem {Label("Jardim", systemImage: "leaf.circle") }
+                    .environmentObject(lastFeedback)
                 ProdutoView()
                     .tabItem {Label("Produto", systemImage: "sensor") }
                 PerfilView()

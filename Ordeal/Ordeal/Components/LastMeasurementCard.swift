@@ -11,8 +11,7 @@ struct LastMeasurementCard: View {
     @State var title: String
     @State var illustration: String
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
-    @EnvironmentObject var feedbackManager: FeedbackManager
-    @ObservedObject  var lastFeedback: LastFeedback
+    @EnvironmentObject var lastFeedback: LastFeedback
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -30,16 +29,18 @@ struct LastMeasurementCard: View {
                     Spacer()
                     
                     Text("\(lastFeedback.instruction)")
-                        .font(.callout)
-                        .foregroundColor(Color("BodyColor"))
-                        .fontWeight(.regular)
-                        .fontDesign(.rounded)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
+                            .font(.callout)
+                            .foregroundColor(Color("BodyColor"))
+                            .fontWeight(.regular)
+                            .fontDesign(.rounded)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                       
                     
                     Spacer()
                     
-                    Image(lastFeedback.imagem)
+                    Image("ultimaMedicao")
                         .resizable()
                         .fixedSize()
                        // .aspectRatio(contentMode: .fit)
