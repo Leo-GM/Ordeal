@@ -34,8 +34,8 @@ struct MainView: View {
                     GardenCard(title: "Todas as plantas", illustration: "garden", contador: plantaData.plantas.count)
                 })
                 
-                NavigationLink(destination: LastFeedbackView(especieFeedback: lastFeedback.especie, nomeFeedback: lastFeedback.nomePlanta, humidityReceived: lastFeedback.humidityReceived), label: {
-                    LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
+                NavigationLink(destination: Text("Tela de última medicao"), label: {
+                    LastMeasurementCard(title: "Última medição", illustration: "ultimaMedicao")
                     
                 })
                 
@@ -60,6 +60,7 @@ struct MainView: View {
                     }
                     
                     Spacer()
+                    
                     
                     NavigationLink(destination: Text("Tela para cadastrar plantas"), label: {
                         Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
@@ -106,7 +107,7 @@ struct MainView: View {
                     showingSheet = false
                     
                 }) {
-                    Text("Cancel")
+                    Text("Cancelar")
                         .padding(.top, 10)
                         .foregroundColor(.blue)
                 }

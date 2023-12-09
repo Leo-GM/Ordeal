@@ -29,7 +29,7 @@ struct GardenCard: View {
                
                 HStack{
                     Spacer()
-                    Text("Você possui \(contador) plantas cadastradas")
+                    Text("Você possui \(contador) plantas cadastradas.")
                         .font(.callout)
                         .foregroundColor(Color("BodyColor"))
                         .fontWeight(.regular)
