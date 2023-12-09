@@ -14,15 +14,26 @@ import SwiftUI
 class LastFeedback: ObservableObject {
     @Published var imagem: String
     @Published var instruction: String
+    @Published var especie: String
+    @Published var nomePlanta: String
+    @Published var humidityReceived: Int
+
     
-    init(imagem: String, instruction: String) {
+    init(imagem: String, instruction: String, especie: String, nomePlanta: String, humidityReceived: Int) {
         self.imagem = imagem
         self.instruction = instruction
+        self.especie = especie
+        self.nomePlanta = nomePlanta
+        self.humidityReceived = humidityReceived
     }
     
-    func updateValues(image: String, instruction:String){
+    func updateValues(image: String, instruction:String, especie: String, nomePlanta: String, humidityReceived: Int){
         self.imagem = image
         self.instruction = instruction
+        self.especie = especie
+        self.nomePlanta = nomePlanta
+        self.humidityReceived = humidityReceived
+        
     }
 }
 

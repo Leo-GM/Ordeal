@@ -28,7 +28,6 @@ struct FeedbackView: View {
         
         lazy var humidityReceived = bluetoothViewModel.IntValueReceived
         
-        
         VStack {
             NavigationLink(destination: MainView()) {
                 HStack(spacing: 8) {
@@ -219,8 +218,8 @@ struct FeedbackView: View {
             } else {
                 idealHumiditySpecie = 50
             }
-            
-            lastfeedback.updateValues(image: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: idealHumiditySpecie).image(), instruction: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived).instruction())
+                        
+            lastfeedback.updateValues(image: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: idealHumiditySpecie).image(), instruction: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived).instruction(), especie: especieFeedback, nomePlanta: nomeFeedback, humidityReceived: humidityReceived )
             
            
 
