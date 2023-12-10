@@ -13,6 +13,8 @@ struct RootView: View {
     @StateObject private var routerProfile = Router()
     @StateObject var bluetoothViewModel = BluetoothModel()
     @StateObject var lastFeedback = LastFeedback(imagem: "", instruction: "Nenhuma medicao realizada", especie: "", nomePlanta: "", humidityReceived: 653)
+    @StateObject var plantaData = Plantas()
+
 
     
     var body: some View {
@@ -21,6 +23,7 @@ struct RootView: View {
                 .tabItem {Label("Jardim", systemImage: "leaf.circle") }
                 .environmentObject(router)
                 .environmentObject(lastFeedback)
+                .environmentObject(plantaData)
             ProdutoView()
                 .tabItem {Label("Produto", systemImage: "sensor") }
             PerfilView()

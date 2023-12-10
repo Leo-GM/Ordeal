@@ -11,7 +11,7 @@ import SwiftUI
 struct GardenCard: View {
     @State var title: String
     @State var illustration: String
-    @State var plantaData = Plantas()
+    @EnvironmentObject var plantaData: Plantas
     
     var body: some View {
 
@@ -28,14 +28,23 @@ struct GardenCard: View {
                
                 HStack{
                     Spacer()
-                    Text("Você possui \($plantaData.plantas.count) plantas cadastradas")
-                        .font(.callout)
-                        .foregroundColor(Color("BodyColor"))
-                        .fontWeight(.regular)
-                        .fontDesign(.rounded)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
+                    if $plantaData.plantas.count == 0{
+                        Text("Você ainda não possui nenhuma planta cadastrada.")
+                            .font(.callout)
+                            .foregroundColor(Color("BodyColor"))
+                            .fontWeight(.regular)
+                            .fontDesign(.rounded)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }else{
+                        Text("Você possui \($plantaData.plantas.count) plantas cadastradas")
+                            .font(.callout)
+                            .foregroundColor(Color("BodyColor"))
+                            .fontWeight(.regular)
+                            .fontDesign(.rounded)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                     Spacer()
                     
                     Image(illustration)

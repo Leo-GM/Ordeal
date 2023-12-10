@@ -23,14 +23,7 @@ struct IdentifiablePlantas: Identifiable, Hashable{
 class Plantas: ObservableObject{
 
     @Published var plantas: [IdentifiablePlantas] =
-        [IdentifiablePlantas(nome: "Orquídea", especie: "Orchidaceae"),
-         IdentifiablePlantas(nome: "Hortênsia", especie: "Hydrangea macrophylla"),
-         IdentifiablePlantas(nome: "Jibóia", especie: "Epipremnum pinnatum"),
-         IdentifiablePlantas(nome: "Margarida", especie: "Leucanthemum vulgare"),
-         IdentifiablePlantas(nome: "Alecrim", especie: "Rosmarinus officinalis"),
-         IdentifiablePlantas(nome: "Bromélia", especie: "Bromeliaceae"),
-         IdentifiablePlantas(nome: "Samambaia", especie: "Nephrolepis exaltata")
-        ]
+        []
     
     //Função para adicionar novas plantas
     func adicionarPlanta(nome: String, especie: String) {

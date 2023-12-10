@@ -11,7 +11,7 @@ struct TodasPlantasView: View {
     
     @State private var termoPesquisa = ""
     @EnvironmentObject var router: Router
-    @ObservedObject var plantaData: Plantas
+    @EnvironmentObject var plantaData: Plantas
     
     @State private var selectedPlanta: IdentifiablePlantas? = nil
     
@@ -30,7 +30,7 @@ struct TodasPlantasView: View {
                     }//.Section
                     
                     //Lista de Plantas existentes
-                    Section{
+                    Section(){
                         ForEach(plantaData.filtrarPlantas(por: termoPesquisa)) { planta in
 
                             PlantaCard(title: planta.nome, especie: planta.especie)
@@ -53,6 +53,7 @@ struct TodasPlantasView: View {
                     }//.Section
                     
                 }//.VStack
+                
             }//.List
             .listStyle(.plain)
             .navigationTitle("Todas as Plantas")
@@ -79,8 +80,6 @@ struct TodasPlantasView: View {
 //                    PlantaCard(title: planta.nome, especie: planta.especie)
 //            }
           
-        
-        
     }
     
 }

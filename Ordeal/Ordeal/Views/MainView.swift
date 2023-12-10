@@ -14,12 +14,15 @@ import SwiftUI
 struct MainView: View {
     
     @State private var showingSheet = false
+    @State private var showingSheetRegister = false
     @State private var showingAlert = false
     @EnvironmentObject var router: Router
-    @ObservedObject var plantaData = Plantas()
+    @EnvironmentObject var plantaData: Plantas
+    @State private var nomePlantaCadastro: String = ""
+
     
-    var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
-    @State var especie = "Espécie não informada"
+    var especies = ["Espécie desconhecida", "Orégano", "Samambaia", "Cacto"]
+    @State var especie = "Espécie desconhecida"
     @State private var navigaterToNext = false
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
     @State var nome = "Plantinha sem nome"
@@ -61,9 +64,15 @@ struct MainView: View {
                     
                     Spacer()
                     
-                    NavigationLink(value: "CadastrarPlantas"){
+                    Button(action: {
+                            showingSheetRegister.toggle()
+     
+                    }) {
                         Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
+                    } .sheet(isPresented: $showingSheetRegister) {
+                        responderSheetRegister
                     }
+                   
                     
                     
                 }
@@ -86,7 +95,7 @@ struct MainView: View {
             .navigationDestination(for: String.self){ value in
                 switch value{
                 case "TodasPlantas":
-                    TodasPlantasView(plantaData: plantaData)
+                    TodasPlantasView()
                 case "UltimaMedicao":
                     LastFeedbackView(especieFeedback: lastFeedback.especie, nomeFeedback: lastFeedback.nomePlanta, humidityReceived: lastFeedback.humidityReceived)
                 case "CadastrarPlantas":
@@ -180,5 +189,83 @@ struct MainView: View {
         }            .background(Color(UIColor.systemGray6))
 
     }
+    
+    var responderSheetRegister: some View {
+        VStack {
+            HStack{
+                Spacer()
+                Button(action: {
+                    
+                    showingSheetRegister = false
+                    
+                }) {
+                    Text("Cancelar")
+                        .padding(.top, 10)
+                        .foregroundColor(Color("principalColor"))
+                }
+                
+                Spacer()
+                
+                Text("Selecione a espécie")
+                    .padding(.top, 10)
+                    .foregroundColor(.primary)
+                    .fontWeight(.bold)
+                Spacer()
+                
+                Button(action: {
+    
+                    showingSheetRegister = false
+                    plantaData.adicionarPlanta(nome: nomePlantaCadastro, especie: especie)
+                    nomePlantaCadastro = ""
+   
+                }) {
+                    Text("Cadastrar")
+                        .padding(.top, 10)
+                        .foregroundColor(Color("principalColor"))
+                        .fontWeight(.bold)
+                }
+                
+                Spacer()
+            }
+            
+            
+            Spacer()
+            
+            VStack {
+                List{
+                    HStack{
+                        
+                        Spacer()
+                        
+                        Picker("Espécie", selection: $especie) {
+                            ForEach(especies, id: \.self) {
+                                Text($0)
+                            }
+                        }.presentationDetents([.height(UIScreen.main.bounds.height / 4)])
+                        Spacer()
+                    }
+                    HStack{
+                        Spacer()
+                        TextField("Digite o nome da planta aqui...", text: $nomePlantaCadastro)
+                            .onTapGesture {
+                                hideKeyboard()
+                            }
+                            .onSubmit {
+                                hideKeyboard()
+                            }
+                        Spacer()
+                    }
+                }
+                Spacer()
+            }
+            
+            Spacer()
+        }            .background(Color(UIColor.systemGray6))
+
+    }
+    func hideKeyboard() {
+           // Código para esconder o teclado
+           UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+       }
 }
 

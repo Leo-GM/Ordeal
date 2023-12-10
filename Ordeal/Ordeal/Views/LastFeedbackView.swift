@@ -40,7 +40,7 @@ struct LastFeedbackView: View {
                         }
                         Divider()
                             .padding(.horizontal, 8)
-                        Text("Adorariamos ajudar você a cuidar da suas plantinhas, faça sua primeira medição na tela 'Meu jardim' em 'Nova medição'")
+                        Text("    Aqui será exibido as informações em relação a última vez que você checou a saúde de sua planta.\n    Vamos juntos cuidar de suas plantinhas, faça sua primeira medição em 'Meu Jardim' depois em  'Nova medição'")
                             .font(.body)
                             .foregroundColor(Color("BodyColor"))
                     }
