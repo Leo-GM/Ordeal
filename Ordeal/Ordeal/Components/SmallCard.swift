@@ -1,8 +1,8 @@
 //
-//  Card.swift
+//  SmallCard.swift
 //  Ordeal
 //
-//  Created by Caio Lopes on 14/11/23.
+//  Created by Caio Gomes Piteli on 10/12/23.
 //
 
 import SwiftUI

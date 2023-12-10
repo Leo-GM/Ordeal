@@ -12,11 +12,11 @@
 		744718CD2B06415A00F780C7 /* BigCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CC2B06415A00F780C7 /* BigCard.swift */; };
 		744718CF2B0647F900F780C7 /* ConnectBluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */; };
 		74876CD22B10ECF20059EBF5 /* LastMeasurementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */; };
+		7495C8662B25F4250040961C /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7495C8652B25F4250040961C /* SmallCard.swift */; };
 		74A79D5C2B025E0300FE386C /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A79D5B2B025E0300FE386C /* Feedback.swift */; };
 		74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */; };
 		74CCC9502B20BD0500EBBACF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CCC94F2B20BD0500EBBACF /* RootView.swift */; };
 		74F92B102B1E9D7D0073F0FF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F92B0F2B1E9D7D0073F0FF /* Router.swift */; };
-		786069D12B03979300149ED5 /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786069D02B03979300149ED5 /* SmallCard.swift */; };
 		78AD77C52B03B86000812221 /* BluetoothCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AD77C42B03B86000812221 /* BluetoothCard.swift */; };
 		78C30EF32B0268D900C7D4F5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C30EF22B0268D900C7D4F5 /* MainView.swift */; };
 		78D7007F2B18B29E00C52F34 /* TodasPlantasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7007E2B18B29E00C52F34 /* TodasPlantasView.swift */; };
@@ -42,11 +42,11 @@
 		744718CC2B06415A00F780C7 /* BigCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigCard.swift; sourceTree = "<group>"; };
 		744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetoothView.swift; sourceTree = "<group>"; };
 		74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMeasurementCard.swift; sourceTree = "<group>"; };
+		7495C8652B25F4250040961C /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCard.swift; sourceTree = "<group>"; };
 		74A79D5B2B025E0300FE386C /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetooth.swift; sourceTree = "<group>"; };
 		74CCC94F2B20BD0500EBBACF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		74F92B0F2B1E9D7D0073F0FF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		786069D02B03979300149ED5 /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SmallCard.swift; path = Ordeal/Views/SmallCard.swift; sourceTree = SOURCE_ROOT; };
 		78AD77C42B03B86000812221 /* BluetoothCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCard.swift; sourceTree = "<group>"; };
 		78C30EF22B0268D900C7D4F5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		78D7007E2B18B29E00C52F34 /* TodasPlantasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodasPlantasView.swift; sourceTree = "<group>"; };
@@ -158,11 +158,11 @@
 			children = (
 				744718CC2B06415A00F780C7 /* BigCard.swift */,
 				78AD77C42B03B86000812221 /* BluetoothCard.swift */,
-				786069D02B03979300149ED5 /* SmallCard.swift */,
 				7425D5712B0F746400321F99 /* LineTableFeedback.swift */,
 				74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */,
 				35072F042B14CAB30073D5E1 /* GardenCard.swift */,
 				78D700802B18B8CD00C52F34 /* PlantaCard.swift */,
+				7495C8652B25F4250040961C /* SmallCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -272,6 +272,7 @@
 				744718CF2B0647F900F780C7 /* ConnectBluetoothView.swift in Sources */,
 				74876CD22B10ECF20059EBF5 /* LastMeasurementCard.swift in Sources */,
 				EA51DE3B2AFD20CD0031FFD3 /* FeedbackView.swift in Sources */,
+				7495C8662B25F4250040961C /* SmallCard.swift in Sources */,
 				74F92B102B1E9D7D0073F0FF /* Router.swift in Sources */,
 				EA9AA5342AFE512700C5AEDC /* ProdutoView.swift in Sources */,
 				EA66A3B12AE93BA80014AF6D /* Ordeal.xcdatamodeld in Sources */,
@@ -280,7 +281,6 @@
 				EA66A3A52AE93BA80014AF6D /* OrdealApp.swift in Sources */,
 				EA9AA5362AFE513600C5AEDC /* PerfilView.swift in Sources */,
 				EAE130BB2B1E171D0029C4B7 /* LastFeedback.swift in Sources */,
-				786069D12B03979300149ED5 /* SmallCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,9 +411,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = CB9GV5Y7N2;
+				DEVELOPMENT_TEAM = Q92SD7R6D3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PlanTech;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -444,9 +445,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = CB9GV5Y7N2;
+				DEVELOPMENT_TEAM = Q92SD7R6D3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = PlanTech;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Allow use to connect to sensors";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

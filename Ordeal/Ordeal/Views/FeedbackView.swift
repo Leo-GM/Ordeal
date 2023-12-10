@@ -5,10 +5,46 @@
 //  Created by Leonardo Guimaraes on 09/11/23.
 //
 
+import Foundation
+
+class FeedbackManager: ObservableObject {
+    @Published var idealHumiditySpecie = 50
+    @Published var especieFeedback: String = ""
+    @Published var nomeFeedback: String = ""
+    
+    // Propriedades para status geral
+    @Published var overallStatusImage: String = ""
+    @Published var overallStatusInstruction: String = ""
+        
+    /* Propriedades para status de umidade
+    @Published var humidityStatusImage: String = ""
+    @Published var humidityStatusColor: String = ""
+        
+    // Propriedades para status de nutrientes
+    @Published var nutrientsStatusImage: String = ""
+    @Published var nutrientsStatusColor: String = ""
+        
+    // Propriedades específicas para cada nutriente
+    @Published var nitrogenStatus: String = ""
+    @Published var phosphorusStatus: String = ""
+    @Published var potassiumStatus: String = ""
+     */
+    // Propriedades específicas para cada nutriente
+    
+    @Published var nitrogenReceived: Int = 0
+    @Published var phosphorusReceived: Int = 0
+    @Published var potassiumReceived: Int = 0
+    @Published var humidityReceived: Int = 0
+     
+    func adicionarFeedback(_ feedback: String) {
+        // implemente conforme necessário
+    }
+}
+
 import SwiftUI
 
 struct FeedbackView: View {
-    
+    @StateObject var feedbackManager = FeedbackManager() // Criando a instância do FeedbackManager
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
     
     @State var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
@@ -51,7 +87,7 @@ struct FeedbackView: View {
                         
                         HStack{
                             Text("Umidade")
-                                .font(.system(size: 17))
+                                .font(.body)
                                 .fontDesign(.rounded)
                                 .foregroundColor(Color("BodyColor"))
                                 .padding(.trailing, 30)
@@ -63,6 +99,7 @@ struct FeedbackView: View {
                                 .foregroundColor(Color(humidityStatus.color()) )
                             
                         }.padding(.bottom, 2)
+                           
                         
                         Spacer()
                         
@@ -193,6 +230,10 @@ struct FeedbackView: View {
             }
             .navigationBarBackButtonHidden(true)
         }.onAppear{
+            // Configurando o FeedbackManager
+            feedbackManager.especieFeedback = especieFeedback
+            feedbackManager.nomeFeedback = nomeFeedback
+            feedbackManager.humidityReceived = humidityReceived
             if especieFeedback == "Samambaia" {
                 idealHumiditySpecie = 60
             } else if especieFeedback == "Cacto" {
@@ -200,8 +241,10 @@ struct FeedbackView: View {
             } else {
                 idealHumiditySpecie = 50
             }
+
+            feedbackManager.idealHumiditySpecie = idealHumiditySpecie // Pega a umidade de acordo com a especie
         }
-        
+        .environmentObject(feedbackManager) // Tornando a instância do FeedbackManager acessível globalmente
     }
     
 }

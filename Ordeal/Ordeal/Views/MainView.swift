@@ -39,8 +39,6 @@ struct MainView: View {
                 }
                 
                 HStack(alignment: .top){
-                    
-                    
                     Button(action: {
                         if !bluetoothViewModel.isHC08Connected {
                             showingAlert = true
@@ -85,7 +83,7 @@ struct MainView: View {
             .navigationDestination(for: String.self){ value in
                 switch value{
                 case "TodasPlantas":
-                    TodasPlantasView()
+                    TodasPlantasView(plantaData: plantaData)
                 case "UltimaMedicao":
                     Text("Ultima medicao")
                 case "CadastrarPlantas":
@@ -99,9 +97,19 @@ struct MainView: View {
                 }
             }
         }            .navigationBarBackButtonHidden(true)
+            .onAppear{
+                bluetoothViewModel.flag = 1
+            }
+        
+        
+        
+        
+        
         
     }
+
     var responderSheet: some View {
+        
         VStack {
             HStack{
                 Spacer()
@@ -128,6 +136,11 @@ struct MainView: View {
                     navigaterToNext = true
                     showingSheet = false
                     router.navigateTo("Carregamento")
+                    
+                    
+                    bluetoothViewModel.flag = 0
+                    
+                    
                     
                     
                 }) {

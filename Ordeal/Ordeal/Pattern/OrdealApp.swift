@@ -8,6 +8,8 @@
 import SwiftUI
 
 @main
+
+
 struct OrdealApp: App {
     let persistenceController = PersistenceController.shared
     

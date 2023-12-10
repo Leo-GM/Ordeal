@@ -11,6 +11,8 @@ struct LastMeasurementCard: View {
     @State var title: String
     @State var illustration: String
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
+    
+   // @ObservedObject var especie = Plantas().plantas.last
 
     var body: some View {
         
