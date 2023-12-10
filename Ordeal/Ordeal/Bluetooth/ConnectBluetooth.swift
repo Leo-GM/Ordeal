@@ -110,6 +110,18 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
                 return "arrow.up"
             }
         }
+        
+        func instruction() -> String{
+            switch self {
+            case .lack:
+                return "A planta está seca, atenção!"
+            case .ideal:
+                return "A planta esta com umidade ideal, parabéns!"
+            case .excess:
+                return "A planta está enxarcada, atenção!"
+            }
+        }
+        
     }
     
     enum NPKPlantState {

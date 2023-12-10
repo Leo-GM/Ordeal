@@ -7,45 +7,11 @@
 
 import Foundation
 
-class FeedbackManager: ObservableObject {
-    @Published var idealHumiditySpecie = 50
-    @Published var especieFeedback: String = ""
-    @Published var nomeFeedback: String = ""
-    
-    // Propriedades para status geral
-    @Published var overallStatusImage: String = ""
-    @Published var overallStatusInstruction: String = ""
-        
-    /* Propriedades para status de umidade
-    @Published var humidityStatusImage: String = ""
-    @Published var humidityStatusColor: String = ""
-        
-    // Propriedades para status de nutrientes
-    @Published var nutrientsStatusImage: String = ""
-    @Published var nutrientsStatusColor: String = ""
-        
-    // Propriedades específicas para cada nutriente
-    @Published var nitrogenStatus: String = ""
-    @Published var phosphorusStatus: String = ""
-    @Published var potassiumStatus: String = ""
-     */
-    // Propriedades específicas para cada nutriente
-    
-    @Published var nitrogenReceived: Int = 0
-    @Published var phosphorusReceived: Int = 0
-    @Published var potassiumReceived: Int = 0
-    @Published var humidityReceived: Int = 0
-     
-    func adicionarFeedback(_ feedback: String) {
-        // implemente conforme necessário
-    }
-}
-
 import SwiftUI
 
 struct FeedbackView: View {
-    @StateObject var feedbackManager = FeedbackManager() // Criando a instância do FeedbackManager
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
+    @EnvironmentObject var lastfeedback: LastFeedback
     
     @State var idealHumiditySpecie = 50 //we are going to receive this value from the view before this one
     @State var especieFeedback:String
@@ -69,6 +35,13 @@ struct FeedbackView: View {
             let nitrogenStatus = bluetoothViewModel.checkNitrogenPlantState(nitrogenReceived: nitrogenReceived)
             let phosphoroStatus = bluetoothViewModel.checkPhosphoroPlantState(phosphoroReceived: phosphoroReceived)
             let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
+            
+            
+            //            instructionCardLastFeedback = overallStatus.instruction()
+            //            imageCardLastFeedback = humidityStatus.image()
+            
+            
+            
             
             Section (){
                 HStack{
@@ -99,7 +72,7 @@ struct FeedbackView: View {
                                 .foregroundColor(Color(humidityStatus.color()) )
                             
                         }.padding(.bottom, 2)
-                           
+                        
                         
                         Spacer()
                         
@@ -124,6 +97,7 @@ struct FeedbackView: View {
                     
                     VStack{
                         
+                        
                         ZStack{
                             Image("feedbackFundoCard")
                                 .resizable()
@@ -138,25 +112,26 @@ struct FeedbackView: View {
                     }
                 }
             }
-        //  .listRowInsets(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-           .listSectionSpacing(.custom(-10))
-        
-                Section(header: Text("Instrução")
-                    .fontDesign(.rounded)
-                    .padding(.bottom, 0)
-                ){
-                    Text(overallStatus.instruction())
-                        .font(.body)
-                        .fontWeight(.regular)
-                        .foregroundColor(Color("BodyColor"))
-                        .fontDesign(.rounded)
-            }
-            .listSectionSpacing(.custom(0))
             
-            Section(header: 
-                Text("Valores da medição")
+            Section(header:
+                        Text("Instrução")
                 .fontDesign(.rounded)
-                .padding(.bottom, 5)
+            ){
+                
+                
+                
+                
+                Text(overallStatus.instruction())
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .foregroundColor(Color("BodyColor"))
+                    .fontDesign(.rounded)
+                
+            }
+            
+            Section(header:
+                        Text("Valores da medição")
+                .fontDesign(.rounded)
             ){
                 
                 Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 16){
@@ -208,32 +183,28 @@ struct FeedbackView: View {
                         
                     }
                     
+                    
                 }
             }
+            .padding(.top, 8)
+            .toolbar{
+                ToolbarItem(placement: .principal) {
+                    Text("Resultado")
+                        .fontWeight(.semibold)
+                        .font(.body)
+                }
+            }
+            .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
                         Button(action: {
                 router.reset()
                         }) {
                             Image(systemName: "chevron.left")
-                            Text("Voltar")
+                            Text("Meu Jardim")
                 }
             )
-            .listSectionSpacing(.custom(-10))
-          //  .padding(.top, 8)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                ToolbarItem(placement: .principal) {
-                    Text("Resultado")
-                        .fontWeight(.semibold)
-                        .font(.system(size: 17))
-                }
-            }
-            .navigationBarBackButtonHidden(true)
+            
         }.onAppear{
-            // Configurando o FeedbackManager
-            feedbackManager.especieFeedback = especieFeedback
-            feedbackManager.nomeFeedback = nomeFeedback
-            feedbackManager.humidityReceived = humidityReceived
             if especieFeedback == "Samambaia" {
                 idealHumiditySpecie = 60
             } else if especieFeedback == "Cacto" {
@@ -241,10 +212,14 @@ struct FeedbackView: View {
             } else {
                 idealHumiditySpecie = 50
             }
+                        
+            lastfeedback.updateValues(image: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: idealHumiditySpecie).image(), instruction: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived).instruction(), especie: especieFeedback, nomePlanta: nomeFeedback, humidityReceived: humidityReceived )
+            
+           
 
-            feedbackManager.idealHumiditySpecie = idealHumiditySpecie // Pega a umidade de acordo com a especie
+            
         }
-        .environmentObject(feedbackManager) // Tornando a instância do FeedbackManager acessível globalmente
+       
     }
     
 }

@@ -23,6 +23,9 @@ struct MainView: View {
     @State private var navigaterToNext = false
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
     @State var nome = "Joaquim"
+    @EnvironmentObject var lastFeedback: LastFeedback
+    
+    
     
     var body: some View {
         NavigationStack(path: $router.path){
@@ -85,7 +88,7 @@ struct MainView: View {
                 case "TodasPlantas":
                     TodasPlantasView(plantaData: plantaData)
                 case "UltimaMedicao":
-                    Text("Ultima medicao")
+                    LastFeedbackView(especieFeedback: lastFeedback.especie, nomeFeedback: lastFeedback.nomePlanta, humidityReceived: lastFeedback.humidityReceived)
                 case "CadastrarPlantas":
                     Text("Tela para cadastrar plantas")
                 case "Carregamento":
@@ -118,7 +121,7 @@ struct MainView: View {
                     showingSheet = false
                     
                 }) {
-                    Text("Cancel")
+                    Text("Cancelar")
                         .padding(.top, 10)
                         .foregroundColor(.blue)
                 }

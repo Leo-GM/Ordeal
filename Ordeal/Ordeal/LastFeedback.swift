@@ -6,34 +6,35 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 // Classe para gerenciar os dados
 
 class LastFeedback: ObservableObject {
-    @Published var feedbackManager: FeedbackManager
+    @Published var imagem: String
+    @Published var instruction: String
+    @Published var especie: String
+    @Published var nomePlanta: String
+    @Published var humidityReceived: Int
 
-    init(feedbackManager: FeedbackManager) {
-        self.feedbackManager = feedbackManager
+    
+    init(imagem: String, instruction: String, especie: String, nomePlanta: String, humidityReceived: Int) {
+        self.imagem = imagem
+        self.instruction = instruction
+        self.especie = especie
+        self.nomePlanta = nomePlanta
+        self.humidityReceived = humidityReceived
     }
-
-    func acessarVariaveis() {
-        let especie = feedbackManager.especieFeedback
-        let nome = feedbackManager.nomeFeedback
-        let idealHumidity = feedbackManager.idealHumiditySpecie
-        let humidityReceived = feedbackManager.humidityReceived
+    
+    func updateValues(image: String, instruction:String, especie: String, nomePlanta: String, humidityReceived: Int){
+        self.imagem = image
+        self.instruction = instruction
+        self.especie = especie
+        self.nomePlanta = nomePlanta
+        self.humidityReceived = humidityReceived
         
-    //    var image = BluetoothModel.GeneralPlantState.image(<#T##self: BluetoothModel.GeneralPlantState##BluetoothModel.GeneralPlantState#>)
-      //  var instruction = BluetoothModel.GeneralPlantState.instruction(<#T##self: BluetoothModel.GeneralPlantState##BluetoothModel.GeneralPlantState#>)
-        
-       // while( nao estiver atualizando)
-        // guard feedback = ultima atual
-           //  image e istrucao
-              // mandar para o card
-        // guard feedback = atuliza atual
-            // image e istrucao
-                // mandar para o card
-        // ... acesse outras variáveis conforme necessário ...
     }
 }
+
 

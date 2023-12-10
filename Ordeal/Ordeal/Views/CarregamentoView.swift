@@ -47,12 +47,13 @@ struct CarregamentoView: View {
 
 
     
+
     
     @State var timer:Timer?
     @State var timerTexto:Timer?
         
     let images = ["plantona1", "plantona2", "plantona3"]
-    let textos = ["Verificando conexão...", "Conexão confirmada...", "Coletando dados...", "Interpretando dados...git "]
+    let textos = ["Verificando conexão...", "Conexão confirmada", "Coletando dados...", "Interpretando dados..."]
     
     
     var body: some View {
