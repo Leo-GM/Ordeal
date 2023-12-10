@@ -213,9 +213,9 @@ struct MainView: View {
                 Spacer()
                 
                 Button(action: {
-    
                     showingSheetRegister = false
                     plantaData.adicionarPlanta(nome: nomePlantaCadastro, especie: especie)
+                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                     nomePlantaCadastro = ""
    
                 }) {
@@ -267,5 +267,6 @@ struct MainView: View {
            // Código para esconder o teclado
            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
        }
+   
 }
 
