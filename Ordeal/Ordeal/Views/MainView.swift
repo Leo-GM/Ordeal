@@ -19,10 +19,10 @@ struct MainView: View {
     @ObservedObject var plantaData = Plantas()
     
     var especies = ["Não sei", "Orégano", "Samambaia", "Cacto"]
-    @State var especie = "Não sei"
+    @State var especie = "Espécie não informada"
     @State private var navigaterToNext = false
     @EnvironmentObject var bluetoothViewModel: BluetoothModel
-    @State var nome = "Joaquim"
+    @State var nome = "Plantinha sem nome"
     @EnvironmentObject var lastFeedback: LastFeedback
     
     
@@ -123,7 +123,7 @@ struct MainView: View {
                 }) {
                     Text("Cancelar")
                         .padding(.top, 10)
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color("principalColor"))
                 }
                 
                 Spacer()
@@ -149,7 +149,7 @@ struct MainView: View {
                 }) {
                     Text("Medir")
                         .padding(.top, 10)
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color("principalColor"))
                         .fontWeight(.bold)
                 }
                 
@@ -177,7 +177,8 @@ struct MainView: View {
             }
             
             Spacer()
-        }
+        }            .background(Color(UIColor.systemGray6))
+
     }
 }
 

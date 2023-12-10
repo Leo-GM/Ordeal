@@ -29,7 +29,7 @@ struct LineTableFeedback: View {
         
         Spacer()
         
-        Text("\(idealValue)")
+        Text("\(valueReceived)")
             .font(.body)
             .fontWeight(.regular)
             .foregroundColor(.black)
@@ -37,7 +37,7 @@ struct LineTableFeedback: View {
         
         Spacer()
         
-        Text("\(valueReceived)")
+        Text("\(idealValue)")
             .font(.body)
             .fontWeight(.regular)
             .foregroundColor(.black)

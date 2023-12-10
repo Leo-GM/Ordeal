@@ -129,9 +129,7 @@ struct FeedbackView: View {
                 
             }
             
-            Section(header:
-                        Text("Valores da medição")
-                .fontDesign(.rounded)
+            Section(
             ){
                 
                 Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 16){
@@ -142,7 +140,7 @@ struct FeedbackView: View {
                         Text("")
                         Spacer()
                         
-                        Text("Ideal")
+                        Text("Atual")
                             .font(.body)
                             .fontWeight(.regular)
                             .foregroundColor(Color("BodyColor"))
@@ -150,7 +148,7 @@ struct FeedbackView: View {
                         
                         Spacer()
                         
-                        Text("Atual")
+                        Text("Ideal")
                             .font(.body)
                             .fontWeight(.regular)
                             .foregroundColor(Color("BodyColor"))
@@ -200,7 +198,9 @@ struct FeedbackView: View {
                 router.reset()
                         }) {
                             Image(systemName: "chevron.left")
-                            Text("Meu Jardim")
+                                .font(.body)
+                            Text("Voltar")
+                                .font(.body)
                 }
             )
             

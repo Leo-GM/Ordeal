@@ -23,6 +23,8 @@ struct Card: View {
             Divider()
                 .padding(.trailing, 16)
                 .padding(.leading, 16)
+                .padding(.bottom, 16)
+            
             cardText
                 .padding(.horizontal, 16)
            

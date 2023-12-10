@@ -17,7 +17,7 @@ struct LastMeasurementCard: View {
         VStack(alignment: .leading, spacing: 16) {
             
             VStack{
-                Text("Orquidea")
+                Text("\(lastFeedback.nomePlanta)")
                     .font(.callout)
                     .foregroundColor(Color("BodyColor"))
                     .fontWeight(.regular)

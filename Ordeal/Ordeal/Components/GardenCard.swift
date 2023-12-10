@@ -50,6 +50,7 @@ struct GardenCard: View {
             //.frame(width: 157.5)
                 .padding(.trailing, 16)
                 .padding(.leading, 16)
+            
             cardText
                 .padding(.horizontal, 16)
         }
