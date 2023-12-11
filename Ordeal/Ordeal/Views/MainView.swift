@@ -206,7 +206,7 @@ struct MainView: View {
                 
                 Spacer()
                 
-                Text("Selecione a espécie")
+                Text("Cadastrar planta")
                     .padding(.top, 10)
                     .foregroundColor(.primary)
                     .fontWeight(.bold)
