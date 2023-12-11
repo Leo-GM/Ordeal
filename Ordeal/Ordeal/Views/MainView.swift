@@ -32,82 +32,85 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack(path: $router.path){
-            
-            VStack(alignment: .leading, spacing: 16){
+            ScrollView{
                 
-                NavigationLink(value: "TodasPlantas"){
-                    GardenCard(title: "Todas as plantas", illustration: "garden")
-                }
-                
-                
-                NavigationLink(value: "UltimaMedicao"){
-                    LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
-                }
-                
-                HStack(alignment: .top){
-                    Button(action: {
-                        if !bluetoothViewModel.isHC08Connected {
-                            showingAlert = true
-                        }else{
-                            showingSheet.toggle()
+                VStack(alignment: .leading, spacing: 16){
+                    
+                    NavigationLink(value: "TodasPlantas"){
+                        GardenCard(title: "Todas as plantas", illustration: "garden")
+                    }
+                    
+                    
+                    NavigationLink(value: "UltimaMedicao"){
+                        LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
+                    }
+                    
+                    HStack(alignment: .top){
+                        Button(action: {
+                            if !bluetoothViewModel.isHC08Connected {
+                                showingAlert = true
+                            }else{
+                                showingSheet.toggle()
+                            }
+                            
+                            
+                            
+                        }) {
+                            Card(title: "Nova medição", illustration: "novaMedicao")
+                            
+                        } .sheet(isPresented: $showingSheet) {
+                            responderSheet
+                        }
+                        
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            showingSheetRegister.toggle()
+                            
+                        }) {
+                            Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
+                        } .sheet(isPresented: $showingSheetRegister) {
+                            responderSheetRegister
                         }
                         
                         
                         
-                    }) {
-                        Card(title: "Nova medição", illustration: "novaMedicao")
-                        
-                    } .sheet(isPresented: $showingSheet) {
-                        responderSheet
                     }
-                    
-                    
                     Spacer()
                     
-                    Button(action: {
-                            showingSheetRegister.toggle()
-     
-                    }) {
-                        Card(title: "Cadastrar planta", illustration: "cadastrarPlanta")
-                    } .sheet(isPresented: $showingSheetRegister) {
-                        responderSheetRegister
-                    }
-                   
-                    
-                    
                 }
-                Spacer()
+                .padding(16)
+                .padding(.top, 16)
+                .navigationBarTitle("Meu Jardim")
+                .background(Color(UIColor.systemGray6))
                 
-            }
-            .padding(16)
-            .padding(.top, 16)
-            .navigationBarTitle("Meu Jardim")
-            .background(Color(UIColor.systemGray6))
-            
-            .alert(isPresented: $showingAlert) {
-                Alert(
-                    title: Text("Alerta"),
-                    message: Text("O Bluetooth não está conectado ao dispositivo HC-08."),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
-            
-            .navigationDestination(for: String.self){ value in
-                switch value{
-                case "TodasPlantas":
-                    TodasPlantasView()
-                case "UltimaMedicao":
-                    LastFeedbackView(especieFeedback: lastFeedback.especie, nomeFeedback: lastFeedback.nomePlanta, humidityReceived: lastFeedback.humidityReceived)
-                case "CadastrarPlantas":
-                    Text("Tela para cadastrar plantas")
-                case "Carregamento":
-                    CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome)
-                case "Feedback":
-                    FeedbackView(especieFeedback: especie,nomeFeedback: nome)
-                default:
-                    Text("ERRO")
+                .alert(isPresented: $showingAlert) {
+                    Alert(
+                        title: Text("Alerta"),
+                        message: Text("O Bluetooth não está conectado ao dispositivo HC-08."),
+                        dismissButton: .default(Text("OK"))
+                    )
                 }
-            }
+                
+                .navigationDestination(for: String.self){ value in
+                    switch value{
+                    case "TodasPlantas":
+                        TodasPlantasView()
+                    case "UltimaMedicao":
+                        LastFeedbackView(especieFeedback: lastFeedback.especie, nomeFeedback: lastFeedback.nomePlanta, humidityReceived: lastFeedback.humidityReceived)
+                    case "CadastrarPlantas":
+                        Text("Tela para cadastrar plantas")
+                    case "Carregamento":
+                        CarregamentoView(especieCarregamento: especie, nomeCarregamento: nome)
+                    case "Feedback":
+                        FeedbackView(especieFeedback: especie,nomeFeedback: nome)
+                    default:
+                        Text("ERRO")
+                    }
+                }
+            }                .background(Color(UIColor.systemGray6))
+
         }            .navigationBarBackButtonHidden(true)
             .onAppear{
                 bluetoothViewModel.flag = 1
