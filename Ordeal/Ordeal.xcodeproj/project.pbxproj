@@ -12,8 +12,8 @@
 		744718CD2B06415A00F780C7 /* BigCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CC2B06415A00F780C7 /* BigCard.swift */; };
 		744718CF2B0647F900F780C7 /* ConnectBluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */; };
 		74876CD22B10ECF20059EBF5 /* LastMeasurementCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */; };
-		7495C8662B25F4250040961C /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7495C8652B25F4250040961C /* SmallCard.swift */; };
 		74957C0C2B2206730007C940 /* LastFeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74957C0B2B2206730007C940 /* LastFeedbackView.swift */; };
+		7495C8662B25F4250040961C /* SmallCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7495C8652B25F4250040961C /* SmallCard.swift */; };
 		74A79D5C2B025E0300FE386C /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A79D5B2B025E0300FE386C /* Feedback.swift */; };
 		74BB54182AE93ED70036BEE4 /* ConnectBluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */; };
 		74CCC9502B20BD0500EBBACF /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CCC94F2B20BD0500EBBACF /* RootView.swift */; };
@@ -43,8 +43,8 @@
 		744718CC2B06415A00F780C7 /* BigCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigCard.swift; sourceTree = "<group>"; };
 		744718CE2B0647F900F780C7 /* ConnectBluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetoothView.swift; sourceTree = "<group>"; };
 		74876CD12B10ECF20059EBF5 /* LastMeasurementCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMeasurementCard.swift; sourceTree = "<group>"; };
-		7495C8652B25F4250040961C /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCard.swift; sourceTree = "<group>"; };
 		74957C0B2B2206730007C940 /* LastFeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFeedbackView.swift; sourceTree = "<group>"; };
+		7495C8652B25F4250040961C /* SmallCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCard.swift; sourceTree = "<group>"; };
 		74A79D5B2B025E0300FE386C /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		74BB54172AE93ED70036BEE4 /* ConnectBluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectBluetooth.swift; sourceTree = "<group>"; };
 		74CCC94F2B20BD0500EBBACF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -415,7 +415,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = CB9GV5Y7N2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = PlanTech;
@@ -449,7 +449,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Ordeal/Preview Content\"";
-				DEVELOPMENT_TEAM = Q92SD7R6D3;
+				DEVELOPMENT_TEAM = CB9GV5Y7N2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = PlanTech;

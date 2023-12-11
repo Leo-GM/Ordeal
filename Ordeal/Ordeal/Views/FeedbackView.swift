@@ -37,13 +37,7 @@ struct FeedbackView: View {
             let potassiumStatus = bluetoothViewModel.checkPotassiumPlantState(potassiumReceived: potassiumReceived)
             
             
-            //            instructionCardLastFeedback = overallStatus.instruction()
-            //            imageCardLastFeedback = humidityStatus.image()
-            
-            
-            
-            
-            Section (){
+            Section(){
                 HStack{
                     VStack(alignment: .leading){
                         Text("\(nomeFeedback)") //we are going to receive this value from the view before this one
@@ -117,10 +111,6 @@ struct FeedbackView: View {
                         Text("Instrução")
                 .fontDesign(.rounded)
             ){
-                
-                
-                
-                
                 Text(overallStatus.instruction())
                     .font(.body)
                     .fontWeight(.regular)
@@ -129,11 +119,11 @@ struct FeedbackView: View {
                 
             }
             
-            Section(
+            Section(header:
+                        Text("Valores da Medição")
+                .fontDesign(.rounded)
             ){
-                
                 Grid (alignment: .center, horizontalSpacing: 0, verticalSpacing: 16){
-                    
                     GridRow {
                         Text("")
                         
@@ -171,8 +161,7 @@ struct FeedbackView: View {
                     // Phosphoro Line
                     GridRow {
                         LineTableFeedback(icon: phosphoroStatus.image(), iconColor: phosphoroStatus.color(), idealValue: 5, valueReceived: phosphoroReceived, lineTitle: "Fósforo\n(mmg/kg)")
-                        
-                        
+    
                     }
                     
                     // Potassium Line
@@ -192,17 +181,7 @@ struct FeedbackView: View {
                         .font(.body)
                 }
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading:
-                        Button(action: {
-                router.reset()
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .font(.body)
-                            Text("Voltar")
-                                .font(.body)
-                }
-            )
+            
             
         }.onAppear{
             if especieFeedback == "Samambaia" {
@@ -215,12 +194,17 @@ struct FeedbackView: View {
                         
             lastfeedback.updateValues(image: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: idealHumiditySpecie).image(), instruction: bluetoothViewModel.checkHumidityPlantState(specieHumidity: idealHumiditySpecie, humidityReceived: humidityReceived).instruction(), especie: especieFeedback, nomePlanta: nomeFeedback, humidityReceived: humidityReceived )
             
-           
-
-            
         }
-       
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                    Button(action: {
+            router.reset()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.body)
+                        Text("Meu Jardim")
+                            .font(.body)
+            }
+        )
     }
-    
 }
-
