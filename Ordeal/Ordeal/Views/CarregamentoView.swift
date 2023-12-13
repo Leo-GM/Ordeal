@@ -25,7 +25,6 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
         }
         .padding()
         
-            
         
     }
 }
