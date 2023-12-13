@@ -13,7 +13,9 @@ struct PerfilView: View {
     var body: some View {
         NavigationStack(path: $routerProfile.path){
             VStack{
-                NavigationLink(value: "Perfil"){
+                Button(action: {
+                    
+                }) {
                     HStack{
             
                         ZStack{
@@ -44,6 +46,8 @@ struct PerfilView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .padding(.horizontal, 16)
                 
+                    
+                
                 HStack{
                     Text("Dados pessoais")
                         .font(.title3)
@@ -55,7 +59,9 @@ struct PerfilView: View {
                 
                 Section(){
                     VStack{
-                        NavigationLink(value: "meusDados"){
+                        Button(action: {
+                            
+                        }) {
                             HStack{
                                 Text("Meus dados")
                                     .font(.body)
@@ -68,9 +74,13 @@ struct PerfilView: View {
                             }.padding(.top, 12)
                                 .padding(.bottom, 8)
                         }
+                            
+                        
                        Divider()
                             .padding(.leading, 16)
-                        NavigationLink(value: "alterarSenha"){
+                        Button(action: {
+                            
+                        }) {
                             HStack{
                                 Text("Alterar senha")
                                     .font(.body)
@@ -82,10 +92,14 @@ struct PerfilView: View {
                                     .foregroundColor(Color(UIColor.systemGray2))
                             }.padding(.vertical, 8)
                         }
+                            
+                        
                        Divider()
                             .padding(.leading, 16)
 
-                        NavigationLink(value: "configuracao"){
+                        Button(action: {
+                            
+                        }) {
                             HStack{
                                 Text("Configurações")
                                     .font(.body)
@@ -98,9 +112,11 @@ struct PerfilView: View {
                             }.padding(.top, 8)
                                 .padding(.bottom, 16)
                         }
+                        }
+                            
                         
                         
-                    }
+                    
                 }
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -110,10 +126,15 @@ struct PerfilView: View {
                     Section(){
                         HStack{
                             Spacer()
-                            Text("Finalizar Sessão")
-                                .font(.body)
-                                .foregroundColor(Color("FinalizarSessao"))
-                                .padding(12)
+                            Button(action: {
+                                
+                            }) {
+                                Text("Finalizar Sessão")
+                                    .font(.body)
+                                    .foregroundColor(Color("FinalizarSessao"))
+                                    .padding(12)
+                            }
+                            
                             Spacer()
                         }.padding(.horizontal, 16)
                         

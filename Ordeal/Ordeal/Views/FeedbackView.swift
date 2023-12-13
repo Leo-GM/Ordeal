@@ -130,7 +130,7 @@ struct FeedbackView: View {
                         Text("")
                         Spacer()
                         
-                        Text("Ideal")
+                        Text("Atual")
                             .font(.body)
                             .fontWeight(.regular)
                             .foregroundColor(Color("BodyColor"))
@@ -138,7 +138,7 @@ struct FeedbackView: View {
                         
                         Spacer()
                         
-                        Text("Atual")
+                        Text("Ideal")
                             .font(.body)
                             .fontWeight(.regular)
                             .foregroundColor(Color("BodyColor"))

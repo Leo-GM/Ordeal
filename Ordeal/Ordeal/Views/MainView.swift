@@ -16,10 +16,12 @@ struct MainView: View {
     @State private var showingSheet = false
     @State private var showingSheetRegister = false
     @State private var showingAlert = false
+    @State private var showingAlert2 = false
+    
     @EnvironmentObject var router: Router
     @EnvironmentObject var plantaData: Plantas
     @State private var nomePlantaCadastro: String = ""
-
+    
     
     var especies = ["Espécie desconhecida", "Orégano", "Samambaia", "Cacto"]
     @State var especie = "Espécie desconhecida"
@@ -44,6 +46,7 @@ struct MainView: View {
                     NavigationLink(value: "UltimaMedicao"){
                         LastMeasurementCard(title: "Ultima medição", illustration: "ultimaMedicao")
                     }
+                    
                     
                     HStack(alignment: .top){
                         Button(action: {
@@ -98,6 +101,7 @@ struct MainView: View {
                     case "TodasPlantas":
                         TodasPlantasView()
                     case "UltimaMedicao":
+                        
                         LastFeedbackView(especieFeedback: lastFeedback.especie, nomeFeedback: lastFeedback.nomePlanta, humidityReceived: lastFeedback.humidityReceived)
                     case "CadastrarPlantas":
                         Text("Tela para cadastrar plantas")
@@ -110,7 +114,7 @@ struct MainView: View {
                     }
                 }
             }                .background(Color(UIColor.systemGray6))
-
+            
         }            .navigationBarBackButtonHidden(true)
             .onAppear{
                 bluetoothViewModel.flag = 1
@@ -122,7 +126,7 @@ struct MainView: View {
         
         
     }
-
+    
     var responderSheet: some View {
         
         VStack {
@@ -190,7 +194,7 @@ struct MainView: View {
             
             Spacer()
         }            .background(Color(UIColor.systemGray6))
-
+        
     }
     
     var responderSheetRegister: some View {
@@ -200,6 +204,7 @@ struct MainView: View {
                 Button(action: {
                     
                     showingSheetRegister = false
+                    nomePlantaCadastro = ""
                     
                 }) {
                     Text("Cancelar")
@@ -220,7 +225,8 @@ struct MainView: View {
                     plantaData.adicionarPlanta(nome: nomePlantaCadastro, especie: especie)
                     UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                     nomePlantaCadastro = ""
-   
+                    
+                    
                 }) {
                     Text("Cadastrar")
                         .padding(.top, 10)
@@ -264,12 +270,12 @@ struct MainView: View {
             
             Spacer()
         }            .background(Color(UIColor.systemGray6))
-
+        
     }
     func hideKeyboard() {
-           // Código para esconder o teclado
-           UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-       }
-   
+        // Código para esconder o teclado
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
 }
 
