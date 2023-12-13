@@ -51,23 +51,23 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
         func instruction() -> String{
             switch self {
             case .idealParameters:
-                return "Tanto a umidade quanto as concentrações de NPK estão ideais. Continue com a manutenção adequada para garantir o crescimento saudável das plantas."
+                return "A umidade da planta está ideal! Continue assim, pois a hidratação adequada proporciona o crescimento saudável, a absorção de nutrientes de forma mais eficaz, a floração e até mesmo pode aumentar a longevidade da planta."
             case .lackHumidityLackNPK:
-                return "Sua planta está seca e com baixa concentração de nutriente, considere regar sua planta mais frequentemente e adicionar fertilizantes baseados em Nitrogênio, Potássio e Fósforo (NPK)"
+                return "Sua planta está seca! Tome cuidado e comece a regar sua planta com mais frequência. A escassez de água nas plantas traz diversos malefícios, como o murchamento da planta, a redução do crescimento e até a dificuldade em absorver nutrientes."
             case .lackHumidityIdealNPK:
-                return "Seu solo está seco, mas as concentrações de Nitrogênio, Potássio e Fósforo (NPK) estão na faixa ideal. Recomendo regar para manter a umidade adequada."
+                return "Sua planta está seca! Tome cuidado e comece a regar sua planta com mais frequência. A escassez de água nas plantas traz diversos malefícios, como o murchamento da planta, a redução do crescimento e até a dificuldade em absorver nutrientes."
             case .lackHumidityExcessNPK:
-                return "O solo está seco, e as concentrações de NPK são altas. Recomendo ajustar a irrigação para corrigir a secura e reduzir a aplicação de fertilizantes para evitar excessos."
+                return "Sua planta está seca! Tome cuidado e comece a regar sua planta com mais frequência. A escassez de água nas plantas traz diversos malefícios, como o murchamento da planta, a redução do crescimento e até a dificuldade em absorver nutrientes."
             case .idealHumidityLackNPK:
-                return "A umidade do solo está adequada, mas as concentrações de NPK estão baixas. Recomendo aplicar fertilizantes ricos em Nitrogênio, Potássio e Fósforo para melhorar a nutrição das plantas."
+                return "A umidade da planta está ideal! Continue assim, pois a hidratação adequada proporciona o crescimento saudável, a absorção de nutrientes de forma mais eficaz, a floração e até mesmo pode aumentar a longevidade da planta."
             case .idealHumidityExcessNPK:
-                return "A umidade está adequada, mas as concentrações de NPK estão elevadas. Recomendo monitorar de perto e ajustar a fertilização para evitar excessos."
+                return "A umidade da planta está ideal! Continue assim, pois a hidratação adequada proporciona o crescimento saudável, a absorção de nutrientes de forma mais eficaz, a floração e até mesmo pode aumentar a longevidade da planta."
             case .excessHumidityLackNPK:
-                return "Água em excesso, e concentrações de NPK baixas. Recomendo reduzir a irrigação e aplicar fertilizantes para melhorar a nutrição das plantas."
+                return "O solo da sua planta está encharcado, cuidado! A umidade em excesso pode causar diversos problemas às plantas, como, por exemplo, a dificuldade em realizar suas trocas gasosas, a podridão nas raízes e o surgimento de fungos."
             case .excessHumidityIdealNPK:
-                return "O solo está muito úmido, mas as concentrações de NPK estão ideais. Recomendo ajustar a irrigação para evitar problemas de drenagem."
+                return "O solo da sua planta está encharcado, cuidado! A umidade em excesso pode causar diversos problemas às plantas, como, por exemplo, a dificuldade em realizar suas trocas gasosas, a podridão nas raízes e o surgimento de fungos."
             case .excessHumidityExcessNPK:
-                return "O solo está excessivamente úmido, e as concentrações de NPK são altas. Recomendo reduzir a irrigação e a aplicação de fertilizantes para evitar danos às plantas."
+                return "O solo da sua planta está encharcado, cuidado! A umidade em excesso pode causar diversos problemas às plantas, como, por exemplo, a dificuldade em realizar suas trocas gasosas, a podridão nas raízes e o surgimento de fungos."
             }
         }
     }
@@ -132,11 +132,11 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
         func image() -> String {
             switch self {
             case .lack:
-                return "exclamationmark.triangle"
+                return "minus"
             case .ideal:
-                return "checkmark.circle"
+                return "minus"
             case .excess:
-                return "exclamationmark.triangle"
+                return "minus"
             }
         }
         
@@ -250,22 +250,22 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
         func color() -> String {
             switch self {
             case .lack:
-                return "secondaryColor"
+                return "BodyColor"
             case .ideal:
-                return "principalColor"
+                return "BodyColor"
             case .excess:
-                return "secondaryColor"
+                return "BodyColor"
             }
         }
         
         func image() -> String{
             switch self {
             case .lack:
-                return "arrow.down"
+                return "minus"
             case .ideal:
-                return "checkmark"
+                return "minus"
             case .excess:
-                return "arrow.up"
+                return "minus"
             }
         }
     }
@@ -293,22 +293,22 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
         func color() -> String {
             switch self {
             case .lack:
-                return "secondaryColor"
+                return "BodyColor"
             case .ideal:
-                return "principalColor"
+                return "BodyColor"
             case .excess:
-                return "secondaryColor"
+                return "BodyColor"
             }
         }
         
         func image() -> String{
             switch self {
             case .lack:
-                return "arrow.down"
+                return "minus"
             case .ideal:
-                return "checkmark"
+                return "minus"
             case .excess:
-                return "arrow.up"
+                return "minus"
             }
         }
     }
@@ -336,22 +336,22 @@ class BluetoothModel: NSObject, ObservableObject, CBPeripheralDelegate {
         func color() -> String {
             switch self {
             case .lack:
-                return "secondaryColor"
+                return "BodyColor"
             case .ideal:
-                return "principalColor"
+                return "BodyColor"
             case .excess:
-                return "secondaryColor"
+                return "BodyColor"
             }
         }
         
         func image() -> String{
             switch self {
             case .lack:
-                return "arrow.down"
+                return "minus"
             case .ideal:
-                return "checkmark"
+                return "minus"
             case .excess:
-                return "arrow.up"
+                return "minus"
             }
         }
     }

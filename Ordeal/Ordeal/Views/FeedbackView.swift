@@ -18,9 +18,9 @@ struct FeedbackView: View {
     @State var nomeFeedback:String
     @EnvironmentObject var router: Router
     
-    var nitrogenReceived = 0 //we are going to receive this value from the view before this one
-    var phosphoroReceived = 0 //we are going to receive this value from the view before this one
-    var potassiumReceived = 0 //we are going to receive this value from the view before this one
+    var nitrogenReceived = 30 //we are going to receive this value from the view before this one
+    var phosphoroReceived = 5 //we are going to receive this value from the view before this one
+    var potassiumReceived = 25 //we are going to receive this value from the view before this one
     
     
     var body: some View {
@@ -154,19 +154,19 @@ struct FeedbackView: View {
                     
                     // Nitrogen Line
                     GridRow {
-                        LineTableFeedback(icon: nitrogenStatus.image(), iconColor: nitrogenStatus.color(), idealValue: 30, valueReceived: nitrogenReceived, lineTitle: "Nitrogênio\n(mmg/kg)")
+                        LineTableFeedback2(icon: nitrogenStatus.image(), iconColor: nitrogenStatus.color(), idealValue: 30, valueReceived: nitrogenReceived, lineTitle: "Nitrogênio\n(mmg/kg)")
                         
                     }
                     
                     // Phosphoro Line
                     GridRow {
-                        LineTableFeedback(icon: phosphoroStatus.image(), iconColor: phosphoroStatus.color(), idealValue: 5, valueReceived: phosphoroReceived, lineTitle: "Fósforo\n(mmg/kg)")
+                        LineTableFeedback2(icon: phosphoroStatus.image(), iconColor: phosphoroStatus.color(), idealValue: 5, valueReceived: phosphoroReceived, lineTitle: "Fósforo\n(mmg/kg)")
     
                     }
                     
                     // Potassium Line
                     GridRow {
-                        LineTableFeedback(icon: potassiumStatus.image(), iconColor: potassiumStatus.color(), idealValue: 25, valueReceived: potassiumReceived, lineTitle: "Potássio\n(mmg/kg)")
+                        LineTableFeedback2(icon: potassiumStatus.image(), iconColor: potassiumStatus.color(), idealValue: 25, valueReceived: potassiumReceived, lineTitle: "Potássio\n(mmg/kg)")
                         
                     }
                     
